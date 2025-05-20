@@ -1,0 +1,86 @@
+
+
+{% unless customer %}
+  <script>
+    window.location.href = '{{ routes.account_login_url }}';
+  </script>
+{% endunless %}
+
+{% render 'navbar--solid' %}
+{% render 'account-top-navigation' %}
+
+<section class="accounts accounts--dashboard">
+  <div class="accounts__grid">
+    <div class="accounts__left">
+      {% render 'accounts-sidebar' %}
+    </div>
+    <div class="accounts__right">
+      <div class="dashboard__intro-text">
+        <h2>Welcome, {{ customer.first_name }}</h2>
+        <p>{{section.settings.message}}</p>
+        <a href="/pages/frequently-asked-questions" class="account-faqs ">{{section.settings.faq_button}}</a>
+      </div>
+
+
+    {% render 'orders-section', title: 'Latest Orders', is_dashboard: true %}
+
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Dashboard",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "message",
+        "label": "Default Message",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis leo lacus, viverra convallis ullamcorper. Nibh nunc quisque commodo morbi. Metus.",
+        "info": "Use customer metafield to override this for that particular customer."
+      },
+      {
+        "type": "text",
+        "id": "faq_button",
+        "label": "FAQ Button Text",
+        "default": "Account FAQs",
+      },
+
+
+      {
+        "type": "header",
+        "content": "Recommended Products"
+      },
+      {
+        "type": "text",
+        "id": "recommended_title",
+        "default": "We think you'll love...",
+        "label": "Title"
+      },
+      {
+        "type": "product_list",
+        "id": "recommended_products",
+        "label": "Default Recommeded Products",
+        "info": "Use customer metafield to override this for that particular customer."
+      }, {
+        "type": "text",
+        "id": "cta_button",
+        "default": "See Your Loyalty Account",
+        "label": "Button Title"
+      }, {
+        "type": "url",
+        "id": "cta_button_url",
+        "label": "CTA Button Url"
+      }, {
+        "type": "header",
+        "content": "Recommended Articles"
+      }, {
+        "type": "text",
+        "id": "articles_title",
+        "default": "Articles for you",
+        "label": "Title"
+      }
+    ]
+  }
+{% endschema %}

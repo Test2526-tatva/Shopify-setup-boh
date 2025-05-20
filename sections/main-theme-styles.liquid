@@ -1,0 +1,1077 @@
+{{ 'page-style-guide.css' | asset_url | stylesheet_tag }}
+
+{% render 'navbar--solid' %}
+
+  {% comment %} 
+    {% assign image = images['Homepage_Intro_Navy_Exec.jpg'] %}
+    {% assign mobile_image = images['Metro-other-range_2c85c77d-281d-4cd5-ae69-95b1bc466ded.jpg'] %}
+
+    {% render 'image', image: image, mobile_image: mobile_image, width: 3200 %}
+  {% endcomment %}
+
+
+{% render 'qa-links' %}
+
+
+<div class="style-guide__main">
+  <div class="style-guide__section">
+    <div class="style-guide__title">
+      <h4>
+        Typography | Desktop
+      </h4>
+    </div>    
+    
+    <div class="style-guide__row style-guide__row--typography">
+      <table class="typography__grid" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th width="13%" class="caption">Name</th>
+            <th width="13%" class="caption">Size</th>
+            <th width="13%" class="caption">Height</th>
+            <th width="13%" class="caption">Spacing</th>
+            <th width="13%" class="caption">Font</th>
+            <th class="caption">Sample</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PDP Heading</td>
+            <td>170px</td>
+            <td>160px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h1 class="pdp-heading">Metro</h1>
+            </td>
+          </tr>
+          <tr>
+            <td>H1</td>
+            <td>140px</td>
+            <td>138px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h1>Lorem</h1>
+            </td>
+          </tr>
+          <tr>
+            <td>H2</td>
+            <td>95px</td>
+            <td>90px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h2>Lorem</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>H3</td>
+            <td>64px</td>
+            <td>67px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h3>Lorem ipsum</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>H4</td>
+            <td>54px</td>
+            <td>57px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h4>Lorem ipsum</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>H5</td>
+            <td>28px</td>
+            <td>36px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h5>Lorem ipsum</h5>
+            </td>
+          </tr>
+          <tr>
+            <td>H6</td>
+            <td>22px</td>
+            <td>28px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h6>Lorem ipsum</h6>
+            </td>
+          </tr>
+          <tr>
+            <td>Paragraph Large</td>
+            <td>18px</td>
+            <td>24px</td>
+            <td>0%</td>
+            <td>Orion<br>Medium</td>
+            <td>
+              <p class="p-large">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Paragraph Strong</td>
+            <td>15px</td>
+            <td>21px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <p class="p-strong">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Paragraph</td>
+            <td>15px</td>
+            <td>21px</td>
+            <td>0%</td>
+            <td>Orion<br>Medium</td>
+            <td>
+              <p>Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Paragraph Small</td>
+            <td>13px</td>
+            <td>17px</td>
+            <td>0%</td>
+            <td>Orion<br>Medium</td>
+            <td>
+              <p class="p-small">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Caption</td>
+            <td>10px</td>
+            <td>auto</td>
+            <td>20%</td>
+            <td>Orion<br>Medium</td>
+            <td>
+              <p class="caption">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Button</td>
+            <td>14px</td>
+            <td>18px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <p class="button-text">Lorem ipsum</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>            
+  </div>
+</div><!-- typography | desktop -->
+<div class="style-guide__main">
+  <div class="style-guide__section">
+    <div class="style-guide__title">
+      <h4>
+        Typography | Mobile
+      </h4>
+    </div>    
+    
+    <div class="style-guide__row style-guide__row--typography">
+      <table class="typography__grid typography__grid--mobile" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th width="13%" class="caption">Name</th>
+            <th width="13%" class="caption">Size</th>
+            <th width="13%" class="caption">Height</th>
+            <th width="13%" class="caption">Spacing</th>
+            <th width="13%" class="caption">Font</th>
+            <th class="caption">Sample</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PDP Heading</td>
+            <td>80px</td>
+            <td>75px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h1 class="pdp-heading">Metro</h1>
+            </td>
+          </tr>
+          <tr>
+            <td>H1</td>
+            <td>70px</td>
+            <td>65px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h1>Lorem</h1>
+            </td>
+          </tr>
+          <tr>
+            <td>H2</td>
+            <td>60px</td>
+            <td>58px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h2>Lorem</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>H3</td>
+            <td>45px</td>
+            <td>47px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h3>Lorem ipsum</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>H4</td>
+            <td>35px</td>
+            <td>39px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h4>Lorem ipsum</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>H5</td>
+            <td>23px</td>
+            <td>30px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h5>Lorem ipsum</h5>
+            </td>
+          </tr>
+          <tr>
+            <td>H6</td>
+            <td>19px</td>
+            <td>30px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <h6>Lorem ipsum</h6>
+            </td>
+          </tr>
+          <tr>
+            <td>Paragraph Large</td>
+            <td>17px</td>
+            <td>23px</td>
+            <td>0%</td>
+            <td>Orion<br>Medium</td>
+            <td>
+              <p class="p-large">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Paragraph Strong</td>
+            <td>15px</td>
+            <td>21px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <p class="p-strong">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Paragraph</td>
+            <td>14px</td>
+            <td>20px</td>
+            <td>0%</td>
+            <td>Orion<br>Medium</td>
+            <td>
+              <p class="p-strong">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Paragraph Small</td>
+            <td>12px</td>
+            <td>17px</td>
+            <td>0%</td>
+            <td>Orion<br>Medium</td>
+            <td>
+              <p class="p-small">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Caption</td>
+            <td>10px</td>
+            <td>auto</td>
+            <td>20%</td>
+            <td>Orion<br>Medium</td>
+            <td>
+              <p class="caption">Lorem ipsum</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Button</td>
+            <td>14px</td>
+            <td>18px</td>
+            <td>0%</td>
+            <td>Orion<br>Semibold</td>
+            <td>
+              <p class="button-text">Lorem ipsum</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>            
+  </div>
+</div><!-- typography | mobile -->
+<div class="style-guide__main">
+  <div class="style-guide__section">
+    <div class="style-guide__title">
+      <h4>
+        Buttons | Desktop
+      </h4>
+    </div>   
+    <div class="style-guide__row style-guide__row--buttons">
+      <table class="buttons__grid" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th width="10%" class="caption">Type</th>
+            <th width="20%" class="caption">Default</th>
+            <th width="20%" class="caption">Hover</th>
+            <th width="20%" class="caption">Selected / Clicked</th>
+            <th width="30%" class="caption">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primay Button<br>Dark</td>
+            <td>
+              <a class="button primary-button--dark" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button primary-button--dark primary-button--dark--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button primary-button--dark primary-button--dark--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Primay Button<br>White</td>
+            <td>
+              <a class="button primary-button--white" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button primary-button--white primary-button--white--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          {% comment %}
+            
+          <tr class="bg--lines3">
+            <td>Primay Button<br>Light</td>
+            <td>
+              <a class="button primary-button--light" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button primary-button--light primary-button--light--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          {% endcomment %}
+          <tr>
+            <td>Secondary Button<br>Outline</td>
+            <td>
+              <a class="button secondary-button--outline" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button secondary-button--outline secondary-button--outline--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="bg--lines3">
+            <td>Secondary Button<br>Transparent Light</td>
+            <td>
+              <a class="button secondary-button--transparent-light" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button secondary-button--transparent-light secondary-button--transparent-light--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Secondary Button<br>Transparent Dark</td>
+            <td>
+              <a class="button secondary-button--transparent-dark" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button secondary-button--transparent-dark secondary-button--transparent-dark--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Underline Link Button<br>Dark</td>
+            <td>
+              <a class="underline-link underline-link--dark" href="#">
+                Ungerline Link
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="bg--lines3">
+            <td>Underline Link Button<br>Light</td>
+            <td>
+              <a class="underline-link underline-link--light" href="#">
+                Ungerline Link
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Toggle</td>
+            <td>
+              <label class="toggle-switch">
+                <span class="toggle-switch__label toggle-switch__label--unchecked">
+                  Off
+                </span>
+                <div class="toggle-switch__container">
+                  <input id="toggle-swith__checkbox" type="checkbox">
+                  <span class="slider round"></span>
+                </div>
+                <span class="toggle-switch__label toggle-switch__label--checked">
+                  On
+                </span>
+              </label>
+            </td>
+            <td></td>
+            <td>
+              <label class="toggle toggle--clicked">
+                <input type="checkbox" checked="">
+                <span class="slider round"></span>
+              </label>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Gallery Arrows</td>
+            <td>
+              <a class="gallery-arrow gallery-arrow--next" href="#">
+                <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 14.6641L6.83543 8.34234C7.18903 7.95928 7.18903 7.36884 6.83543 6.98578L0.999999 0.664062" stroke="#262525" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </a>
+            </td>
+            <td>
+              <a class="gallery-arrow gallery-arrow--next gallery-arrow--hover" href="#">
+                <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 14.6641L6.83543 8.34234C7.18903 7.95928 7.18903 7.36884 6.83543 6.98578L0.999999 0.664062" stroke="#262525" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Colour Select</td>
+            <td>
+              <div class="swatch swatch__colour swatch__colour--navy"> </div>
+            </td>
+            <td>
+
+            <div class="swatch swatch--hover swatch__colour swatch__colour--navy"> </div>
+            </td>
+            <td>
+
+            <div class="swatch swatch--active swatch__colour swatch__colour--navy"> </div>
+            </td>
+            <td>
+              <p class="p-small">Size varies from collection filter to PDP variant selector</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Add to Cart</td>
+            <td>
+              <a class="button add-to-cart" href="#">
+                <span>Add to Bag</span>
+                <span>$189</span>
+              </a>
+            </td>
+            <td>
+              <a class="button add-to-cart add-to-cart--hover" href="#">
+                <span>Add to Bag</span>
+                <span>$189</span>
+              </a>
+            </td>
+            <td></td>
+            <td>
+              <p class="p-small">Responsive with variant selector</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Arrows</td>
+            <td>
+              <div class="arrow__group">
+                <a class="arrow__icon arrow--prev" href="#">
+                  <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-width="2" fill-rule="evenodd" clip-rule="evenodd" d="M8.79723 0.202772C9.06759 0.473135 9.06759 0.91148 8.79723 1.18184L1.79496 8.18411C1.34436 8.63471 1.34436 9.36529 1.79496 9.81589L8.79723 16.8182C9.06759 17.0885 9.06759 17.5269 8.79723 17.7972C8.52686 18.0676 8.08852 18.0676 7.81816 17.7972L0.815892 10.795C-0.175439 9.80363 -0.17544 8.19637 0.815891 7.20504L7.81816 0.202772C8.08852 -0.0675907 8.52686 -0.0675907 8.79723 0.202772Z" fill="#CACACA"></path>
+                  </svg>
+                </a>
+                <a class="arrow__icon arrow--next" href="#">
+                  <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-width="2" fill-rule="evenodd" clip-rule="evenodd" d="M8.79723 0.202772C9.06759 0.473135 9.06759 0.91148 8.79723 1.18184L1.79496 8.18411C1.34436 8.63471 1.34436 9.36529 1.79496 9.81589L8.79723 16.8182C9.06759 17.0885 9.06759 17.5269 8.79723 17.7972C8.52686 18.0676 8.08852 18.0676 7.81816 17.7972L0.815892 10.795C-0.175439 9.80363 -0.17544 8.19637 0.815891 7.20504L7.81816 0.202772C8.08852 -0.0675907 8.52686 -0.0675907 8.79723 0.202772Z" fill="#CACACA"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+            <td>
+              <div class="arrow__group">
+                <a class="arrow__icon arrow--prev" href="#">
+                  <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-width="2" fill-rule="evenodd" clip-rule="evenodd" d="M8.79723 0.202772C9.06759 0.473135 9.06759 0.91148 8.79723 1.18184L1.79496 8.18411C1.34436 8.63471 1.34436 9.36529 1.79496 9.81589L8.79723 16.8182C9.06759 17.0885 9.06759 17.5269 8.79723 17.7972C8.52686 18.0676 8.08852 18.0676 7.81816 17.7972L0.815892 10.795C-0.175439 9.80363 -0.17544 8.19637 0.815891 7.20504L7.81816 0.202772C8.08852 -0.0675907 8.52686 -0.0675907 8.79723 0.202772Z" fill="#CACACA"></path>
+                  </svg>
+                </a>
+                <a class="arrow__icon arrow--next arrow--hover" href="#">
+                  <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-width="2" fill-rule="evenodd" clip-rule="evenodd" d="M8.79723 0.202772C9.06759 0.473135 9.06759 0.91148 8.79723 1.18184L1.79496 8.18411C1.34436 8.63471 1.34436 9.36529 1.79496 9.81589L8.79723 16.8182C9.06759 17.0885 9.06759 17.5269 8.79723 17.7972C8.52686 18.0676 8.08852 18.0676 7.81816 17.7972L0.815892 10.795C-0.175439 9.80363 -0.17544 8.19637 0.815891 7.20504L7.81816 0.202772C8.08852 -0.0675907 8.52686 -0.0675907 8.79723 0.202772Z" fill="#CACACA"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+            <td></td>
+            <td>
+              <p class="p-small">Responsive with variant selector</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- buttons | desktop -->
+<div class="style-guide__main">
+  <div class="style-guide__section">
+    <div class="style-guide__title">
+      <h4>
+        Buttons | Mobile
+      </h4>
+    </div>   
+    <div class="style-guide__row style-guide__row--buttons">
+      <table class="buttons__grid buttons__grid--mobile" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th width="10%" class="caption">Type</th>
+            <th width="20%" class="caption">Default</th>
+            <th width="20%" class="caption">Hover</th>
+            <th width="20%" class="caption">Selected / Clicked</th>
+            <th width="30%" class="caption">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primay Button<br>Dark</td>
+            <td>
+              <a class="button primary-button--dark" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button primary-button--dark primary-button--dark--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Primay Button<br>White</td>
+            <td>
+              <a class="button primary-button--white" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button primary-button--white primary-button--white--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="bg--lines3">
+            <td>Primay Button<br>Light</td>
+            <td>
+              <a class="button primary-button--light" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button primary-button--light primary-button--light--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Secondary Button<br>Outline</td>
+            <td>
+              <a class="button secondary-button--outline" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button secondary-button--outline secondary-button--outline--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="bg--lines3">
+            <td>Secondary Button<br>Transparent Light</td>
+            <td>
+              <a class="button secondary-button--transparent-light" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button secondary-button--transparent-light secondary-button--transparent-light--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Secondary Button<br>Transparent Dark</td>
+            <td>
+              <a class="button secondary-button--transparent-dark" href="#">
+                Explore
+              </a>
+            </td>
+            <td>
+              <a class="button secondary-button--transparent-dark secondary-button--transparent-dark--hover" href="#">
+                Explore
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Underline Link Button<br>Dark</td>
+            <td>
+              <a class="underline-link underline-link--dark" href="#">
+                Ungerline Link
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="bg--lines3">
+            <td>Underline Link Button<br>Light</td>
+            <td>
+              <a class="underline-link underline-link--light" href="#">
+                Ungerline Link
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Toggle</td>
+            <td>
+              <label class="toggle-switch">
+                <span class="toggle-switch__label toggle-switch__label--unchecked">
+                  Off
+                </span>
+                <div class="toggle-switch__container">
+                  <input id="toggle-swith__checkbox" type="checkbox">
+                  <span class="slider round"></span>
+                </div>
+                <span class="toggle-switch__label toggle-switch__label--checked">
+                  On
+                </span>
+              </label>
+            </td>
+            <td></td>
+            <td>
+              <label class="toggle toggle--clicked">
+                <input id="toggle-swith__checkbox" type="checkbox" checked="">
+                <span class="slider round"></span>
+              </label>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Gallery Arrows</td>
+            <td>
+              <a class="gallery-arrow gallery-arrow--next" href="#">
+                <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 14.6641L6.83543 8.34234C7.18903 7.95928 7.18903 7.36884 6.83543 6.98578L0.999999 0.664062" stroke="#262525" stroke-linecap="round"></path>
+                </svg>
+              </a>
+            </td>
+            <td>
+              <a class="gallery-arrow gallery-arrow--next gallery-arrow--hover" href="#">
+                <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 14.6641L6.83543 8.34234C7.18903 7.95928 7.18903 7.36884 6.83543 6.98578L0.999999 0.664062" stroke="#262525" stroke-linecap="round"></path>
+                </svg>
+              </a>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Colour Select</td>
+            <td>
+              <div class="swatch swatch__colour swatch__colour--navy"> </div>
+            </td>
+            <td>
+
+            <div class="swatch swatch--hover swatch__colour swatch__colour--navy"> </div>
+            </td>
+            <td>
+
+            <div class="swatch swatch--active swatch__colour swatch__colour--navy"> </div>
+            </td>
+            <td>
+              <p class="p-small">Size varies from collection filter to PDP variant selector</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Add to Cart</td>
+            <td>
+              <a class="button add-to-cart" href="#">
+                <span>Add to Bag</span>
+                <span>$189</span>
+              </a>
+            </td>
+            <td>
+              <a class="button add-to-cart add-to-cart--hover" href="#">
+                <span>Add to Bag</span>
+                <span>$189</span>
+              </a>
+            </td>
+            <td></td>
+            <td>
+              <p class="p-small">Responsive with variant selector</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Arrows</td>
+            <td>
+              <div class="arrow__group">
+                <a class="arrow__icon arrow--prev" href="#">
+                  <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.79723 0.202772C9.06759 0.473135 9.06759 0.91148 8.79723 1.18184L1.79496 8.18411C1.34436 8.63471 1.34436 9.36529 1.79496 9.81589L8.79723 16.8182C9.06759 17.0885 9.06759 17.5269 8.79723 17.7972C8.52686 18.0676 8.08852 18.0676 7.81816 17.7972L0.815892 10.795C-0.175439 9.80363 -0.17544 8.19637 0.815891 7.20504L7.81816 0.202772C8.08852 -0.0675907 8.52686 -0.0675907 8.79723 0.202772Z" fill="#CACACA"></path>
+                  </svg>
+                </a>
+                <a class="arrow__icon arrow--next" href="#">
+                  <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.79723 0.202772C9.06759 0.473135 9.06759 0.91148 8.79723 1.18184L1.79496 8.18411C1.34436 8.63471 1.34436 9.36529 1.79496 9.81589L8.79723 16.8182C9.06759 17.0885 9.06759 17.5269 8.79723 17.7972C8.52686 18.0676 8.08852 18.0676 7.81816 17.7972L0.815892 10.795C-0.175439 9.80363 -0.17544 8.19637 0.815891 7.20504L7.81816 0.202772C8.08852 -0.0675907 8.52686 -0.0675907 8.79723 0.202772Z" fill="#CACACA"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+            <td>
+              <div class="arrow__group">
+                <a class="arrow__icon arrow--prev" href="#">
+                  <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.79723 0.202772C9.06759 0.473135 9.06759 0.91148 8.79723 1.18184L1.79496 8.18411C1.34436 8.63471 1.34436 9.36529 1.79496 9.81589L8.79723 16.8182C9.06759 17.0885 9.06759 17.5269 8.79723 17.7972C8.52686 18.0676 8.08852 18.0676 7.81816 17.7972L0.815892 10.795C-0.175439 9.80363 -0.17544 8.19637 0.815891 7.20504L7.81816 0.202772C8.08852 -0.0675907 8.52686 -0.0675907 8.79723 0.202772Z" fill="#CACACA"></path>
+                  </svg>
+                </a>
+                <a class="arrow__icon arrow--next arrow--hover" href="#">
+                  <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.79723 0.202772C9.06759 0.473135 9.06759 0.91148 8.79723 1.18184L1.79496 8.18411C1.34436 8.63471 1.34436 9.36529 1.79496 9.81589L8.79723 16.8182C9.06759 17.0885 9.06759 17.5269 8.79723 17.7972C8.52686 18.0676 8.08852 18.0676 7.81816 17.7972L0.815892 10.795C-0.175439 9.80363 -0.17544 8.19637 0.815891 7.20504L7.81816 0.202772C8.08852 -0.0675907 8.52686 -0.0675907 8.79723 0.202772Z" fill="#CACACA"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+            <td></td>
+            <td>
+              <p class="p-small">Responsive with variant selector</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- buttons | mobile -->
+<div class="style-guide__main style-guide__main--icon-set">
+  <div class="style-guide__section">
+    <div class="style-guide__title">
+      <h4>
+        Icon Set
+      </h4>
+    </div>   
+    <div class="style-guide__row style-guide__row--icons">
+      <table class="icons__grid" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <td width="12.5%">
+              {% render 'icon-search' %}
+              <p class="p-large">Search</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td width="12.5%">
+              {% render 'icon-account' %}
+              <p class="p-large">Account</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td width="12.5%">
+              {% render 'icon-cart' %}
+              <p class="p-large">Cart</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td width="12.5%">
+              {% render 'icon-cart-items' %}
+              <p class="p-large">Cart Items</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td width="12.5%">
+              {% render 'icon-flag-nz' %}
+              <p class="p-large">New Zealand</p>
+            </td>
+            <td width="12.5%">
+              {% render 'icon-flag-us' %}
+              <p class="p-large">US</p>
+            </td>
+            <td width="12.5%">
+              {% render 'icon-flag-uk' %}
+              <p class="p-large">UK</p>
+            </td>
+            <td width="12.5%">
+              &nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {% render 'icon-close' %}
+              <p class="p-large">Close</p>
+              <p class="p-small">Stroke</p>
+            </td>
+            <td>
+              {% render 'icon-close' %}
+              <p class="p-large">Close</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td>
+              {% render 'icon-tick' %}
+              <p class="p-large">Tick</p>
+              <p class="p-small">Stroke</p>
+            </td>
+            <td>
+              {% render 'icon-tick' %}
+              <p class="p-large">Tick</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td>
+              {% render 'icon-submit' %}
+              <p class="p-large">Success</p>
+              <p class="p-small">Stroke</p>
+            </td>
+            <td>
+              {% render 'icon-submit' %}
+              <p class="p-large">Success</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td>
+              {% render 'icon-chevron' %}
+              <p class="p-large">Chevron</p>
+              <p class="p-small">Stroke</p>
+            </td>
+            <td>
+              {% render 'icon-chevron' %}
+              <p class="p-large">Chevron</p>
+              <p class="p-small">Outline</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {% render 'icon-play-fill' %}
+              <p class="p-large">Play Button</p>
+              <p class="p-small">Fill</p>
+            </td>
+            <td>
+              {% render 'icon-play-outline' %}
+              <p class="p-large">Play Button</p>
+              <p class="p-small">Outlined</p>
+            </td>
+            <td>
+              {% render 'icon-gallery' %}
+              <p class="p-large">Gallery Icon</p>
+              <p class="p-small">Outlined</p>
+            </td>
+            <td>
+              {% render 'icon-filter' %}
+              <p class="p-large">Filter Icon</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td>
+              {% render 'icon-review-star' %}
+              <p class="p-large">Review Star</p>
+              <p class="p-small">fill</p>
+            </td>
+            <td>
+              {% render 'icon-review-star-outline' %}
+              <p class="p-large">Review Star</p>
+              <p class="p-small">Outline</p>
+            </td>
+            <td>
+              &nbsp;
+            </td>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- icon set -->
+<div class="style-guide__main">
+  <div class="style-guide__section">
+    <div class="style-guide__title">
+      <h4>
+        Spacing &amp; Radius
+      </h4>
+    </div>   
+    <div class="style-guide__row style-guide__row--spacing">
+      <table class="spacing spacing__grid" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th width="50%" class="caption">Spacing</th>
+            <th width="50%" class="caption">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <p class="p-small">Desktop</p>
+            </td>
+            <td>
+              <div class="bg__lightgrey height--small margin__bottom--xsmall">
+                <p>15px</p>
+              </div>
+              <div class="bg__lightgrey height--medium margin__bottom--xsmall">
+                <p>40px</p>
+              </div>
+              <div class="bg__lightgrey height--large margin__bottom--xsmall">
+                <p>70px</p>
+              </div>
+              <div class="bg__lightgrey height--xlarge margin__bottom--xsmall">
+                <p>110px</p>
+              </div>
+              <div class="bg__lightgrey height--xxlarge margin__bottom--xsmall">
+                <p>150px</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="spacing__mobile">
+            <td>
+              <p class="p-small text-left">Mobile</p>
+            </td>
+            <td>
+              <div class="bg__lightgrey height--small margin__bottom--xsmall">
+                <p>20px</p>
+              </div>
+              <div class="bg__lightgrey height--medium margin__bottom--xsmall">
+                <p>30px</p>
+              </div>
+              <div class="bg__lightgrey height--large margin__bottom--xsmall">
+                <p>50px</p>
+              </div>
+              <div class="bg__lightgrey height--xlarge margin__bottom--xsmall">
+                <p>70px</p>
+              </div>
+              <div class="bg__lightgrey height--xxlarge margin__bottom--xsmall">
+                <p>120px</p>
+              </div>
+            </td>
+          </tr>
+          
+
+        </tbody>
+      </table>
+
+      <table class="spacing spacing__grid">
+        <thead>
+          <tr>
+            <th width="20%" class="caption">Image Corner Radius</th>
+            <th width="80%" class="caption">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <p class="p-small">Large</p>
+            </td>
+            <td>
+              <div class="bg__lightgrey height--xxlarge radius--large">
+                <p>20px</p>
+              </div>
+            </td>
+          </tr>
+          <tr">
+            <td>
+              <p class="p-small">Medium</p>
+            </td>
+            <td>
+              <div class="bg__lightgrey height--xxlarge radius--medium">
+                <p>15px</p>
+              </div>
+            </td>
+          </tr>
+          <tr">
+            <td>
+              <p class="p-small">Small</p>
+            </td>
+            <td>
+              <div class="bg__lightgrey height--xxlarge radius--small">
+                <p>8px</p>
+              </div>
+            </td>
+          </tr>          
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- spacing + radius -->

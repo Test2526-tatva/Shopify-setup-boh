@@ -1,0 +1,85 @@
+{% comment %}
+  Required:
+  - block: section or block
+
+  Schema:
+
+  {
+    "type": "header",
+    "content": "Padding",
+    "info": "Use the fields below to change the top and bottom spacing of the blocks on desktop and mobile."
+  },
+  {
+    "type": "header",
+    "content": "Desktop"
+  },
+  {
+    "type": "number",
+    "label": "Padding Top",
+    "id": "pt",
+    "default": -1,
+    "info": "Set to -1 for default padding."
+  }, 
+  {
+    "type": "number",
+    "label": "Padding Bottom",
+    "id": "pb",
+    "default": -1,
+    "info": "Set to -1 for default padding."
+  }, 
+  {
+    "type": "header",
+    "content": "Mobile"
+  }, 
+  {
+    "type": "number",
+    "label": "Padding Top",
+    "id": "pt_m",
+    "default": -1,
+    "info": "Set to -1 for default padding."
+  }, 
+  {
+    "type": "number",
+    "label": "Padding Bottom",
+    "id": "pb_m",
+    "default": -1,
+    "info": "Set to -1 for default padding."
+  }
+
+{% endcomment %}
+
+
+{% if block.settings.pt %}  
+  <style>
+    .block-padding--{{ block.id }} {
+      {% unless block.settings.pt < 0 %}
+        padding-top: {{ block.settings.pt }}px;
+      {% endunless %}
+
+      {% unless block.settings.pb < 0 %}
+        padding-bottom: {{ block.settings.pb }}px;
+      {% endunless %}
+    }
+
+    @media (max-width: 768px) {
+      .block-padding--{{ block.id }} {
+        {% unless block.settings.pt_m < 0 %}
+          padding-top: {{ block.settings.pt_m }}px;
+        {% else %}
+          {% unless block.settings.pt < 0 %}
+            padding-top: {{ block.settings.pt | divided_by: 2 }}px;
+          {% endunless %}
+        {% endunless %}
+
+
+        {% unless block.settings.pb_m < 0 %}
+          padding-bottom: {{ block.settings.pb_m }}px;
+        {% else %}
+          {% unless block.settings.pb < 0 %}
+            padding-bottom: {{ block.settings.pb | divided_by: 2 }}px;
+          {% endunless %}
+        {% endunless %}
+      }
+    }
+  </style>
+{% endif %}

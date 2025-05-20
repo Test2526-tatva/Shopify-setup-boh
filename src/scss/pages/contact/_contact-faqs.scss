@@ -1,0 +1,13 @@
+
+// Section: Contact FAQs
+.contact-fa-qs {
+  &__title {}
+  &__description {}
+  &__image {}
+
+  // Block: FAQs
+  .fa-qs {
+    &__question {}
+    &__answer {}
+  }
+}

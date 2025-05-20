@@ -1,0 +1,119 @@
+  <div class="faq-category__toggle md-show-grid">
+    <h4>
+      {{ section.settings.title }}
+    </h4>
+    <div class="faq-category__icon">
+      <div class="active">
+        {% render 'icon-arrow-up' %}
+      </div>
+      <div class="default">
+        {% render 'icon-arrow-down' %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container faq-main__container">
+    {% assign sidebar_link = section.settings.title %}
+    {% if sidebar_link != '' %}
+      <div class="faq-category__anchor" id="{{ sidebar_link | handleize }}" data-title="{{ sidebar_link }}" ></div>
+    {% endif %}
+
+    <div class="faq-main__grid">
+      <div class="faq-main__left">
+      </div>
+      <div class="faq-main__right">
+        <div class="faq-main__content">
+          <div class="faq-main__accordion">	
+            
+            <div class="faq-header md-hide">
+              {% if section.settings.image %}
+                <img src="{{ section.settings.image | image_url: width: 180 }}" />
+              {% endif %}
+              <h5>
+                {{ section.settings.title }}
+              </h5>
+            </div>
+            
+            {% assign questions = section.blocks | where: 'type', 'question' %}
+
+            <div class="accordion">
+              {% for question in questions %}
+                <div class="accordion-item accordion--faq {{ question.shopify_attributes }}">
+                  <div class="accordion-item__label">
+                    <label><span>{{ question.settings.title }}</span></label>                            
+                    <div class="accordion-item__icon">
+                      <div class="active">
+                        {% render 'icon-arrow-up' %}
+                      </div>
+                      <div class="default">
+                        {% render 'icon-arrow-down' %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item__collapse">
+                    <div class="accordion-item__content">
+                      {{ question.settings.content }}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% schema %}
+{
+	"name": "FAQ Category",
+	"tag": "section",
+	"class": "faq-category faq-main-category",
+	"settings": [
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Image"
+		},
+
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+		},
+
+		{
+			"type": "text",
+			"id": "sidebar_link",
+			"label": "Link Title (Sidebar)"
+		}
+	],
+	"blocks": [
+		{
+			"name": "Question",
+			"type": "question",
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Question"
+				},
+
+				{
+					"type": "textarea",
+					"id": "content",
+					"label": "Content"
+				}
+			]
+		}
+	],
+	"presets": [
+    {
+      "name": "FAQ Category",
+      "settings": {
+        "title": "New Category's Title"
+      }
+    }
+  ]
+}
+{% endschema %}

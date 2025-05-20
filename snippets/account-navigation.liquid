@@ -1,0 +1,42 @@
+<div class="accounts__navigation--menu--active">
+  {% for link in linklists['accounts-menu'].links %}
+    {% if request.path == link.url %}
+      <span>
+        {{ link.title }}
+      </span>
+      {% render 'icon-arrow-down' %}
+    {% endif %}
+  {% endfor %}
+
+  {% if request.path contains '/account/orders/' %}
+    <span>
+      Order History
+    </span>
+    {% render 'icon-arrow-down' %}
+  {% endif %}
+</div>
+{% if customer %}
+  <ul>
+    {% for link in linklists['accounts-menu'].links %}
+      {% assign link_title = link.title | strip %}
+
+      {% if link_title == 'VIP' %}
+        {% unless customer.tags contains 'vip' %}
+          {% continue %}
+        {% endunless %}
+      {% endif %}
+
+      <li>
+        <a href="{{ link.url }}" class="{{ link_title | handleize }} {% if link.active %}active{% endif %}">
+          {{ link_title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="/account/logout" class="underline-link underline-link__inactive lg-hide">Log Out</a>
+{% else %}
+  <ul>
+    <li><a href="/account/login">Log In</a></li>
+    <li><a href="/account/register">Sign Up</a></li>
+  </ul>
+{% endif % %}

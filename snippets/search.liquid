@@ -1,0 +1,84 @@
+<script src='{{ 'predictive-search.js' | asset_url }}' defer='defer'></script>
+
+<predictive-search class='search'>
+  <div class='search__input'>
+    <input
+      id='search-input'
+      type='text'
+      placeholder='Search'
+      {% if search.results %}
+        value='{{ search.terms | capitalize }}'
+      {% endif %}
+    >
+
+    {% comment %}
+      <div class="search__icon">
+        {% render 'icon-search' %}
+      </div>
+    {% endcomment %}
+    <div class='search__close js-search__trigger'>
+      <p class='search__no-results'>0 results</p>
+
+      {% render 'icon-close' %}
+    </div>
+  </div>
+
+  <div class='search__content'>
+    {%- if search_recommendations != blank -%}
+      {% comment %} search__initial {% endcomment %}
+      <div class='search-recommendations search__initial'>
+        <div class='search-recommendations__grid'>
+          <div class='search-recommendations__grid__left'>
+            <div class='suggested-searches'>
+              <h2>Suggested Searches</h2>
+              <ul>
+                {% assign search_recommendation_texts = search_recommendation_text | split: ',' %}
+                {% for text in search_recommendation_texts %}
+                  <li>
+                    <a href='/search?q={{ text | strip }}'>{{ text }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class='search-recommendations__grid__right'>
+            <div class='search-recommendations__grid__list'>
+              {% for card in search_recommendations %}
+                <div class='search-card'>
+                  <div class='search-card__image'>
+                    <img src='{{ card.settings.image | image_url }}' alt=''>
+                  </div>
+                  <div class='search-card__content'>
+                    <h6>
+                      <a href='{{ card.settings.url }}'>
+                        {{ card.settings.title }}
+                      </a>
+                    </h6>
+                    <a class='shop-now' href='{{ card.settings.url }}'>Shop Now</a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        {% comment %}
+          <div class='search-recommendations__mobile md-show'>
+            <ul>
+              {% for card in search_recommendations %}
+                <li>
+                  <a href='{{ card.settings.url }}'>
+                    {{ card.settings.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endcomment %}
+      </div>
+    {%- endif -%}
+
+    <div class='search-results__wrapper' id='search-results' style='display: none;'></div>
+  </div>
+</predictive-search>

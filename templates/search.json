@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "noresults_title": "No Results",
+        "noresults_message": "Sorry, we didn’t find any results for that. Store to add some quirky text"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

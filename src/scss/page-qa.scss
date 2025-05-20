@@ -1,0 +1,19 @@
+.qa-links {
+  padding: 80px 100px;
+  h3 {
+    font-size: 24px;
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 40px;
+
+    a {
+      font-size: 16px;
+    }
+  }
+}

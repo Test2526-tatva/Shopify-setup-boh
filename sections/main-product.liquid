@@ -1,0 +1,63 @@
+<script>
+  document.body.classList.add('navbar--solid');
+</script>
+<section class='product'>
+  <div class='product__container'>
+    {% render 'product-gallery' %}
+    {% render 'product-content' %}
+  </div>
+</section>
+
+{% render 'product-modal' %}
+
+{% comment %}
+  <div class='product__related'>
+    <h2 class='product__related-title'>Pairs well with</h2>
+    <div class='product__related-list'>
+      {% for product in related_products limit: 2 %}
+        <div class='product__related-item'>
+          <img
+            class='product__related-image'
+            src='{{ product.featured_image | img_url: '205x253' }}'
+            alt='{{ product.title }}'
+          >
+          <div class='product__related-variants'>
+            {% for variant in product.variants limit: 4 %}
+              <span class='product__related-variant' style='background-color: {{ variant.option1 | handle }}'></span>
+            {% endfor %}
+          </div>
+          <h3 class='product__related-name'>{{ product.title }}</h3>
+          <p class='product__related-price'>From {{ product.price_min | money }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class='product__gift-info'>
+    <h2 class='product__gift-title'>The perfect gift</h2>
+    <div class='product__gift-features'>
+      <div class='product__gift-feature'>
+        <h3 class='product__gift-feature-title'>EXCHANGES & FREE RETURNS</h3>
+        <p class='product__gift-feature-description'>
+          If your gift isn't quite right and you need to exchange it for another size or style, we'll cover the cost of
+          return shipping.
+        </p>
+      </div>
+      <div class='product__gift-feature'>
+        <h3 class='product__gift-feature-title'>FREE DELIVERY</h3>
+        <p class='product__gift-feature-description'>Enjoy free delivery on all NZ orders over $300.</p>
+      </div>
+      <div class='product__gift-feature'>
+        <h3 class='product__gift-feature-title'>NO INVOICE</h3>
+        <p class='product__gift-feature-description'>
+          Our jewellery is made to be gifted, so we'll never send your order out with an invoice; we'll email it to you
+          instead.
+        </p>
+      </div>
+    </div>
+  </div>
+    <div class='product__hint'>
+      <h3 class='product__hint-title'>Send a hint</h3>
+      <p class='product__hint-description'>Let someone know you'd love this product as a gift.</p>
+      <a href='#' class='product__hint-cta'>Send now</a>
+    </div>
+{% endcomment %}

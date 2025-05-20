@@ -1,0 +1,48 @@
+@use './variables' as *;
+@use '../mixins/breakpoints' as *;
+
+.swatch {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  position: relative;
+  border: 1px solid $white;
+  inset: -1px;
+
+  &::after {
+    content: "";
+    border: 1px solid $lines3;
+    border-radius: 50%;
+    position: absolute;
+    inset: -3px;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
+  }
+
+  &:hover,
+  &--hover {
+    border-color: $lines3;
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+
+    &::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  &--active {
+    &::after {
+      border-color: $darkgrey;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__colour {
+    &--navy {
+      background: $navy;
+    }
+  }
+}

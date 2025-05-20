@@ -1,0 +1,12 @@
+{% assign upsell = product.metafields.pdp.upsell.value %}
+{% if upsell != blank %}
+  <div class='product__upsell'>
+    <a class='product__upsell-link' href='{{ upsell.url }}'></a>
+    <img class='product__upsell-image' src='{{ upsell.icon | image_url: width: 80 }}' alt='Chain Extender'>
+    <div class='product__upsell-content'>
+      <h3 class='product__upsell-title'>{{ upsell.title }}</h3>
+      <p class='product__upsell-description'>{{ upsell.upsell_description }}</p>
+      <a href='#' class='product__upsell-cta underline-btn'>Shop now</a>
+    </div>
+  </div>
+{% endif %}

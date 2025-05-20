@@ -1,0 +1,12 @@
+{% if product.compare_at_price > product.price %}
+  <span class='sa-price'>
+    <span class='sa-price__regular'> From {{ product.price | money_without_trailing_zeros }} </span>
+    <span class='sa-price__compare'>
+      {{ product.compare_at_price | money_without_trailing_zeros }}
+    </span>
+  </span>
+{% else %}
+  <span class='sa-price'>
+    <span class='sa-price__regular'> From {{ product.price | money_without_trailing_zeros }} </span>
+  </span>
+{% endif %}

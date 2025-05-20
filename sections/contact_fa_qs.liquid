@@ -1,0 +1,83 @@
+{%- comment -%}
+Available variables:
+- section
+  - id
+  - blocks
+  - settings
+    - title (text)
+    - description (text)
+    - image (image_picker)
+{%- endcomment -%}
+<div class="contact-fa-qs">
+<div class="container">
+  <div class="contact-outer-wrap">
+    <div class="left-content">
+      <div class="content-wrp">
+        <h5 class="contact-fa-qs__title">{{ section.settings.title }}</h5>
+        <p  class="contact-fa-qs__description">{{ section.settings.description }}</p>
+      </div>
+      <div class="contact-fa-qs__image">
+      <img
+            class=" max-height-image"
+            src="{{ section.settings.image | image_url }}"
+            alt="{{ section.settings.title }}">
+      </div>
+    </div>
+    <div class="right-content">
+     <div class="faq-main__accordion">
+    <div class="accordion">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'fa_qs' %}
+          {% render 'fa_qs', block: block %}
+        {% endcase %}
+    {% endfor %}
+    </div>
+    </div>
+
+    <a href="#" class="underline_link">View All </a> 
+</div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact FAQs",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "description",
+      "type": "text",
+      "label": "Description"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "FAQs",
+      "type": "fa_qs",
+      "settings": [
+        {
+          "id": "question",
+          "type": "text",
+          "label": "Question"
+        },
+        {
+          "id": "answer",
+          "type": "richtext",
+          "label": "Answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

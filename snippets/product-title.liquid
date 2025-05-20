@@ -1,0 +1,15 @@
+{% assign swatch_name = product.metafields.swatches.current | downcase | replace: '-', ' ' | strip %}
+{% assign product_title_split = product.title | downcase | strip | split: swatch_name %}
+{% assign product_title = product_title_split | first %}
+
+{% for split in product_title_split offset: 1 %}
+  {% if forloop.last %}
+    {% assign product_title = product_title | append: split %}
+  {% else %}  
+    {% assign product_title =  product_title | append: swatch_name | append: split %}
+  {% endif %}
+{% endfor %}
+
+{% assign product_title = product_title | capitalize %}
+
+{{ product_title }}

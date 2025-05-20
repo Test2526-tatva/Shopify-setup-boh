@@ -1,0 +1,203 @@
+{%- comment -%} not being used yet {%- endcomment -%}
+{% comment %} <script>
+  $(function() {
+    var _learnq = _learnq || [];  
+    const extra_properties = {};
+    
+    
+    KlaviyoSubscribe.attachToForms('#id', {
+      extra_properties: extra_properties,
+      hide_form_on_success: false,
+      success: () => {
+        $('.contact-modal').fadeOut();
+        //$('body').removeClass('body-two-active');  overlay
+        Cookies.set('contact-modal', 'dismissed', {
+					expires: liquid__newsletterSuccess,
+					path: '/'
+				});
+      },
+    });
+
+  });
+</script> {% endcomment %}
+
+
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    /**
+     * Attach Klaviyo
+    */
+    document.querySelectorAll('.newsletter-klaviyo-form').forEach(form => {
+  
+      $(form).on('submit', function(e) {
+        if( $(form).find('[data-invalid]').length ) {
+          e.preventDefault();
+          console.log('invalid');
+          return false;
+        }
+  
+  
+        /**
+         * Submit data to SMSBump separately
+        */
+  
+        const first_name = $(form).find('[name="$first_name"]').val();
+        const email = $(form).find('[name="email"]').val();
+        const phone_number = $(form).find('[name="$phone_number"]').val();
+  
+        const data = {
+          "store": "orion-master.myshopify.com",
+          "$source": "Footer form ",
+          "$first_name": first_name,
+          "$email": email,
+          "$phone_number": phone_number,
+          "$consent_method": "Klaviyo Form",
+          "$consent_form_id": "Tsx9gU",
+          "$consent_form_version": 5846499,
+          "sentIdentifiers": {},
+          "sms_consent": true
+        }
+        fetch("https://sqs-webhooks.smsbump.com/forms-subscription", {
+          "method": "POST",
+          "body": JSON.stringify(data)
+        });
+        
+      })
+  
+      
+      KlaviyoSubscribe.attachToForms(form, {
+        hide_form_on_success: false,
+        custom_success_message: true,
+        success_message: '',
+        success: function() {
+          newsletterSuccess( $(form).closest('.newsletter-form__parent') );
+        },
+      });
+  
+    });
+    
+  
+    /**
+     * Popup Success
+    */
+    function newsletterSuccess($form) {
+      const $el = $form || $('.newsletter-form__parent');
+  
+      Cookies.set('newsletter-popup', 'success', {
+        expires: liquid__newsletterSuccess, 
+        path: '/'
+      });
+  
+      $el.addClass('newsletter-success');
+    }
+  
+  
+    /**
+     * Popup Dismiss
+    */
+    $('.contact-modal__close').on('click', function(e) {
+      e.preventDefault();
+      $(this).closest('.contact-modal').removeClass('active');
+      $('.home-hero__signup').fadeOut();
+  
+      Cookies.set('newsletter-popup', 'dismissed', {
+        expires: liquid__newsletterDismiss,
+        path: '/'
+      });
+    });
+    
+    /**
+      * Count popup's delay X seconds 
+      * after window has been loaded
+    */
+    /*
+    $(window).on('load', function() {
+      const timeoutDelay = +`{{ data.popup_delay }}` * 1000;
+  
+      setTimeout(function() {
+        $('body').addClass('newsletter-popup--show');
+      }, timeoutDelay);
+    });
+    */
+  
+    /**
+      * Remove popup's DOM if the popup 
+      * was either closed or successfully submitted previously
+    */
+    if (
+      Cookies.get('newsletter-popup') == 'dismissed' 
+      || Cookies.get('newsletter-popup') == 'success' 
+    ) {
+      if( !Shopify.designMode ) {
+        $('.home-hero__signup').remove();
+        $('.contact-modal').remove();
+      }
+    } else {
+  
+      // Auto-show newsletter popup here 
+      $(window).on('load', function() {
+        const timeoutDelay = 5 * 1000;
+  
+        setTimeout(function() {
+          // $('.contact-modal').addClass('contact-modal--active');
+        }, timeoutDelay);
+      });
+  
+    }
+
+    
+  });
+
+
+  
+
+  
+
+
+  // fetch("https://sqs-webhooks.smsbump.com/forms-subscription", {
+  //   "headers": {
+  //     "accept": "*/*",
+  //     "accept-language": "en-US,en;q=0.9,de;q=0.8",
+  //     "access-control-allow-origin": "*",
+  //     "cache-control": "no-cache",
+  //     "content-type": "application/json;charset=UTF-8",
+  //     "pragma": "no-cache",
+  //     "sec-ch-ua": "\"Google Chrome\";v=\"105\", \"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"105\"",
+  //     "sec-ch-ua-mobile": "?0",
+  //     "sec-ch-ua-platform": "\"macOS\"",
+  //     "sec-fetch-dest": "empty",
+  //     "sec-fetch-mode": "cors",
+  //     "sec-fetch-site": "cross-site"
+  //   },
+  //   "referrer": "https://twoislandsco.com/",
+  //   "referrerPolicy": "no-referrer-when-downgrade",
+  //   "body": "{\"customer_id\":0,\"store\":\"two-islands-co.myshopify.com\",\"$source\":\"Footer form \",\"$first_name\":\"data\",\"$email\":\"data@data2.com\",\"$phone_number\":\"+923212313123\",\"$consent_method\":\"Klaviyo Form\",\"$consent_form_id\":\"S7UA87\",\"$consent_form_version\":5846499,\"sentIdentifiers\":{},\"sms_consent\":true,\"$step_name\":\"Email Opt-In\",\"_y_eventType\":\"stepSubmit\",\"_y_formType\":\"EMBEDED\"}",
+  //   "method": "POST",
+  //   "mode": "cors",
+  //   "credentials": "omit"
+  // });
+
+
+  // data = {
+  //   "customer_id": 0,
+  //   "store": "two-islands-co.myshopify.com",
+  //   "$source": "Footer form ",
+  //   "$first_name": "data",
+  //   "$email": "data@data2.com",
+  //   "$phone_number": "+923212313123",
+  //   "$consent_method": "Klaviyo Form",
+  //   "$consent_form_id": "S7UA87",
+  //   "$consent_form_version": 5846499,
+  //   "sentIdentifiers": {},
+  //   "sms_consent": true,
+  //   "$step_name": "Email Opt-In",
+  //   "_y_eventType": "stepSubmit",
+  //   "_y_formType": "EMBEDED"
+  // }
+  // fetch("https://sqs-webhooks.smsbump.com/forms-subscription", {
+  //   "method": "POST",
+  //   "body": JSON.stringify(data)
+  // });
+
+</script>

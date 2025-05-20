@@ -1,0 +1,61 @@
+{% comment %}
+  Required:
+  - item: cart item
+{% endcomment %}
+
+{% assign selected_size = item.product.metafields.metaobjects.product_model_size.value %}
+{% assign limited_editions = selected_size.limited_editions.value %}
+
+{% capture dropdown_options %}
+  {% render 'cart-dropdown__item' 
+    for selected_size.product.value.variants as variant, 
+    current_id: item.variant.id 
+  %}
+
+  {% for _product in limited_editions %}
+    {% render 'cart-dropdown__item' 
+      for _product.variants as variant, 
+      current_id: item.variant.id 
+    %}
+  {% endfor %}
+{% endcapture %}
+{% assign dropdown_options = dropdown_options | strip %}
+
+{% if dropdown_options != '' %}
+<div 
+  class="cart-dropdown" 
+  data-item-key="{{ item.key }}" 
+  data-item-quantity="{{ item.quantity }}"
+  data-item-id="{{ item.variant.id }}"
+
+  {% if dropdown_options == '' %}
+    style="pointer-events: none;"
+  {% endif %}
+>
+  <div class="cart-dropdown__selected">
+    <div class="cart-dropdown__option">
+      {% render 'swatch-preview', variant: item.variant %}
+      <div class="cart-dropdown__label">
+        {{ item.variant.metafields.swatch.name }}
+      </div>
+    </div>
+  
+    <div 
+      class="cart-dropdown__arrow"
+      
+      {% if dropdown_options == '' %}
+        style="opacity: 0;"
+      {% endif %}
+    >
+      <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1.5L5.29289 5.79289C5.68342 6.18342 6.31658 6.18342 6.70711 5.79289L11 1.5" stroke="#262525" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </div>
+  <div class="cart-dropdown__swatch-list">
+    <ul>
+      {{ dropdown_options }}
+    </ul>
+  </div>
+</div>
+{% endif %}

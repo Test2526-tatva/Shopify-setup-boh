@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "intro": {
+      "type": "faq-intro",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "faq-main-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "main"
+  ]
+}

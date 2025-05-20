@@ -1,0 +1,106 @@
+<div class='filters-popup'>
+  <facet-filters-form class='facets sa-facets'>
+    <form id='FacetFiltersForm' class='sa-facets__form'>
+      <div class='filters-popup__container'>
+        <div class='filters-popup__header'>
+          <h4 class='p-strong'>
+            Filter
+
+            <span class='applied-count {% if applied_count > 0 %}active{% endif %}'>
+              <span class='js-filters-applied'>
+                {{ applied_count }}
+              </span>
+
+              Applied
+            </span>
+          </h4>
+
+          <facet-remove>
+            <a href='{{ collection.url }}' class='filters-popup__clear p'> Clear Filters </a>
+          </facet-remove>
+
+          <a href='#' class='filters-popup__close js-filters-popup__close'>
+            <svg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path d="M0.554688 1L16.0024 16" stroke="#262525" stroke-width="1.5"/>
+              <path d="M16.0039 1L0.556144 16" stroke="#262525" stroke-width="1.5"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class='filters-popup__body'>
+          <div class='filters-popup__grid'>
+            {% for filter in collection.filters %}
+              {% case filter.type %}
+                {% when 'boolean', 'list' %}
+                  {% render 'sa-facets-group', filter: filter %}
+              {% endcase %}
+            {% endfor %}
+
+            <facet-remove class='filters-popup__clear-mobile'>
+              <a href='{{ collection.url }}' class='filters-popup__clear p'> Clear Filters </a>
+            </facet-remove>
+          </div>
+        </div>
+      </div>
+    </form>
+  </facet-filters-form>
+</div>
+
+<script>
+  window.initFiltersSwiper = function () {
+    if (window.innerWidth >= 992) {
+      const swiper = new Swiper('.filter-group--limited-edition .swiper', {
+        draggable: true,
+        slidesPerView: 'auto',
+        spaceBetween: 5,
+        grabCursor: true,
+        freeMode: true,
+        watchSlidesProgress: true,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          draggable: true,
+        },
+        on: {
+          progress: (swiper, progress) => {
+            $('.filter-group--limited-edition').toggleClass('show-fade', progress > 0.02);
+          },
+        },
+      });
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    $(document).on('click', '.js-filters-popup__open', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $('body').addClass('filters-popup--show');
+    });
+
+    $(document).on('click', '.js-filters-popup__close', function (e) {
+      e.preventDefault();
+      $('body').removeClass('filters-popup--show');
+    });
+
+    $(document).on('click', function (e) {
+      $('body').removeClass('filters-popup--show');
+    });
+
+    $(document).on('click', '.filters-popup', function (e) {
+      e.stopPropagation();
+    });
+
+    $(document).on('click', '.filter-group__heading', function (e) {
+      $target = $(this).closest('.filter-group');
+
+      $('.filter-group.active').not($target).removeClass('active');
+      $target.toggleClass('active');
+    });
+
+    window?.initFiltersSwiper?.();
+  });
+</script>
+
+<script src='{{ 'sa-facets.js' | asset_url }}'></script>

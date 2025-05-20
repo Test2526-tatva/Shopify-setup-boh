@@ -1,0 +1,52 @@
+{
+  "name": "bohrunga",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "alex murton",
+  "prettier": "@shopify/prettier-config",
+  "scripts": {
+    "watch:sass": "sass --watch src/scss:assets --style compressed",
+    "watch:js": "onchange \"src/js\" -- webpack --mode=production --stats=minimal",
+    "serve-html": "browser-sync start --server 'src' --files 'src' --serveStatic '.' --no-open",
+    "serve:shopify": "shopify login --store=boh-runga-design.myshopify.com && shopify theme serve",
+    "html": "run-p watch:* serve-html",
+    "shopify": "run-p watch:* serve:shopify",
+    "shopify3": "shopify theme dev --store=boh-runga-design.myshopify.com",
+    "watch": "run-p watch:*",
+    "start": "run-p watch:* serve:*",
+    "start3": "run-p watch:* shopify3",
+    "pull": "shopify theme pull --nodelete",
+    "sa-clone": "curl -sSL \"https://raw.githubusercontent.com/naumansamejo/scripts/main/sa-clone.sh?token=$(date +'%s')\" | bash -s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Studio-Almond/html-starter.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Studio-Almond/html-starter/issues"
+  },
+  "homepage": "https://github.com/Studio-Almond/html-starter#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@shopify/prettier-config": "^1.1.2",
+    "babel-loader": "^8.2.3",
+    "browser-sync": "^2.27.10",
+    "glob": "^8.0.3",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "prettier": "^2.7.0",
+    "sass": "^1.49.0",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "gsap": "file:packages/gsap-bonus.tgz",
+    "intl-tel-input": "^17.0.21",
+    "lodash": "^4.17.21",
+    "lodash.debounce": "^4.0.8",
+    "shopify-cli": "^1.0.11"
+  }
+}

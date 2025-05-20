@@ -1,0 +1,78 @@
+@use '../mixins/breakpoints' as *;
+
+.lg-show,
+.md-show,
+.sm-show {
+  display: none !important;
+}
+
+.md-show-flex {
+  display: none;
+}
+
+.md-show-grid {
+  display: none;
+}
+
+.md-show-ib {
+  display: none;
+}
+
+.hero-show-mobile {
+  display: none !important;
+}
+
+@include media-breakpoint-down(nav) {
+  
+  .hero-show-mobile {
+    display: block !important; 
+  }
+
+  .hero-show-desktop {
+    display: none !important;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .lg-show {
+    display: block !important;
+  }
+
+  .lg-hide {
+    display: none !important;
+  }
+
+}
+
+@include media-breakpoint-down(md) {
+  .md-show-flex {
+    display: flex;
+  }
+
+  .md-show-grid {
+    display: grid;
+  }
+
+  .md-show-ib {
+    display: inline-block;
+  }
+
+
+  .md-show {
+    display: block !important;
+  }
+
+  .md-hide {
+    display: none !important;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .sm-hide {
+    display: none !important;
+  }
+
+  .sm-show {
+    display: block !important;
+  }
+}

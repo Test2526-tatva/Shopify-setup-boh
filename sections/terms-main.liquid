@@ -1,0 +1,50 @@
+{% render 'navbar--solid' %}
+
+<div class="terms-main padding__top--large padding__bottom--xxlarge ">
+  <div class="terms-main__container ">
+    <h1 class="terms-main__heading margin__bottom--large">
+      {{ page.title }}
+    </h1>
+    
+    <div class="terms-main__grid privacy-heading-outer">
+      <div class="terms-main__sidebar--menu">     
+        <div class="terms-main__sidebar--menu--active group__link" >
+          {% for link in linklists.terms-sidebar-menu.links %}
+            {% if request.path == link.url %}
+              <span>
+                {{ link.title }}
+              </span>
+              
+              <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2L7 7L12 2" stroke="black" stroke-width="2" stroke-linecap="square"/>
+              </svg>
+            {% endif %}
+          {% endfor %}
+        </div>   
+        <div class="nav-sections" >
+          <div class="privacy-nav"> 
+              <ul class="nav-list">
+                {% for link in linklists.terms-sidebar-menu.links %}
+                  <li>
+                    <a {% if link.active %}class="active"{% endif %} href="{{ link.url }}">
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+               <button class="nav-btn prev-btn">
+                {% render 'nav-next-arrow' %}
+            </button>
+            <button class="nav-btn next-btn">
+                 {% render 'nav-next-arrow' %}
+        </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="terms-main__content">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</div>

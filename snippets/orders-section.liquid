@@ -1,0 +1,115 @@
+{% comment %}
+  Optional:
+  - title: section title
+  - is_dashboard: if true, this will show 3 max orders
+
+{% endcomment %}
+
+{% assign orders_limit = 1000 %}
+{% if is_dashboard %}
+  {% assign orders_limit = 3 %}
+{% endif %}
+
+{% unless title %}
+  {% assign title = 'Your latest orders' %}
+{% endunless %}
+
+<section class="accounts-section--orders">
+  <div class="accounts__header">
+    <h5>
+      {{ title }}
+       {% if is_dashboard and customer.orders.size > orders_limit %}
+      <a href="{{ routes.account_url }}" class="btn btn--pink  button primary-button--dark  primary-button--dark--light-bg ">
+        View all orders
+      </a>
+    {% endif %}
+    </h5>
+
+   
+  </div>
+
+  <div class="table-order__mobile md-show">
+    {% if customer.orders.size > 0 %}
+      {% paginate customer.orders by orders_limit %}
+        {% for order in customer.orders %}
+          <div onclick="window.location='{{ order.customer_url }}';" class="table-order__mobile-item {{ order.financial_status_label }}">
+            <div>
+              <strong>Order</strong>
+              <a onclick="window.location='{{ order.customer_url }}';" href="#">#{{ order.name | link_to: order.customer_url }}</a>
+            </div>
+            <div>
+              <strong>Date</strong>
+              {{ order.created_at | date: '%d/%m/%y' }}
+            </div>
+            <div>
+              <strong>Payment</strong>
+              {{ order.fulfillment_status_label }}
+            </div>
+            <div>
+              <strong>Status</strong>
+              {{ order.financial_status_label }}
+            </div>
+            <div>
+              <strong>Total</strong>
+              {{ order.total_price | money_without_trailing_zeros }}
+            </div>
+          </div>
+        {% endfor %}
+      {% endpaginate %}
+    {% endif %}
+  </div>
+  {% if is_dashboard and customer.orders.size > orders_limit %}
+    <div class="view-all-orders__button md-show view-all-orders ">
+      <a href="{{ routes.account_url }}" class="btn btn--pink  button primary-button--dark  primary-button--dark--light-bg  btn btn--pink">
+        View all orders
+      </a>
+    </div>
+  {% endif %}
+  {% if customer.orders.size > 0 %}
+    <table class="md-hide table-order table-order__list" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+          <th scope="col">{{ 'customer.orders.date' | t }}</th>
+          <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+          <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+          <th scope="col">{{ 'customer.orders.total' | t }}</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% paginate customer.orders by orders_limit %}
+          {% for order in customer.orders %}
+            <tr onclick="window.location='{{ order.customer_url }}';" class="{{ order.financial_status_label }}">
+              <td scope="row">
+                <a class="underline-link" href="{{ order.customer_url }}" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">
+                  #{{ order.name }}
+                </a>
+              </td>
+              <td>
+                {{ order.created_at | date: '%d/%m/%Y' }}
+              </td>
+              <td>
+                {{ order.financial_status_label }}
+              </td>
+              <td>
+                {{ order.fulfillment_status_label }}
+              </td>
+              <td>
+                {{ order.total_price | money_with_currency }}
+              </td>
+            </tr>
+          {% endfor %}
+        {% endpaginate %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="status__no-order">
+      <p>You have not placed any orders.</p>
+      <br>
+      <a href="/collections/all" class="button primary-button--dark primary-button--dark--light-bg">
+        Continue Shopping
+      </a>
+    </div>
+  {% endif %}
+</section>

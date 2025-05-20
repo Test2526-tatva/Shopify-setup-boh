@@ -1,0 +1,33 @@
+{% comment %}
+  Required:
+  - article
+{% endcomment %}
+
+<div class='article-card'>
+  <div class='article-card__image'>
+    <img src='{{ article.image | image_url: width: 2000 }}'>
+  </div>
+  <div class='article-card__desc'>
+    <p class='article-card__tag caption'>
+      {{ article.handle | split: '/' | first }}
+    </p>
+    <p class='article-card__title'>
+      <a href='{{ article.url }}'>
+        {{ article.title }}
+      </a>
+    </p>
+
+    {% if article.excerpt != blank %}
+      <p class='article-card__excerpt'>
+        {{ article.excerpt | strip_html | truncate: 70 }}
+      </p>
+    {% else %}
+      <p class=''>
+        {{ article.content | strip_html | truncate: 70 }}
+      </p>
+    {% endif %}
+
+    <a class='button secondary-button secondary-button--dark' href='{{ article.url }}'> Read More </a>
+  </div>
+  <a href='{{ article.url }}' class='article-card__link'></a>
+</div>

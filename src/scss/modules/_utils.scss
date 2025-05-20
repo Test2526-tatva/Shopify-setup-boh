@@ -1,0 +1,89 @@
+@use '../mixins/typography';
+@use '../mixins/breakpoints' as *;
+
+.grid {
+  &--buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 446px;
+    width: 100%;
+  
+    .button {
+      width: 100%;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal !important;
+}
+
+label {
+  cursor: pointer;
+}
+
+// #chat-button {
+//   transition: all .5s ease;
+//   opacity: 0;
+//   visibility: hidden;
+// }
+// .gorgias-button-show {
+//   #chat-button {
+//     opacity: 1;
+//     visibility: inherit;
+//   }
+// }
+
+
+
+select.select-native {
+  display: block;
+  border: none;
+  border-bottom: solid 1px var(--lines-3, #EBEBEB);
+  cursor: pointer;
+  appearance: none;
+}
+
+
+
+.newsletter-page {
+  position: relative;
+
+  .newsletter-form__success {
+    position: absolute;
+    inset: 0;
+    background-color: #f5f5f5;
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease;
+
+    & > h3 {
+      margin: 0;
+      margin-bottom: 15px;
+
+      @include media-breakpoint-down(md) {
+        @include typography.h4;
+      }
+    }
+
+    .button {
+      margin-top: 35px;
+      width: fit-content;
+    }
+  }
+
+  &.newsletter-success .newsletter-form__success {
+    opacity: 1;
+    visibility: inherit;
+  }
+}

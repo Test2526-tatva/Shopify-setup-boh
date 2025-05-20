@@ -1,0 +1,37 @@
+<script>
+  function updateVhSizes() {
+    document.querySelectorAll('[data-vh-height]').forEach(el => {
+      let height = +el.getAttribute('data-vh-height');
+      height = height * window.innerHeight/100;
+
+      el.style.height = `${ height }px`;
+    });
+  }
+
+  function updateMinVhSizes() {
+    document.querySelectorAll('[data-vh-min-height]').forEach(el => {
+      let height = +el.getAttribute('data-vh-min-height');
+      height = height * window.innerHeight/100;
+
+      el.style.minHeight = `${ height }px`;
+    });
+  }
+
+  function updateHeightVariables() {
+    if( window.innerWidth < 768 ) {
+      document.documentElement.style.setProperty('--height-full', Math.round(window.innerHeight) + 'px' );
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    updateVhSizes();
+    updateMinVhSizes();
+    updateHeightVariables();
+
+    $(window).on('resize load', function() {
+      updateVhSizes();
+      updateMinVhSizes();
+      updateHeightVariables();
+    });
+  })
+</script>

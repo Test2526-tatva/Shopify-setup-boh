@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection-list",
+      "settings": {
+        "title": "Title",
+        "subheading": "Sub Heading",
+        "desc": "Description"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,110 @@
+<div class="explore-modular">
+  <div class="explore-modular__container">
+    <div class="explore-modular__heading">
+      <h2>
+        {{ section.settings.title }}
+      </h2>
+    </div>
+
+    <div class="explore-modular__carousel">
+      <div class="explore-modular__pagination">
+        <ul>
+          {% comment %} Populated using SwiperJS {% endcomment %}
+        </ul>
+      </div>
+
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% assign slides = section.blocks | where: 'type', 'slide' %}
+          
+          {% for slide in slides %}
+            <div class="swiper-slide" data-label="{{ slide.settings.title }}">
+            
+              <div class="explore-modular__slide">
+                <div class="explore-modular__image">
+                  <img src="{{ slide.settings.image | image_url }}" alt="">
+                </div>
+
+                <div class="explore-modular__grid">
+                  <div class="explore-modular__left">
+                    <h4>
+                      {{ slide.settings.title }}
+                    </h4>
+                  </div>
+
+                  <div class="explore-modular__right">
+                    <p class="p-large">
+                      {{ slide.settings.desc }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper(".explore-modular__carousel .swiper", {
+      slidesPerView: "auto",
+      draggable: true,
+      grabCursor: true,
+      effect: 'fade',
+      pagination: {
+        el: '.explore-modular__pagination > ul',
+        clickable: true,
+        renderBullet: function(index, className) {
+          return `
+            <li class="${className}">
+              <p class="p-small">
+                ${ document.querySelectorAll('.explore-modular__carousel .swiper-slide')[index]?.getAttribute('data-label') }
+              </p>
+            </li>
+          `;
+        }
+      }
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Modular Build",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title",
+        "default": "Modular Build"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "slide",
+        "settings": [
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          }, 
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Label"
+          }, 
+          {
+            "id": "desc",
+            "type": "textarea",
+            "label": "Description"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

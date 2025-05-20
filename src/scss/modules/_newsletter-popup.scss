@@ -1,0 +1,304 @@
+@use './variables' as *;
+@use '../mixins/breakpoints' as *;
+@use '../mixins/typography';
+
+.contact-modal {
+  // display: none;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 0;
+  transition: all .3s ease;
+  transform: scale(.8);
+  transform-origin: 0 100%;
+  bottom: 30px;
+  left: 30px;
+  position: fixed;
+  max-width: 488px;
+  padding: 48px 32px 34px;
+  border-radius: 8px;
+  background: $yellow;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 9999;
+
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+  }
+  
+  &.success {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+
+  &__header {
+    margin-bottom: 21px;
+    position: relative;
+
+    h4 {
+      color: $black;
+      margin-bottom: 20px;
+    }
+    p {
+      color: $black;
+    }
+  }
+  &__close {
+    position: absolute;
+    right: 13px;
+    top: 13px;
+    cursor: pointer;
+    display: block;
+    width: 30px;
+    height: 30px;
+    z-index: 99;
+
+    svg {
+      circle,
+      line {
+        transition: $transition;
+      }
+    }
+
+    &:hover {
+      svg {
+        circle {
+          fill: black;
+        }
+        line {
+          stroke: white;
+        }
+      }
+    }
+  }
+  &__form {
+    h4 {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 30px;
+      font-weight: 200;
+      text-align: center;
+      font-family: var(--font-pp-editorial)
+    }
+    .form-row {
+      margin-bottom: 5px;
+
+      &--date {
+        display: flex;
+        @include typography.p;
+        width: 100%;
+        padding: 12px 0;
+        border: none;
+        box-shadow: none;
+        color: $black;
+        background-color: transparent;
+        border-bottom: 1px solid $black;
+        justify-content: space-between;
+        
+        .input {
+          &__field {
+            padding: 0px;
+            width: auto;
+            margin-left: 0px;
+            border: 0px;
+          }
+        }
+      }
+      &--last {
+        padding-top: 23px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+          @include typography.caption;
+        }
+      }
+    }
+    .iti--allow-dropdown input,
+    input {
+      width: 100%;
+      padding: 12px 0;
+      border: none;
+      box-shadow: none;
+      background: transparent;
+      color: $black;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #000;
+      }
+    }
+    .input {
+      &__grid {
+        margin-bottom: 24px;
+      }
+      &__field {
+        width: 100%;
+        padding: 12px 0;
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+        border-bottom: 1px solid $black;
+        @include typography.p;
+
+        &::placeholder {
+          color: $black;
+          opacity: 1;
+        }
+        &--password {
+          text-transform: none;
+        }
+      }
+      &__submit {
+        color: $yellow;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 15px 30px;
+        margin-top: 0px;
+        min-width: 105px;
+
+        &:hover {
+          color: $darkcharcoal;
+          background: $lines3;
+        }
+      }
+    }
+    
+  }
+  &__success {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 350px;
+
+    .contact-modal {
+      &__header {
+        margin-bottom: 80px;
+      }
+      &__form {
+        fieldset {
+          .input {
+            &__submit {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .form-input {
+    &__container {
+      &.form-hide {
+        display: none;
+      }
+    }
+  }
+  .form-success {
+    position: absolute;
+    inset: 0;
+    padding: 33px;
+    z-index: 90;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease;
+    background: $yellow;
+    color: $black;
+
+    &__content {
+      margin: auto;
+      width: 100%;
+    }
+    &__message {
+      width: 100%;
+      margin: 0 auto 30px;
+      color: $black;
+
+      h4 {
+        margin-bottom: 32px;
+      }
+      
+    }
+    
+  }
+  &.newsletter-success .form-success {
+    opacity: 1;
+    visibility: inherit;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 38px 22px 26px;
+    left: 0px;
+    bottom: 0px;
+    transform: none;
+    transform: none;
+    max-width: 450px;
+    margin: 20px;
+
+    &__header {
+      h4 {
+      }
+    }
+    &__form {
+      .form-row {
+        margin-bottom: 0px;
+      }
+      .input {
+        &__field {
+          padding: 14px 0px;
+          font-size: 14px;
+          line-height: 17px;
+        }
+      }
+    }
+    &__success {
+      .contact-modal {
+        &__form {
+          h4 {
+            font-size: 20px;
+            line-height: 26px;
+            margin-bottom: 20px;
+          }
+          fieldset {
+            .input {
+              &__submit {
+                margin-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(sm)  {
+    &__form {
+      .form-row {
+        margin-bottom: 0px;
+
+        &--last {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

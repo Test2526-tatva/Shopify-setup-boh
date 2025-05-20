@@ -1,0 +1,98 @@
+{% assign product_model_sizes = shop.metaobjects.ordered.product_model_sizes.references.value %}
+
+{% assign selected_size = product.metafields.metaobjects.product_model_size.value %}
+{% unless selected_size %}
+  {% assign selected_size = product_model_sizes | first %}
+{% endunless %}
+{% assign selected_size_product = selected_size.product.value %}
+
+{% assign limited_editions = selected_size.limited_editions.value %}
+
+
+<div class="card-quickbuy">
+  <div class="card-quickbuy__bg"></div>
+  
+  {% form 'product', product, class: 'card-quickbuy__form' %}    
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    
+    <div class="card-quickbuy__styles">
+      <div class="card-styles">
+        <ul>
+          {% for variant in selected_size_product.variants %}
+            {% unless variant.available %}
+              {% continue %}
+            {% endunless %}
+            
+            <li>
+              {% render 'swatch-variant', variant: variant, selected_variant: selected_variant %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      {% if limited_editions %}  
+        <div class="card-styles">
+          <ul>
+            {% for product in limited_editions %}
+              {% assign limited_editions_count = limited_editions_count | plus: 1 %}
+
+              {% for variant in product.variants %}
+                {% unless variant.available %}
+                  {% continue %}
+                {% endunless %}
+
+                <li>
+                  {% render 'swatch-variant', variant: variant %}
+                </li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+    </div>
+    
+    <div class="card-quickbuy__footer">    
+      <div class="card-quickbuy__info">
+        <h6>
+          {{ selected_size.name }}
+        </h6>
+  
+        <div class="card-quickbuy__active-color">
+          {% render 'swatch-preview', variant: selected_variant %}
+
+          <p>
+            {{ selected_variant.metafields.swatch.name }}
+          </p>
+        </div>
+      </div>
+  
+      <div class="card-quickbuy__atc">
+        <div class="product-card__form">
+          <button class="button primary-button--dark primary-button--dark--light-bg cart-drawer__open" type="submit">
+            <span class="button__label">
+              Add to Cart
+            </span>
+
+
+            
+            {% for variant in selected_size_product.variants %}
+              <span class="button__price {% if selected_variant.id == variant.id %}active{% endif %}" data-variant-id="{{ variant.id }}">
+                {{ variant.price | money_without_trailing_zeros }}
+              </span>
+            {% endfor %}
+
+            {% for product in limited_editions %}
+              {% for variant in product.variants %}
+                <span class="button__price {% if selected_variant.id == variant.id %}active{% endif %}" data-variant-id="{{ variant.id }}">
+                  {{ variant.price | money_without_trailing_zeros }}
+                </span>
+              {% endfor %}
+            {% endfor %}
+
+          </button>
+        </div>
+      </div>
+    </div>
+  {% endform %}
+</div>

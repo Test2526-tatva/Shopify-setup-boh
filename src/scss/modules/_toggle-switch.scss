@@ -1,0 +1,129 @@
+@use './variables' as *;
+@use '../mixins/breakpoints' as *;
+@use '../mixins/typography';
+
+body.toggle-switch {
+  &--checked {
+    .toggle-switch {
+      &__label {
+        &--unchecked {
+          color: $inactive;
+        }
+        &--checked {
+          color: $darkcharcoal;
+        }
+      }
+    }
+  }
+  &--unchecked {
+    .toggle-switch {
+      &__label {
+        &--unchecked {
+          color: $darkcharcoal;
+        }
+        &--checked {
+          color: $inactive;
+        }
+      }
+    }
+  }
+}
+.toggle-switch {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  &__container {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-top: 0 !important;
+    flex: none !important;
+    opacity: 1 !important;
+  }
+  &__label {
+    @include typography.p-small;
+    //margin-top: 2px;
+    
+    &--checked {
+      color: $inactive;
+    }
+    &--unchecked {}
+  }
+
+  input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $lines3;
+    -webkit-transition: .4s;
+    transition: .4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 5px;
+      bottom: 2px;
+      background-color: $darkcharcoal;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    &.round {
+      border-radius: 34px;
+
+      &:before {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  input:checked + .slider {
+    //background-color: #cacaca;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #EBEBEB;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+  }
+
+  @include media-breakpoint-down(md) {
+
+    &__container {
+      width: 50px;
+      height: 26px;
+    }
+    &__label {
+      @include typography.p;
+      margin-top: 2px;
+    }  
+
+    .slider {
+      &::before {
+        width: 20px;
+        height: 20px;
+        bottom: 3px;
+        left: 3px;
+      }
+    }
+    input:checked + .slider:before {
+      -webkit-transform: translateX(24px);
+      -ms-transform: translateX(24px);
+      transform: translateX(24px);
+    }
+  }
+}

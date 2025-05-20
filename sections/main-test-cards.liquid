@@ -1,0 +1,39 @@
+<div class="collection-products__container">
+  <div id="product-grid" class="collection-products__grid" data-id="{{ section.id }}">
+  
+    {% assign product = all_products['value-tbc'] %}
+
+    {% for block in section.blocks %}
+      {% render 'product-card', 
+        product: product, 
+        test_card_image: block.settings.image 
+        test_hover_image: block.settings.image_hover
+      %}
+    {% endfor %}
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Test Cards",
+    "blocks": [
+      {
+        "name": "Product Card",
+        "type": "card",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_hover",
+            "label": "Image Hover"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

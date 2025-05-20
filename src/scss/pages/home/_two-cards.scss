@@ -1,0 +1,226 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+.two-cards {
+  display: flex;
+
+  max-width: 100%;
+  min-height: 800px;
+
+  &--arrow {
+    position: absolute;
+    z-index: 99;
+    right: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    bottom: 32px;
+
+    svg path {
+      fill: $white;
+    }
+
+    &.arrow--prev {
+      right: 66px;
+      @include media-breakpoint-down(md) {
+        right: 52px;
+      }
+    }
+
+    
+    @include media-breakpoint-down(md) {
+      right: 3px;
+    }
+    
+
+  }
+
+  &__card {
+    width: 50%;
+    display: flex;
+    padding: 40px 30px;
+    position: relative;
+
+    &--stories {}
+
+    &--story {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &--store {
+      flex-direction: column;
+      justify-content: space-between;
+
+      p,
+      a {
+        color: $BohBrown;
+      }
+
+      p {
+        margin-bottom: 45px;
+      }
+
+      &-image-wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  &__card-image {
+    width: 100%;
+    max-width: 322px;
+    max-height: 358px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__card-text {
+    max-width: 322px;
+  }
+
+  &__card-title {
+    margin-bottom: 23px;
+    .two-cards__card--stories & {
+      color: $white;
+    }
+
+    .two-cards__card--store & {
+      color: $BohBrown;
+    }
+  }
+
+  &__card-quote {
+    font-family: $freightsans-pro;
+    font-weight: 400;
+    color: $white;
+    font-size: 16px;
+    line-height: 1.5;
+
+    p,
+    a {
+      font-family: $freightsans-pro;
+      font-size: 18px;
+      font-weight: 350;
+      line-height: 22.5px;
+
+    }
+
+    p:last-child {
+      margin-top: 33px;
+      margin-bottom: 0;
+
+      
+      @include media-breakpoint-down(md) {
+        margin-top: 43px;
+      }
+
+    }
+    
+
+    .two-cards__card-name {
+      margin-top: 47px !important;
+      @include media-breakpoint-down(md) {
+        margin-top: 43px !important;
+      }
+    }
+
+    &-text-content,
+    &-text-timings,
+    &-text-contact
+     {
+      margin-bottom: 33px;
+      p {
+        margin-bottom: 6px;
+        margin-top: 0 !important;
+      }
+    }
+    &-text-contact
+    {
+      margin-bottom: 0;
+    }
+
+  }
+
+
+  &__quote-icon {
+    width: 72px;
+    height: auto;
+  }
+
+  &__card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__card-address,
+  &__card-hours,
+  &__card-contact {
+    font-family: $freightsans-pro;
+    font-weight: 400;
+    color: $BohBrown;
+    font-size: 16px;
+    line-height: 1.5;
+
+    p {
+      margin-bottom: 6px;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    grid-template-columns: 1fr;
+  }
+
+  @include media-breakpoint-down(md) {
+    display: block;
+
+    &__card {
+      width: 100%;
+      padding: 40px 15px;
+      min-height: 750px;
+
+      &-image {
+        max-width: 235px;
+        max-height: 261px;
+      }
+    }
+
+    &__card-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__quote-icon {
+      margin-top: 20px;
+    }
+
+  }
+}
+
+.page--about
+{
+
+  .two-cards {
+    @include media-breakpoint-down(md) {
+        &__card {
+          &--story {
+            justify-content: inherit;
+            gap: 132px;
+          }
+        }
+    }
+  }
+  
+}

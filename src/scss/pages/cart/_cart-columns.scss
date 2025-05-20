@@ -1,0 +1,94 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+.cart-columns {
+  background: $lightgrey;
+  padding: 50px;
+
+  &__grid {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__content {
+    max-width: 350px;
+  }
+  &__icon {
+    max-width: 54px;
+    height: 57px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+
+    img {
+      margin-top: auto;
+
+      @include media-breakpoint-down(md) {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  &__heading {
+    margin-bottom: 10px;
+    @include typography.p-strong;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin: 0 0px 20px;
+    padding: 15px;
+    background: $cardgrey;
+    border-radius: 5px;
+
+    &__item {
+      position: relative;
+      &:not(&:last-of-type) {
+        &::after {
+          content: '';
+          width: 1px;
+          height: 100%;
+          background: $lines3;
+          position: absolute;
+          right: -16px;
+          top: 0;
+        }
+      }
+    }
+
+    &__grid {
+      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &__desc {
+      display: none;
+    }
+    &__content {
+      text-align: center;
+      margin: 0 5px;
+    }
+    &__icon {
+      width: auto;
+      height: auto;
+      height: 30px;
+      width: 30px;
+      margin: 0 auto 10px;
+    }
+    &__heading {
+      font-size: 11px;
+      line-height: 13px;
+      letter-spacing: 0px;
+      margin-bottom: 0px;
+    }
+  }
+  @include media-breakpoint-between(md, lg) {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0px;
+
+    &__grid {
+      gap: 20px;
+    }
+  }
+}

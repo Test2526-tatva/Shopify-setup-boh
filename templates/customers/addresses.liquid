@@ -1,0 +1,126 @@
+{% render 'navbar--solid' %}
+
+
+{% render 'account-top-navigation' %}
+
+<section class="accounts accounts--dashboard">
+  <div class="accounts__grid">
+    <div class="accounts__left">
+      {% render 'accounts-sidebar' %}
+    </div>
+    <div class="accounts__right">
+      <div class="dashboard__heading">
+        <div class="dashboard__heading--left">
+          <h5>Addresses</h5>
+          <p class="p-small">
+            Name
+          </p>
+          <h6>
+            {{ customer.first_name }} {{ customer.last_name }}
+          </h6>
+        </div>
+        <div class="dashboard__heading--right">
+          <a href="#address-{{ address.id }}" class="button primary-button--dark  primary-button--dark--light-bg add-address">
+            Add New Address
+          </a>
+        </div>
+      </div>
+
+      <div class="accounts__content">
+        <div class="dashboard__address dashboard__address--grid">
+          {% for address in customer.addresses %}
+          <div class="dashboard__address--column">
+            <div class="dashboard__address--item address__other {% if address == customer.default_address %}address__default{% endif %}">
+              <p class="address__heading">
+                {% if address == customer.default_address %}
+                Default Address
+                {% else %}
+                Other Address
+                {% endif %}
+              </p>
+              <div class="address__info">
+                {{ address | format_address }}
+              </div>
+              <div class="address__actions-list">
+                {% if address == customer.default_address %}
+                  <a href="#address-{{ address.id }}" class="underline-link edit-address">
+                    Edit
+                  </a>
+                {% else %}
+                  <a href="#address-{{ address.id }}" class="underline-link edit-address">
+                    Edit
+                  </a>
+                  <form class="address-delete-form"
+                      method="post"
+                      action="/account/addresses/{{ address.id }}"
+                  >
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="underline-link" type="submit">Delete</button>
+                  </form>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% for address in customer.addresses %}
+        <div class="account-page__address-form account-page__address-form--edit" id="address-{{ address.id }}">
+          {% form 'customer_address', address %}
+            {% render 'account-address-form', edit: true, address: address %}
+          {% endform %}
+        </div>
+      {% endfor %}
+
+      <div class="account-page__address-form account-page__address-form--add" id="address-{{ address.id }}">
+        {% form 'customer_address', customer.new_address %}
+          {% render 'account-address-form', address: address %}
+        {% endform %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    (function() {
+      const hash = window.location.hash;
+  
+      if( hash.includes('address-') ) {
+        const $addressForm = $( hash );
+    
+        $('.account-page__address-form--edit.active').removeClass('active');
+        $addressForm.addClass('active');
+      }
+    })();
+  
+    $('.edit-address').on('click', function(e) {
+      e.preventDefault();
+  
+      const $addressForm = $( $(this).attr('href') );
+  
+      $('.account-page__address-form--edit.active').removeClass('active');
+      $addressForm.addClass('active');
+    });
+  
+    $('.add-address').on('click', function(e) {
+      e.preventDefault();
+  
+      const $addressForm = $( $(this).attr('href') );
+  
+      $('.account-page__address-form--add.active').removeClass('active');
+      $addressForm.addClass('active');
+    });
+  
+    $('.account-page__cancel').on('click', function(e) {
+      e.preventDefault();
+  
+      $('.account-page__address-form--edit.active').removeClass('active');
+      $('.account-page__address-form--add.active').removeClass('active');
+    });
+  });
+</script>

@@ -1,0 +1,267 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+.template--blog-journal {
+  .blog-main {
+    @include media-breakpoint-down(md) {
+      &__articles {
+        .article-card {
+          &__tag {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.blog-main {
+  padding-bottom: 100px;
+
+  &__container {
+    margin: 0 30px;
+  }
+
+  &__filter-panel {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 38px 0px;
+    overflow-x: auto;
+    &::-webkit-scrollbar{
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+
+    ul {
+      list-style: none;
+      display: flex;
+      padding-left: 0;
+      margin-bottom: 0;
+
+      li {
+        padding-right: 24px;
+
+        &:last-child
+        {
+          padding-right: 0;
+        }
+
+        a {
+          color: rgba($BohBrown, 0.5);
+          white-space: nowrap;
+
+
+          &.active {
+            color: $BohBrown;
+          }
+        }
+      }
+    }
+  }
+
+  &__heading {
+    display: flex;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__category {
+    margin-bottom: 120px;
+    padding-top: 30px;
+    border-top: 1px solid $lines3;
+
+    &:first-of-type {
+      padding-top: 0px;
+      border-top: 0px;
+    }
+
+    &--sustainability {
+      .blog-main {
+        &__articles {
+          display: flex;
+          align-items: start;
+
+          .article-card {
+            margin-right: 0px;
+
+            &__tag {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__articles {
+    column-gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 120px;
+
+    &--2 {
+      display: flex;
+    }
+
+    .article-card {
+      margin: 0 1rem 00px 0;
+      display: inline-block;
+      width: 100%;
+      height: auto !important;
+    }
+
+    // @for $i from 1 through 36 { 
+    //   .article-card:nth-child(#{$i}) {
+    //     $h: (random(440) + 100) + px;
+    //     height: $h;
+    //   }
+    // }
+
+    .article-card {
+      &:hover {
+        .article-card {
+          &__image {
+            img {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+
+      .secondary-button {
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 5px;
+        padding-bottom: 3px
+      }
+
+      &__image {
+        margin-bottom: 15px;
+        overflow: hidden;
+
+        img {
+          height: 417px;
+          width: 100%;
+          object-fit: cover;
+          transition: $transition;
+        }
+      }
+
+      &__title {
+        @include typography.p-medium;
+
+        a {
+          text-decoration: none;
+          margin-bottom: 8px;
+          display: inline-block;
+          word-break: break-all;
+        }
+      }
+
+      &__tag {
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+
+  @include media-breakpoint-down(md) {
+    &__container {
+      margin: 0 15px;
+    }
+    .secondary-button
+    {
+      
+      padding-bottom: 5px;
+    }
+    .blog-main__articles .article-card .secondary-button
+    {
+      margin-top: 0;
+    }
+
+    &__articles {
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 0px; //25px
+      row-gap: 57px;
+
+      .article-card {
+        width: 100%;
+        margin-right: 0px;
+
+        &__image {
+          margin-bottom: 12px;
+          img
+          {
+            height: 256px;
+          }
+        }
+
+        &__tag {
+          margin-bottom: 10px;
+        }
+
+        &:last-of-type {
+          margin-bottom: 30px;
+        }
+      }
+    }
+
+    &__heading {
+      .button {
+        display: none;
+      }
+    }
+
+    &__category {
+      margin-bottom: 70px;
+
+      .button {
+        width: 100%;
+      }
+    }
+  }
+  @include media-breakpoint-down(md) {
+    &__articles {
+    
+      .article-card {
+        width: 100%;
+        margin-right: 0px;
+
+        &__image {
+          img
+          {
+            height: 218px;
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    &__articles {
+      grid-template-columns: repeat(3, 1fr);
+
+      .article-card__image img
+      {
+        height: 325px;
+      }
+    }
+
+    &__category {
+      margin-bottom: 70px;
+    }
+
+    .article-card {
+      &__title {
+        @include typography.h6;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{% render 'navbar--solid' %}
+
+<section class="accounts accounts--login accounts__login">
+  <div class="accounts__grid">
+    <div class="accounts__left">
+      <div class="accounts__form newsletter-form__parent newsletter-page">
+        <div class="newsletter-form__success">
+          <h3>
+            {{ section.settings.success_heading | newline_to_br }}
+          </h3>
+
+          <p>
+            {{ section.settings.success_info }}
+          </p>
+
+          <a href="/pages/all-collections" class="button">
+            Continue Shopping
+          </a>
+        </div>
+
+
+        <div class="accounts__form--heading">
+          <h3>
+            {{ section.settings.title }}
+          </h3>
+          {{ section.settings.desc }}
+        </div>
+
+        {% render 'newsletter-form' %}
+      </div>
+    </div>
+    <div class="accounts__right">
+      <div class="accounts__image">
+        <img src="{{ section.settings.image | image_url }}" />
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title",
+        "default": "Subscribe"
+      },
+      {
+        "id": "desc",
+        "type": "richtext",
+        "label": "Description",
+        "default": "<p>Join our newsletter and get 10% off your first purchase* and be the first to hear about our latest news and collections.</p>  "
+      },
+
+      {
+        "type": "header",
+        "content": "Success"
+      },
+      {
+        "type": "textarea",
+        "id": "success_heading",
+        "label": "Heading",
+        "default": "Welcome...\nYou're in!"
+      },
+      {
+        "type": "text",
+        "id": "success_info",
+        "label": "Info",
+        "default": "Check your inbox for your discount code."
+      }
+    ]
+  }
+{% endschema %}

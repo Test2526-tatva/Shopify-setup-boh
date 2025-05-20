@@ -1,0 +1,57 @@
+{% comment %}
+  Required:
+  - variant
+  
+  Optional:
+  - selected_variant
+
+{% endcomment %}
+
+{% unless selected_variant %}
+  {% assign selected_variant = product.selected_or_first_available_variant %}
+{% endunless %}
+{% assign swatch_name = variant.metafields.swatch.name %}
+
+{% assign hover_image = variant.metafields.card.hover_image %}
+
+<label 
+  title="{{ swatch_name }}"
+>
+  <input 
+    type="radio" 
+    class="visually-hidden swatch-preview__checkbox" 
+    name="id" 
+    value="{{ variant.id }}" 
+
+    data-product-id="{{ variant.product.id }}"
+    data-name="{{ swatch_name }}"
+    data-color-1="{{ variant.metafields.gradient.color_1 }}"
+    data-color-2="{{ variant.metafields.gradient.color_2 }}"
+    data-url="{{ variant.product.url }}?variant={{ variant.id }}"
+    
+    data-card-image="{{ variant.featured_media | image_url: width: 1200 }}"
+    data-card-hover-image="{{ hover_image | image_url: width: 1200 }}"
+
+    {% if variant.metafields.hero.clearcut %}
+      data-clearcut="{{ variant.metafields.hero.clearcut.value | image_url: width: 2000 }}"
+    {% endif %}
+
+    {% if variant.metafields.hero.dark_text == true %}
+      data-dark-text="true"
+    {% endif %}
+    
+    {% unless variant.available %}
+      data-out-of-stock="true"
+    {% endunless %}
+
+    {% if limited_edition %}
+      data-limited-edition="true"
+    {% endif %}
+
+    {% if selected_variant.id == variant.id %}
+      checked
+    {% endif %}
+  >
+  
+  {% render 'swatch-preview', variant: variant %}
+</label>

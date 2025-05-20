@@ -1,0 +1,231 @@
+{%- comment -%}
+  Available variables:
+  - section
+    - id
+    - blocks
+    - settings
+      - title (text)
+{%- endcomment -%}
+<section class='product-row featured-product-row featured-product-row-{{section.id}} block-padding--{{ section.id }}'>
+  <div class='product-row__container'>
+    <div class='product-row__header'>
+      <div class='product-row__header--left'>
+        {% if section.settings.title_small != blank %}
+          <h5>
+            {{ section.settings.title_small }}
+          </h5>
+        {% endif %}
+        {% if section.settings.large_title != blank %}
+          <h1 class='product-row__title'>
+            {{ section.settings.large_title }}
+          </h1>
+        {% endif %}
+      </div>
+      <div class='product-row__header--right {% if section.settings.arrow_position_top == true %} arrow_position_top {% endif %}'>
+        {% if section.settings.caption != blank %}
+          <p>
+            {{ section.settings.caption }}
+          </p>
+        {% endif %}
+        {% if section.settings.button_title != blank %}
+          <a
+            href='{{ section.settings.button_url }}'
+            class='button {{ section.settings.button_style }}'
+          >
+            {{ section.settings.button_title }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.arrow_position_top == true %}
+          <div class='text-right md-hide'>
+            <button
+              class='featured-product-row--prev featured-product-row--prev-{{ section.id }}'
+              aria-label='Previous product'
+            >
+              {% render 'icon-arrow-left' %}
+            </button>
+            <button
+              class='featured-product-row--next featured-product-row--next-{{ section.id }}'
+              aria-label='Next product'
+            >
+              {% render 'icon-arrow-right' %}
+            </button>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class='featured-product-row-swiper-wrapper'>
+      <button
+        class='featured-product-row--prev featured-product-row--prev-{{ section.id }} {% if section.settings.arrow_position_top == true %}md-show{% endif %}'
+        aria-label='Previous product'
+      >
+        {% render 'icon-arrow-left' %}
+      </button>
+      <button
+        class='featured-product-row--next featured-product-row--next-{{ section.id }} {% if section.settings.arrow_position_top == true %}md-show {% endif %}'
+        aria-label='Next product'
+      >
+        {% render 'icon-arrow-right' %}
+      </button>
+
+      <div
+        class='featured-product-row__tab_wrapper swiper'
+      >
+        <div
+          class='product-row__grid swiper-wrapper'
+        >
+          {% for product in section.settings.products %}
+            <div class='swiper-slide'>
+              {% render 'product-card', product: product %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const productSlider = new Swiper('.featured-product-row-{{section.id}} .swiper', {
+      slidesPerView: 5,
+      spaceBetween: 8,
+      navigation: {
+        nextEl: '.featured-product-row--next-{{ section.id }}',
+        prevEl: '.featured-product-row--prev-{{ section.id }}',
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+        1280: {
+          slidesPerView: 5,
+        },
+      },
+    });
+  }); // end
+</script>
+
+{% render 'block-padding', block: section %}
+
+{% schema %}
+{
+  "name": "Featured Product Row",
+  "settings": [
+    {
+      "id": "title_small",
+      "type": "text",
+      "label": "Title (Small)"
+    },
+    {
+      "id": "large_title",
+      "type": "text",
+      "label": "Large Title "
+    },
+    {
+      "id": "caption",
+      "type": "text",
+      "label": "Caption"
+    },
+    {
+      "id": "button_title",
+      "type": "text",
+      "label": "Button Title"
+    },
+    {
+      "id": "button_url",
+      "type": "url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "primary-button--dark",
+          "label": "Primary Button Dark Filled"
+        },
+        {
+          "value": "primary-button--outline-dark",
+          "label": "Primary Button Dark Outline"
+        },
+        {
+          "value": "primary-button--light",
+          "label": "Primary Button Light Filled"
+        },
+        {
+          "value": "primary-button--outline-light",
+          "label": "Primary Button Light Outline"
+        }
+      ],
+      "default": "primary-button--outline-dark"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Products"
+    },
+    {
+      "type": "checkbox",
+      "id": "arrow_position_top",
+      "label": "Show Slider Arrow at top",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Padding",
+      "info": "Use the fields below to change the top and bottom spacing of the blocks on desktop and mobile."
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "number",
+      "label": "Padding Top",
+      "id": "pt",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom",
+      "id": "pb",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "number",
+      "label": "Padding Top",
+      "id": "pt_m",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom",
+      "id": "pb_m",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product rows",
+      "name": "Featured Product Row"
+    }
+  ]
+}
+{% endschema %}

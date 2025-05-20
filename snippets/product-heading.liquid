@@ -1,0 +1,13 @@
+{% assign title = product.metafields.product.short_name %}
+{% assign title_word_size = title | split: ' ' | first | size %}
+
+{% if title_word_size > 10 %}
+  {% assign classes = 'long-word' %}
+{% endif %}
+
+<span 
+  data-product-show="{{ product.id }}" 
+  class="{%if product.id == active_product.id %}active{%endif%} {{ classes }}"
+  >
+  {{ title }}
+</span>

@@ -1,0 +1,68 @@
+@use '../mixins/breakpoints' as *;
+@use '../mixins/typography' as typography;
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0
+}
+
+h1, .h1 {
+  @include typography.h1;
+}
+
+h2, .h2 {
+  @include typography.h2;
+}
+
+h3, .h3 {
+  @include typography.h3;
+}
+
+h4, .h4 {
+  @include typography.h4;
+}
+
+h5, .h5 {
+  @include typography.h5;
+}
+
+h6, .h6 {
+  @include typography.h6;
+}
+
+p, .p {
+  @include typography.p;
+}
+
+.pdp-heading {
+  @include typography.pdp-heading;
+}
+
+.p-large {
+  @include typography.p-large;
+}
+.p-small {
+  @include typography.p-small;
+}
+.p-strong {
+  @include typography.p-strong;
+}
+.caption {
+  @include typography.caption;
+}
+.quote-l {
+  @include typography.quote-l;
+}
+
+.button-text {
+  @include typography.button-text;
+}

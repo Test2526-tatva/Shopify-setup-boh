@@ -1,0 +1,17 @@
+{%- comment -%}
+Available variables:
+- block
+  - id
+  - shopify_attributes
+  - type
+  - settings
+    - tab_title (text)
+    - products (product_list)
+{%- endcomment -%}
+
+<div class="products" {{ block.shopify_attributes }}>
+  <p class="products__tab-title">{{ block.settings.tab_title }}</p>
+  <div class="products__products">{{ block.settings.products }}</div>
+</div>
+
+

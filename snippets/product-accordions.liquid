@@ -1,0 +1,62 @@
+{% assign details_content = product.metafields.pdp.details_care.value %}
+{% assign shipping_content = product.metafields.pdp.shipping.value %}
+{% assign returns_content = product.metafields.pdp.returns.value %}
+
+<div class='product__accordions'>
+  <div class='product__accordion'>
+    <div class='product__accordion-trigger'>
+      <span class='product__accordion-title'>Details & care</span>
+      <span class='product__accordion-icon'>{% render 'icon-plus-accordion' %}</span>
+    </div>
+    <div style='display: none;' class='product__accordion-content'>
+      <p>
+        {{ details_content.description | metafield_text }}
+      </p>
+    </div>
+  </div>
+  <div class='product__accordion'>
+    <button class='product__accordion-trigger'>
+      <span class='product__accordion-title'>Shipping</span>
+      <span class='product__accordion-icon'>{% render 'icon-plus-accordion' %}</span>
+    </button>
+    <div style='display: none;' class='product__accordion-content'>
+      <p>
+        {{ shipping_content.description | metafield_text }}
+      </p>
+    </div>
+  </div>
+  <div class='product__accordion'>
+    <button class='product__accordion-trigger'>
+      <span class='product__accordion-title'>Returns</span>
+      <span class='product__accordion-icon'>{% render 'icon-plus-accordion' %}</span>
+    </button>
+    <div style='display: none;' class='product__accordion-content'>
+      <p>
+        {{ returns_content.description | metafield_text }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    $(document).on('click', '.product__accordion-trigger', function (e) {
+      const $item = $(this).closest('.product__accordion');
+      const $accordion = $item.closest('.product__accordions');
+      const $content = $item.children('.product__accordion-content');
+      const isActive = $item.hasClass('active');
+
+      $accordion.children('.product__accordion').removeClass('active');
+      $accordion.children('.product__accordion').find('.product__accordion-content').slideUp();
+
+      if (isActive) {
+        $content.slideUp(function () {});
+
+        $item.removeClass('active');
+      } else {
+        $content.slideDown(function () {});
+        $item.addClass('active');
+      }
+    });
+  });
+</script>

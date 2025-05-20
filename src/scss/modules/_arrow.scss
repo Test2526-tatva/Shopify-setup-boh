@@ -1,0 +1,82 @@
+@use './variables' as *;
+@use '../mixins/breakpoints' as *;
+
+.arrow {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  width: 30px;
+
+  &__group {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__icon {
+    svg {
+      display: block;
+      width: 12px;
+      height: 28px;
+    }
+    &.swiper-button-disabled {
+      opacity: 0.4;
+    }
+  }
+
+  &__icon {
+  }
+  
+  &--prev {
+    transform: scaleX(-1);
+    svg {
+      transform: rotate(-180deg);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    &__icon {
+      svg {
+        width: 10px;
+        height: auto;
+      }
+    }
+    &__group {
+      //gap: 20px;
+      max-height: 20px;
+    }
+    svg {
+      width: 10px;
+      height: 20px;
+    }
+  }
+}
+.gallery-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: #f1f1f1;
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  transition: $transition;
+
+  svg {
+    margin: 13px auto;
+  }
+
+  &:hover,
+  &--hover {
+    background: $lightgrey;
+  }
+
+  &--prev {
+    svg {
+      transform: rotate(-180deg);
+    }
+  }
+  @include media-breakpoint-down(md) {
+    svg {
+      width: 5.5px;
+    }
+  }
+}

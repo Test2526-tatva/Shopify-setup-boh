@@ -1,0 +1,258 @@
+{% render 'navbar--solid' %}
+
+{% render 'account-top-navigation' %}
+
+<section class="accounts accounts--order">
+  <div class="accounts__grid">
+    <div class="accounts__left ">
+      {% render 'accounts-sidebar' %}
+    </div>
+
+    <div class="accounts__right">
+      <div class="accounts--order__header full-width">
+        <div class="accounts--order__left">
+          <div class="accounts__header">
+          <div class="header-outer">
+            <div class="header-left">
+                <span class="order-status {{ order.fulfillment_status_label | downcase }}">
+                    {% if order.financial_status == 'refunded' %}
+                      Refunded
+                    {% else %}
+                      {{ order.fulfillment_status_label }}
+                    {% endif %}
+                </span>
+                <h5>
+                  Order #{{ order.name }}
+                </h5>
+              </div>
+              <a href="/account" class="underline-link">Back to All Orders</a>
+          </div>
+          <div class="order-detail">
+            <div class="order__purchase-date">
+              <div class="top-content">
+                <p>Date Order:{{ order.created_at | date: '%m/%d/%Y' }}</p>
+                <p>Order Placed: Online</p>
+              </div>
+              <div class="bottom-content mb-hide">
+                  <a href="/account" class="underline-link">Track your order</a>
+                  <a href="/pages/returns" class="underline-link">Need to return an item?</a>
+              </div>
+              <div class="order__shipment">
+                {%- for line_item in order.line_items limit: 1 -%}
+                  {% if line_item.fulfillment.tracking_numbers %}
+                    <a href="{{ line_item.fulfillment.tracking_url }}" target="_blank" class="underline-link">
+                      Track Shipment
+                    </a>
+
+                    <span class="order__shipment--info">
+                      Please allow 1-2 days for tracking to be live
+                    </span>
+                  {% endif %}                
+                {%- endfor -%}
+              </div>
+            </div>
+            
+            <div class="accounts--order__content--right">
+              <div class="address-block">
+                <p class="p-small">Shipping Address</p>
+                <div class="p-large">           
+                  {{ order.shipping_address | format_address }}
+                </div>
+              </div>
+              <div class="address-block">
+                <p class="p-small">Billing Address</p>
+                <div class="p-large">
+                  {{ order.billing_address | format_address }}
+                </div>
+              </div>
+              
+            </div>
+             <div class="bottom-content mb-show">
+                  <a href="/account" class="underline-link">Track your order</a>
+                  <a href="/account" class="underline-link">Need to return an item?</a>
+              </div>
+          </div>
+          </div>
+        </div>
+        <div class="accounts__content">
+        <div class="">
+          <div class="accounts--order__content--left">
+          <table class="table-order table-order__detail" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th class="mb-hide">
+                  <span class="md-hide">{{ 'customer.order.quantity' | t }}</span>
+                  <span class="md-show">Qty</span>
+                </th>
+                <th>{{ 'customer.order.total' | t }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for line_item in order.line_items -%}
+                <tr role="row">
+                  <td
+                    id="Row{{ line_item.key }}"
+                    headers="ColumnProduct"
+                    role="rowheader"
+                    scope="row"
+                    data-label="{{ 'customer.order.product' | t }}">
+                    <div>
+                      {% comment %} {% assign product_title = line_item.product.title | downcase | replace: swatch_name, ' ' %} {% endcomment %}
+                      {% capture product_title %}
+                        {% render 'product-title', product: line_item.product %}
+                      {% endcapture %}
+                      {% assign product_title = product_title | strip %}
+
+                      {% assign option_size = variant.title %}
+                      {% assign varian_options = line_item.options_with_values %}      
+                      {% comment %}{% assign swatch_name = line_item.product.metafields.swatch.name.current %}   {% endcomment %}
+                      {% assign swatch_name = line_item.variant.metafields.swatch.name %}                  
+
+                      {% comment %} Render the product image {% endcomment %}
+                      {% if line_item.image != blank %}
+                        <div class="product-outer">
+                          <div class="product-img">
+                            <img src="{{ line_item.image | img_url: 'medium' }}" alt="{{ product_title }}">
+                          </div>
+                          <div class="product-content">
+                          {% if product_title != blank %}
+                            <p>{{ product_title }}</p>
+                          {% endif %}
+                          {% if varian_options != blank %}
+                            {% if swatch_name != blank %}
+                              <span class="swatch_name">
+                                {{ swatch_name }}
+                              </span>
+                            {% endif %}
+                          {% endif %}
+                            {% if line_item.options_with_values != blank %}
+                                {%- for option in line_item.options_with_values -%}
+                                {% if option.name == "Metal" %}
+                                  {% assign variant = line_item.variant %}
+                                  <div
+                                    {% if line_item.available == true %}
+                                      data-variant-id='{{ line_item.id }}'
+                                      data-variant-title='{{ line_item.title }}'
+                                      data-variant-price='{{ variant.price | money_without_trailing_zeros }}'
+                                    {% endif %}
+                                    data-position='{{ forloop.index }}' 
+                                    data-alt='{{ line_item.title | downcase }}'
+                                    data-value='{{ line_item.title }}'
+                                    {% if variant.metafields.custom.variant_color.value %}
+                                      style='background-color: {{ variant.metafields.custom.variant_color.value }}'
+                                    {% endif %}
+                                    class='product-main__option product-main__option--metal {% if line_item.variant.id == cart.selected_or_first_available_variant.id %} active {% endif %} {% if line_item.variant.available == false %} disabled {% endif %}'
+                                  ></div>
+                                  <span>{{ option.name }}: {{ option.value }}</span>
+                                {% else %}
+                                  <span>{{ option.name }}: {{ option.value }}</span>
+                                {% endif %}
+                                {%- endfor -%}
+                            {% endif %}                          
+                              {% if line_item.properties.size > 0 %}
+                                <ul>
+                                    {%- for property in line_item.properties -%}
+                                         <li>{{ property.first }}: {{ property.last }}</li>
+                                    {%- endfor -%}
+                                </ul>
+                            {% endif %}
+                            <span class="qty">Qty: {{ line_item.quantity }}</span>
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if varian_options != blank %}
+                        {{ product_title }}
+                        {% if swatch_name != blank %}
+                          <span class="swatch_name">
+                            {{ swatch_name }}
+                          </span>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  </td>
+                  <td class="mb-hide"
+                    headers="Row{{ line_item.key }} ColumnQuantity"
+                    role="cell"
+                    data-label="{{ 'customer.order.quantity' | t }}">
+                    <div>
+                      <p>{{ line_item.quantity }}</p>
+                    </div>
+                  </td>
+                  <td
+                    headers="Row{{ line_item.key }} ColumnTotal"
+                    role="cell"
+                    data-label="{{ 'customer.order.total' | t }}">
+                    {%- if line_item.original_line_price != line_item.final_line_price -%}
+                      <dl>
+                        <dt>
+                          <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                        </dt>
+                        <dd class="regular-price">
+                          <s>{{ line_item.original_line_price | money }}</s>
+                        </dd>
+                        <dt>
+                          <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                        </dt>
+                        <dd>
+                          <span>{{ line_item.final_line_price | money }}</span>
+                        </dd>
+                      </dl>
+                    {%- else -%}
+                      {{ line_item.original_line_price | money }}
+                    {%- endif -%}
+                  </td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+          <table class="table-order table-order__total" cellspacing="0" cellpadding="0">
+            <tbody>
+
+              <tr>
+                <td>Subtotal</td>
+                <td>{{ order.line_items_subtotal_price | money }}</td>
+              </tr>
+              {%- for discount_application in order.cart_level_discount_applications -%}                    
+                <tr>
+                  <td>Discount:&nbsp;{{- discount_application.title -}}</td>
+                  <td>
+                    {% assign item_discount = discount_application.total_allocated_amount | money | default: '$0' %}
+                    
+                    {% if item_discount == '$0' or item_discount == '$0.00' %}
+                      {{ item_discount }}
+                    {% else %}
+                      -{{ item_discount }}  
+                    {% endif %}
+                  </td>
+                </tr>
+              {%- endfor -%}
+              {% for shipping_method in order.shipping_methods %}
+                <tr>
+                  <td>{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</td>
+                  <td>{{ shipping_method.price | money | default: '$0' }}</td>
+                </tr>
+              {% endfor %}
+
+              {% for tax_line in order.tax_lines %}
+                <tr>
+                  <td>Tax ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
+                  <td>
+                    {{ tax_line.price | money | default: '$0' }}
+                  </td>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td class="total-label">Total</td>
+                <td class="total-amount">{{ order.total_price | money_with_currency }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

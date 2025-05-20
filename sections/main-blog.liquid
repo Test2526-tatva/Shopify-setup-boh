@@ -1,0 +1,53 @@
+<div class='blog-main'>
+  <div class='blog-main__container'>
+    <div class='blog-main__filter-panel'>
+      <ul>
+        {% for block in section.blocks %}
+          <li>
+            {% assign blog_list = block.settings.blog %}
+            <a
+              href='{{ blogs[blog_list].url }}'
+              class='h5 product-row__tab {% if blog.title == blogs[blog_list].title %} active {% endif %}'
+              data-tabid='rings'
+            >
+              {{- blogs[blog_list].title -}}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% paginate blog.articles by 24 %}
+      <div class='blog-main__articles blog-main__articles--{{ blog.articles_count }}'>
+        {% for article in blog.articles %}
+          {% render 'article-card', article: article %}
+        {% endfor %}
+      </div>
+
+      <div class='main-blog page-width section-{{ section.id }}-padding'>
+        {% if paginate.pages > 1 %}
+          {% render 'pagination', paginate: paginate %}
+        {% endif %}
+      </div>
+    {% endpaginate %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main blog",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "blog",
+      "name": "Blog",
+      "settings": [
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "Filter by Blog"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

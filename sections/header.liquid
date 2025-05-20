@@ -1,0 +1,616 @@
+{% assign search_recommendations = section.blocks | where: 'type', 'search_recommendations' %}
+{% assign account_link = '/account/login' %}
+
+{%- liquid
+  capture current_store
+    render 'current-store'
+  endcapture
+
+  assign current_store = current_store | strip
+-%}
+
+{% if customer.id %}
+  {% assign account_link = '/pages/dashboard' %}
+{% endif %}
+
+<div class='navbar'>
+  {% if section.settings.enable_announcement == true %}
+    {% comment %}
+      {% if template.name != 'index' %}
+        <div
+          class='navbar__announcement announcement-bar__wrapper'
+          {% if template.name == 'index' %}
+            hidden
+          {% endif %}
+        >
+          {% assign announcements = section.blocks | where: 'type', 'announcement' %}
+          {% render 'announcement-bar',
+            announcements: announcements,
+            section_id: section.id,
+            reappear_after: section.settings.reappear_after
+          %}
+        </div>
+      {% endif %}
+    {% endcomment %}
+
+    <div
+      class='
+        navbar__announcement announcement-bar__wrapper  {% if template.name == 'index' %}
+          show-mobile
+        {% endif %}
+      '
+    >
+      {% assign announcements = section.blocks | where: 'type', 'announcement' %}
+      {% render 'announcement-bar',
+        announcements: announcements,
+        section_id: section.id,
+        reappear_after: section.settings.reappear_after
+      %}
+    </div>
+  {% endif %}
+  <div class='navbar__main'>
+    <div class='navbar-main'>
+      <div class='navbar-main__grid'>
+        <div class='navbar-main__left'>
+          <div class='mobile-menu__toggle show-mobile'>
+            <a href='#' class='js-mobile-menu__toggle'>
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+          <a href='/' class='navbar-main__logo'>
+            {% if section.settings.logo_image != blank %}
+              <img
+                src='{{ section.settings.logo_image | image_url: width: '150' }}'
+                alt='{{ section.settings.logo_text }}'
+                {% if section.settings.dark_logo_image %}
+                  class='light-logo'
+                {% endif %}
+              >
+
+              {% if section.settings.dark_logo_image %}
+                <img
+                  src='{{ section.settings.dark_logo_image | image_url: width: '150' }}'
+                  alt='{{ section.settings.logo_text }}'
+                  class='dark-logo'
+                >
+              {% endif %}
+            {% else %}
+              <strong>{{ section.settings.logo_text }}</strong>
+            {% endif %}
+          </a>
+
+          <ul class='navbar-links show-desktop'>
+            {% assign menu = section.settings['top-menu'] %}
+            {% for link in linklists[menu].links %}
+              {% assign link_handle = link.title | handle %}
+              <li>
+                <a
+                  href='{{ link.url }}'
+
+                  {% if link_handle == 'shop' %}
+                    class='megamenu__trigger'
+                  {% endif %}
+                >
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class='navbar-main__right'>
+          <ul class='navbar-links navbar-links--icons show-mobile'>
+            <li>
+              <a href='#' class='search__trigger'>
+                <svg width='17' height='17' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                  <path d="M14.2499 13.4992L10.925 10.1749C11.8887 9.01788 12.3692 7.53389 12.2666 6.03161C12.1641 4.52933 11.4863 3.12443 10.3743 2.10915C9.26226 1.09388 7.80163 0.546401 6.29624 0.580614C4.79085 0.614826 3.35661 1.22809 2.29186 2.29284C1.22712 3.35758 0.61385 4.79183 0.579637 6.29722C0.545425 7.80261 1.0929 9.26323 2.10817 10.3752C3.12345 11.4873 4.52835 12.1651 6.03063 12.2676C7.53291 12.3702 9.0169 11.8896 10.1739 10.9259L13.4982 14.2509C13.5476 14.3002 13.6061 14.3394 13.6706 14.3661C13.7351 14.3928 13.8042 14.4066 13.8741 14.4066C13.9439 14.4066 14.013 14.3928 14.0775 14.3661C14.142 14.3394 14.2006 14.3002 14.2499 14.2509C14.2993 14.2015 14.3384 14.1429 14.3651 14.0784C14.3918 14.014 14.4056 13.9448 14.4056 13.875C14.4056 13.8052 14.3918 13.7361 14.3651 13.6716C14.3384 13.6071 14.2993 13.5485 14.2499 13.4992ZM1.6553 6.43753C1.6553 5.49189 1.93572 4.56748 2.46109 3.78121C2.98646 2.99494 3.73319 2.38211 4.60685 2.02023C5.48051 1.65835 6.44186 1.56366 7.36933 1.74815C8.2968 1.93264 9.14874 2.38801 9.81741 3.05667C10.4861 3.72534 10.9414 4.57728 11.1259 5.50475C11.3104 6.43223 11.2157 7.39358 10.8539 8.26723C10.492 9.14089 9.87915 9.88762 9.09287 10.413C8.3066 10.9384 7.38219 11.2188 6.43655 11.2188C5.16892 11.2174 3.95361 10.7132 3.05725 9.81683C2.1609 8.92048 1.65671 7.70516 1.6553 6.43753Z" fill="white"/>
+                </svg>
+              </a>
+            </li>
+
+            <li>
+              <a href='#' class='cart-drawer__trigger navbar__cart-link'>
+                <svg width='17' height='17' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                  <path d="M13.3438 3.25H10.6875C10.6875 2.40462 10.3517 1.59387 9.7539 0.996097C9.15613 0.398325 8.34538 0.0625 7.5 0.0625C6.65462 0.0625 5.84387 0.398325 5.2461 0.996097C4.64832 1.59387 4.3125 2.40462 4.3125 3.25H1.65625C1.37446 3.25 1.10421 3.36194 0.904949 3.5612C0.705692 3.76046 0.59375 4.03071 0.59375 4.3125V12.2812C0.59375 12.563 0.705692 12.8333 0.904949 13.0326C1.10421 13.2318 1.37446 13.3438 1.65625 13.3438H13.3438C13.6255 13.3438 13.8958 13.2318 14.0951 13.0326C14.2943 12.8333 14.4062 12.563 14.4062 12.2812V4.3125C14.4062 4.03071 14.2943 3.76046 14.0951 3.5612C13.8958 3.36194 13.6255 3.25 13.3438 3.25ZM7.5 1.125C8.06359 1.125 8.60409 1.34888 9.0026 1.7474C9.40112 2.14591 9.625 2.68641 9.625 3.25H5.375C5.375 2.68641 5.59888 2.14591 5.9974 1.7474C6.39591 1.34888 6.93641 1.125 7.5 1.125ZM13.3438 12.2812H1.65625V4.3125H13.3438V12.2812Z" fill="white"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+
+          <ul class='navbar-links navbar-links--separated show-desktop'>
+            <li>
+              <ul class='navbar-links navbar-links--icons'>
+                <li>
+                  <a href='#' class='search__trigger'>
+                    <svg width='17' height='17' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                      <path d="M14.2499 13.4992L10.925 10.1749C11.8887 9.01788 12.3692 7.53389 12.2666 6.03161C12.1641 4.52933 11.4863 3.12443 10.3743 2.10915C9.26226 1.09388 7.80163 0.546401 6.29624 0.580614C4.79085 0.614826 3.35661 1.22809 2.29186 2.29284C1.22712 3.35758 0.61385 4.79183 0.579637 6.29722C0.545425 7.80261 1.0929 9.26323 2.10817 10.3752C3.12345 11.4873 4.52835 12.1651 6.03063 12.2676C7.53291 12.3702 9.0169 11.8896 10.1739 10.9259L13.4982 14.2509C13.5476 14.3002 13.6061 14.3394 13.6706 14.3661C13.7351 14.3928 13.8042 14.4066 13.8741 14.4066C13.9439 14.4066 14.013 14.3928 14.0775 14.3661C14.142 14.3394 14.2006 14.3002 14.2499 14.2509C14.2993 14.2015 14.3384 14.1429 14.3651 14.0784C14.3918 14.014 14.4056 13.9448 14.4056 13.875C14.4056 13.8052 14.3918 13.7361 14.3651 13.6716C14.3384 13.6071 14.2993 13.5485 14.2499 13.4992ZM1.6553 6.43753C1.6553 5.49189 1.93572 4.56748 2.46109 3.78121C2.98646 2.99494 3.73319 2.38211 4.60685 2.02023C5.48051 1.65835 6.44186 1.56366 7.36933 1.74815C8.2968 1.93264 9.14874 2.38801 9.81741 3.05667C10.4861 3.72534 10.9414 4.57728 11.1259 5.50475C11.3104 6.43223 11.2157 7.39358 10.8539 8.26723C10.492 9.14089 9.87915 9.88762 9.09287 10.413C8.3066 10.9384 7.38219 11.2188 6.43655 11.2188C5.16892 11.2174 3.95361 10.7132 3.05725 9.81683C2.1609 8.92048 1.65671 7.70516 1.6553 6.43753Z" fill="white"/>
+                    </svg>
+                  </a>
+                </li>
+
+                <li>
+                  <a class='navbar__account' href='{{ account_link }}' data-popup-target='account'>
+                    <svg width='17' height='17' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                      <path d="M14.3353 13.0782C13.324 11.3297 11.7654 10.076 9.94655 9.48166C10.8462 8.94607 11.5452 8.12995 11.9362 7.15863C12.3272 6.18732 12.3885 5.11452 12.1108 4.10498C11.833 3.09545 11.2316 2.20499 10.3988 1.57037C9.56595 0.935744 8.54785 0.592041 7.50081 0.592041C6.45376 0.592041 5.43566 0.935744 4.60285 1.57037C3.77005 2.20499 3.16859 3.09545 2.89084 4.10498C2.6131 5.11452 2.67442 6.18732 3.06539 7.15863C3.45636 8.12995 4.15537 8.94607 5.05506 9.48166C3.2362 10.0753 1.67764 11.3291 0.666274 13.0782C0.629186 13.1387 0.604585 13.206 0.593924 13.2761C0.583263 13.3463 0.586757 13.4178 0.6042 13.4866C0.621644 13.5554 0.652683 13.6199 0.695487 13.6765C0.738292 13.7331 0.791993 13.7805 0.853423 13.816C0.914854 13.8515 0.982769 13.8743 1.05316 13.8831C1.12356 13.8919 1.195 13.8865 1.26328 13.8673C1.33156 13.848 1.3953 13.8153 1.45072 13.771C1.50615 13.7267 1.55215 13.6718 1.586 13.6095C2.83709 11.4473 5.04842 10.1563 7.50081 10.1563C9.95319 10.1563 12.1645 11.4473 13.4156 13.6095C13.4495 13.6718 13.4955 13.7267 13.5509 13.771C13.6063 13.8153 13.67 13.848 13.7383 13.8673C13.8066 13.8865 13.8781 13.8919 13.9484 13.8831C14.0188 13.8743 14.0868 13.8515 14.1482 13.816C14.2096 13.7805 14.2633 13.7331 14.3061 13.6765C14.3489 13.6199 14.38 13.5554 14.3974 13.4866C14.4149 13.4178 14.4183 13.3463 14.4077 13.2761C14.397 13.206 14.3724 13.1387 14.3353 13.0782ZM3.78206 5.3751C3.78206 4.6396 4.00016 3.92062 4.40878 3.30907C4.8174 2.69753 5.39819 2.22088 6.0777 1.93942C6.75721 1.65796 7.50493 1.58431 8.2263 1.7278C8.94767 1.87129 9.61028 2.22547 10.1304 2.74554C10.6504 3.26562 11.0046 3.92824 11.1481 4.64961C11.2916 5.37097 11.2179 6.11869 10.9365 6.7982C10.655 7.47771 10.1784 8.0585 9.56683 8.46713C8.95529 8.87575 8.2363 9.09385 7.50081 9.09385C6.51486 9.09279 5.56959 8.70066 4.87242 8.00349C4.17524 7.30631 3.78311 6.36105 3.78206 5.3751Z" fill="white"/>
+                    </svg>
+                  </a>
+                </li>
+
+                <li>
+                  <a class='navbar__cart-link' href='#'>
+                    <svg width='17' height='17' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                      <path d="M13.3438 3.25H10.6875C10.6875 2.40462 10.3517 1.59387 9.7539 0.996097C9.15613 0.398325 8.34538 0.0625 7.5 0.0625C6.65462 0.0625 5.84387 0.398325 5.2461 0.996097C4.64832 1.59387 4.3125 2.40462 4.3125 3.25H1.65625C1.37446 3.25 1.10421 3.36194 0.904949 3.5612C0.705692 3.76046 0.59375 4.03071 0.59375 4.3125V12.2812C0.59375 12.563 0.705692 12.8333 0.904949 13.0326C1.10421 13.2318 1.37446 13.3438 1.65625 13.3438H13.3438C13.6255 13.3438 13.8958 13.2318 14.0951 13.0326C14.2943 12.8333 14.4062 12.563 14.4062 12.2812V4.3125C14.4062 4.03071 14.2943 3.76046 14.0951 3.5612C13.8958 3.36194 13.6255 3.25 13.3438 3.25ZM7.5 1.125C8.06359 1.125 8.60409 1.34888 9.0026 1.7474C9.40112 2.14591 9.625 2.68641 9.625 3.25H5.375C5.375 2.68641 5.59888 2.14591 5.9974 1.7474C6.39591 1.34888 6.93641 1.125 7.5 1.125ZM13.3438 12.2812H1.65625V4.3125H13.3438V12.2812Z" fill="white"/>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class='navbar-megamenu'>
+      <div class='navbar-megamenu__grid'>
+        <div class='navbar-megamenu__left'>
+          <ul class='navbar-megamenu__nav'>
+            {% assign megamenu = section.settings.megamenu %}
+            {% for link in linklists[megamenu].links %}
+              <li
+                {% if link.links.size > 0 and link.type == 'collection_link' and link.object.image %}
+                  data-collection_image='{{ link.object.image | image_url: width: '900' }}'
+                {% endif %}
+              >
+                <a
+                  href='{{ link.url }}'
+                  {% if section.settings.highlight_menu contains link.title %}
+                    class='p-strong'
+                  {% endif %}
+                >
+                  {{ link.title }}
+                  {% if link.links.size > 0 %}
+                    {% render 'icon-arrow-right' %}
+                  {% endif %}
+                </a>
+
+                {% if link.links.size > 0 %}
+                  <div class='navbar-megamenu__submenu'>
+                    <div class='navbar-megamenu__submenu--left'>
+                      <ul>
+                        {% for child_link in link.links %}
+                          <li>
+                            <a
+                              href='{{ child_link.url }}'
+                              {% if section.settings.highlight_menu contains child_link.title %}
+                                class='p-strong'
+                              {% endif %}
+                            >
+                              {{ child_link.title }}
+                            </a>
+
+                            {% if child_link.links.size > 0 %}
+                              <div class='navbar-megamenu__grandchild'>
+                                <ul>
+                                  {% for grandchild_link in child_link.links %}
+                                    <li>
+                                      <a
+                                        href='{{ grandchild_link.url }}'
+                                        {% if section.settings.highlight_menu contains grandchild_link.title %}
+                                          class='p-strong'
+                                        {% endif %}
+                                      >
+                                        {{ grandchild_link.title }}
+                                      </a>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              </div>
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class='navbar-megamenu__right'>
+          {% for block in section.blocks %}
+            {% if block.type == 'megamenu_img_block' %}
+              <div class='navbar-megamenu__img-block'>
+                <div class='navbar-megamenu__img-block--image'>
+                  <img src='{{ block.settings.image | image_url }}' alt=''>
+                </div>
+                <div class='megamenu_img_block_overlay_info'>
+                  <h6 class='navbar-megamenu__img-block--text'>
+                    {{ block.settings.title }}
+                  </h6>
+                  <a class='megamenu_img_block_overlay_info--link' href='{{ block.settings.link }}'>Shop Now</a>
+                </div>
+                <a class='navbar-megamenu__img-block--link' href='{{ block.settings.link }}'></a>
+              </div>
+            {% endif %}
+          {% endfor %}
+          <div class='navbar-megamenu__img-block navbar-megamenu__img-block--collection' hidden>
+            <div class='navbar-megamenu__img-block--image'>
+              <img src='' alt=''>
+            </div>
+            <div class='megamenu_img_block_overlay_info'>
+              <h6 class='navbar-megamenu__img-block--text'></h6>
+              <a class='navbar-megamenu__img-block--link' href=''></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='navbar__search'>
+    {% render 'search',
+      search_recommendations: search_recommendations,
+      search_recommendation_text: section.settings.search_recommendation_text
+    %}
+  </div>
+
+  <div class='navbar__popup show-desktop'></div>
+
+  <div class='navbar__mobile-menu show-mobile'>
+    <div class='mobile-menu mobile-menu--default'>
+      <div class='mobile-menu__links'>
+        <ul>
+          {% assign menu = section.settings['top-menu'] %}
+          {% for link in linklists[menu].links %}
+            {% assign link_handle = link.title | handle %}
+            <li>
+              <a
+                href='{{ link.url }}'
+
+                {% if link_handle == 'shop' %}
+                  class='shop-menu__open'
+                {% endif %}
+              >
+                {{ link.title }}
+                {% render 'icon-arrow-right' %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {% comment %}
+        <div class='mobile-menu__blocks'>
+          <div class='accordion'>
+            <div class='accordion-item'>
+              <div class='accordion-item__label mobile-country'>
+                <label class='label--grid'>
+                  {% render 'country-flag' %}
+
+                  Ship to
+
+                  {% case current_store %}
+                    {% when 'NZ' %}
+                      New Zealand
+
+                    {% when 'AU' %}
+                      Australia
+
+                    {% when 'UK' %}
+                      UK
+
+                    {% when 'US' %}
+                      USA
+                  {% endcase %}
+                </label>
+
+                <div class='accordion-item__icon'>
+                  <div class='active'>
+                    {% render 'icon-arrow-up' %}
+                  </div>
+                  <div class='default'>
+                    {% render 'icon-arrow-down' %}
+                  </div>
+                </div>
+              </div>
+
+              <div class='accordion-item__collapse'>
+                <div class='accordion-item__content'>
+                  <div class='popup-block popup-block--ship-to'>
+                    <h4 style='display: none;'></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='mobile-search__trigger js-search__trigger'>
+            <span> Search </span>
+
+            <svg width='15' height='17' viewBox='0 0 15 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path d="M14.751 14.5847L12.0591 11.9112C14.1611 9.21916 13.9398 5.38384 11.5243 2.96837C10.252 1.69607 8.55563 0.995361 6.74864 0.995361C4.94168 0.995361 3.24528 1.69607 1.97301 2.96837C0.700704 4.24068 0 5.937 0 7.744C0 9.55099 0.700704 11.2474 1.97301 12.5196C3.24531 13.7919 4.94164 14.4926 6.74864 14.4926C8.24214 14.4926 9.71727 13.9948 10.8974 13.0544L13.5709 15.7648C13.7369 15.9307 13.9397 16.0045 14.161 16.0045C14.3823 16.0045 14.5851 15.9123 14.7511 15.7648C15.083 15.4513 15.083 14.9167 14.751 14.5847L14.751 14.5847ZM11.8378 7.74397C11.8378 9.10847 11.3032 10.3806 10.3443 11.3395C9.38547 12.2984 8.0948 12.833 6.74877 12.833C5.40274 12.833 4.1121 12.2984 3.15322 11.3395C2.19434 10.3807 1.65972 9.08999 1.65972 7.74397C1.65972 6.37947 2.19437 5.1073 3.15322 4.14842C4.11207 3.18954 5.40274 2.65491 6.74877 2.65491C8.11327 2.65491 9.38544 3.18957 10.3443 4.14842C11.303 5.10713 11.8378 6.37944 11.8378 7.74397Z" fill="#262525"/>
+            </svg>
+          </div>
+        </div>
+      {% endcomment %}
+    </div>
+
+    <div class='mobile-menu mobile-menu--shop'>
+      <div class='mobile-menu__links'>
+        <ul>
+          <li>
+            <a class='shop-menu__close' href='#'> Back </a>
+          </li>
+          {% assign megamenu = section.settings.megamenu %}
+          {% for link in linklists[megamenu].links %}
+            <li
+              {% if link.links.size > 0 %}
+                class='has-submenu'
+              {% endif %}
+            >
+              <div class='mobile-menu__icon-wrapper'>
+                <a href='{{ link.url }}'>
+                  {{ link.title }}
+                </a>
+                {% if link.links.size > 0 %}
+                  {% render 'icon-arrow-bottom' %}
+                {% endif %}
+              </div>
+              {% if link.links.size > 0 %}
+                <div class='mobile-menu__submenu'>
+                  <ul class='mobile-menu__children'>
+                    {% for child_link in link.links %}
+                      <li>
+                        <a href='{{ child_link.url }}'>
+                          {{ child_link.title }}
+                        </a>
+
+                        {% if child_link.links.size > 0 %}
+                          <ul class='mobile-menu__grandchildren'>
+                            {% for grandchild_link in child_link.links %}
+                              <li>
+                                <a href='{{ grandchild_link.url }}'>
+                                  {{ grandchild_link.title }}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {% comment %}
+        <div class='shop-menu__cards'>
+          {% for block in section.blocks %}
+            {% if block.type == 'megamenu_img_block' %}
+              <div class='shop-menu__card'>
+                <a href='{{ block.settings.link }}'></a>
+
+                <div class='shop-menu__card-image'>
+                  <img src='{{ block.settings.image | image_url }}' alt=''>
+                </div>
+                <div class='shop-menu__card-label'>
+                  <h4>
+                    {{ block.settings.title }}
+                  </h4>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endcomment %}
+    </div>
+  </div>
+
+  <div class='navbar__sub-nav'></div>
+</div>
+<div class='navbar__spacing'></div>
+<div class='navbar__overlay'></div>
+
+<script>
+  function initMegamenu() {
+    let delay;
+    let megamenuWait = 300;
+
+    $(`.navbar-megamenu, .megamenu__trigger`).on('mouseenter', function (e) {
+      $('body').toggleClass('navbar--show-megamenu', true);
+      $('body').removeClass('navbar--show-search');
+
+      clearTimeout(delay);
+    });
+
+    $(`.navbar-megamenu, .megamenu__trigger`).on('mouseleave', function (e) {
+      clearTimeout(delay);
+      delay = setTimeout(function () {
+        $('body').removeClass('navbar--show-megamenu');
+      }, megamenuWait);
+    });
+
+    $('.shop-menu__open').on('click', function (e) {
+      e.preventDefault();
+      $('body').addClass('shop-menu--show');
+    });
+
+    $('.shop-menu__close').on('click', function (e) {
+      e.preventDefault();
+      $('body').removeClass('shop-menu--show');
+    });
+
+    $('.mobile-menu__icon-wrapper').on('click', function (e) {
+      e.preventDefault();
+      $(this).parent().toggleClass('active');
+    });
+
+    // Desktop megamenu__nav click
+    $('.navbar-megamenu__nav>li').on('click', function (e) {
+      if ($(this).find('.navbar-megamenu__submenu').length > 0) {
+        e.preventDefault();
+        $(this).addClass('active');
+
+        // if this have dataset
+        if ($(this).data('collection_image')) {
+          $('.navbar-megamenu__img-block').attr('hidden', true);
+          $('.navbar-megamenu__img-block--collection').removeAttr('hidden');
+          $('.navbar-megamenu__img-block--collection img').attr('src', $(this).data('collection_image'));
+          $('.navbar-megamenu__img-block--collection a').attr('href', $(this).find('a').attr('href'));
+        } else {
+          $('.navbar-megamenu__img-block').removeAttr('hidden');
+          $('.navbar-megamenu__img-block--collection').attr('hidden', true);
+          $('.navbar-megamenu__img-block--collection img').attr('src', '');
+          $('.navbar-megamenu__img-block--collection a').attr('href', '');
+        }
+
+        $('.navbar-megamenu__nav>li').not($(this)).removeClass('active');
+      }
+    });
+    $('.navbar-megamenu__submenu li').on('click', function (e) {
+      e.stopPropagation();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    initMegamenu();
+    {% comment %} $('body').addClass('navbar--show-megamenu'); {% endcomment %}
+  });
+</script>
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_announcement",
+      "label": "Show Announcement Bar on homepage only",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Light Logo Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "dark_logo_image",
+      "label": "Dark Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "top-menu",
+      "label": "Main Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "megamenu",
+      "label": "Mega Menu",
+      "info": "This menu will be displayed in Shop"
+    },
+    {
+      "type": "text",
+      "id": "highlight_menu",
+      "label": "Highlight menu",
+      "default": "Rings",
+      "info": "add comma separated menu names to make it highlighted in the mega menu"
+    },
+    {
+      "type": "text",
+      "id": "search_recommendation_text",
+      "label": "Search Recommendation Text",
+      "default": "Pounamu, Rings, Graduation",
+      "info": "add comma separated search terms"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Megamenu Image Block",
+      "type": "megamenu_img_block",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Link"
+        }
+      ],
+      "limit": 2
+    },
+    {
+      "type": "search_recommendations",
+      "name": "Search: Recommendation",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Text",
+          "default": "Notification message goes here & has a character limit",
+          "info": "Max of 50 characters"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Link"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#B8DDE1"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

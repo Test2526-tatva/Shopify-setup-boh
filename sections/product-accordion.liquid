@@ -1,0 +1,46 @@
+{% assign accordion_content = product.metafields.pdp.accordions.value %}
+<div class='product-accordion'>
+  <div class='product-accordion__grid'>
+    <div class='product-accordion__grid--left'>
+      <div class='product-accordion__image'>
+        {% if section.settings.image != blank %}
+          <img src='{{ section.settings.image |  image_url  }}' alt=''>
+        {% endif %}
+      </div>
+    </div>
+    <div class='product-accordion__grid--right'>
+      <div class='product-accordion__accordions'>
+        {% for accordion in accordion_content %}
+          <div class='product__accordion'>
+            <div class='product__accordion-trigger'>
+              <span class='product__accordion-title'>{{ accordion.title }}</span>
+              <span class='product__accordion-icon'>{% render 'icon-plus-accordion--large' %}</span>
+            </div>
+            <div style='display: none;' class='product__accordion-content'>
+              <p>
+                {{ accordion.description | metafield_text }}
+              </p>
+
+              <div class='product__accordion-link underline-btn'>
+                <a href='{{ accordion.link }}'>{{ accordion.url_title }}</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Accordion",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

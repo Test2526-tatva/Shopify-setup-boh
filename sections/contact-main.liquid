@@ -1,0 +1,66 @@
+<div class="contact-main">
+  <div class="contact-main__grid">
+    <div class="contact-main__content">
+      <h4>{{ section.settings.title }}</h4>
+      <div class="email-items">
+        {% for block in section.blocks %}
+          <div class="email-item">
+            <h6>{{ block.settings.title }}</h6>
+            <p class="p-large">
+              <a href="mailto:{{ block.settings.email }}">
+                {{ block.settings.email }}
+              </a>
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="contact-main__image">
+      <img
+        class="md-hide max-height-image"
+        src="{{ section.settings.image | image_url }}"
+        alt="{{ section.settings.title }}">
+      <img
+        class="md-show max-height-image"
+        src="{{ section.settings.image_mobile | image_url }}"
+        alt="{{ section.settings.title }}">
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Main",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      }, {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      }, {
+        "id": "image_mobile",
+        "type": "image_picker",
+        "label": "Image (Mobile)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "email item",
+        "type": "email_item",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "title"
+          }, {
+            "id": "email",
+            "type": "text",
+            "label": "Email"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

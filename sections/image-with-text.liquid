@@ -1,0 +1,135 @@
+<style>
+  .shop-the-look__content-{{ section.id }}  {
+      background-color:{{ section.settings.bg_color }};
+    }
+</style>
+<section class='shop-the-look text-width-image block-padding--{{ section.id }} text-width-image--{{ section.settings.image_position }}'>
+  <div class='shop-the-look__image-container'>
+    {% if section.settings.bg_image %}
+      <img
+        class='shop-the-look__main-image'
+        src='{{ section.settings.bg_image | img_url: '1200x1200', crop: 'center' }}'
+        alt='{{ section.settings.title }}'
+      >
+    {% endif %}
+  </div>
+  <div class='shop-the-look__content shop-the-look__content-{{ section.id }}'>
+    <h2 class='shop-the-look__title'>
+      {{ section.settings.title }}
+    </h2>
+    <p class='shop-the-look__description'>
+      {{ section.settings.caption }}
+    </p>
+
+    {% if section.settings.url != blank %}
+      <a class='button secondary-button secondary-button--dark' href='{{ section.settings.url }}'>
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% render 'block-padding', block: section %}
+
+{% schema %}
+{
+  "name": "Image with text",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "caption",
+      "type": "text",
+      "label": "Caption"
+    },
+    {
+      "id": "button_text",
+      "type": "text",
+      "label": "Button Text",
+      "default": "Find out more"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "URL"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "id": "bg_image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "row",
+          "label": "Left"
+        },
+        {
+          "value": "row-reverse",
+          "label": "Right"
+        }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "header",
+      "content": "Padding",
+      "info": "Use the fields below to change the top and bottom spacing of the blocks on desktop and mobile."
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "number",
+      "label": "Padding Top",
+      "id": "pt",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom",
+      "id": "pb",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "number",
+      "label": "Padding Top",
+      "id": "pt_m",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom",
+      "id": "pb_m",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Image with text",
+      "category": "Image + Text"
+    }
+  ]
+}
+{% endschema %}

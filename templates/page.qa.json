@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-qa",
+      "settings": {
+        "qa_links": "Style Guide | \/pages\/styles\n\n\nProduct Individual | \/pages\/product-individual\nProject Index | \/blogs\/featured-projects\nJournal Detail | \/pages\/journal-detail\nJournal Index | \/blogs\/journal\nMaterials | \/pages\/materials-handles\nCustomisation | \/pages\/customisation\nDesign Process | \/pages\/design-process\nAbout | \/pages\/about\nSustainability | \/pages\/sustainability\n\n\nCare Tips | \/pages\/care-tips\nContact | \/pages\/contact\nFAQs | \/pages\/faqs\nTerms | \/pages\/terms-conditions\n404 | \/pages\/404\n\n\nHome | \/\nProduct Page | \/products\/amoura-arm-chair-metal-legs\nCollection | \/collections\/all\nCart Page | \/cart"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

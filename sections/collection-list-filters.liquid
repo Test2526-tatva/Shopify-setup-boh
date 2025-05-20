@@ -1,0 +1,169 @@
+{% assign sizes = section.blocks | where: 'type', 'size' %}
+
+
+<button class="filters-button js-filters-popup__open">
+  <span>
+    Shop by size
+  </span>
+  
+  {% comment %} <span class="js-filters-count">
+    2
+  </span> {% endcomment %}
+
+  <span>
+    <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 8.99951H2.33333" stroke="#262525" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M1.66797 1V11" stroke="#262525" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M5.66406 3.00049H6.9974" stroke="#262525" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M6.33203 1V11" stroke="#262525" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M10.332 6H11.6654" stroke="#262525" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M11 1V11" stroke="#262525" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+  </span>
+</button>
+
+
+<div class="filters-popup filters-popup--shop-size">
+  <div class="filters-popup__container">
+    <div class="filters-popup__header">
+      <h4 class="p-strong">
+        Shop by size
+      </h4>
+
+      {% comment %} <a href="#" class="filters-popup__clear p">
+        Clear Filters
+      </a> {% endcomment %}
+      
+      <a href="#" class="filters-popup__close js-filters-popup__close" style="margin-left: auto;">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.554688 1L16.0024 16" stroke="#262525" stroke-width="1.5"/>
+          <path d="M16.0039 1L0.556144 16" stroke="#262525" stroke-width="1.5"/>
+        </svg>
+      </a>
+    </div>
+  
+    <div class="filters-popup__body">
+      <div class="filters-popup__grid">
+        <div class="filter-group filter-group--shop-size">
+          
+          <div class="shop-size">
+            <div class="swiper">
+              <div class="shop-size__filters swiper-wrapper">
+
+                {% for block in section.blocks %}
+                  <div class="shop-size__filter-item swiper-slide">
+                    <div class="filter-item__image">
+                      <img src="{{ block.settings.image | image_url }}" alt="">
+                    </div>
+                    <div class="filter-item__content">
+                      <h6 class="filter-item__title">
+                        {{ block.settings.title }}
+                      </h6>
+                      <p class="filter-item__info">
+                        {{ block.settings.desc }}
+                      </p>
+                      <div class="filter-item__swatch">
+                        <span class="swatch-preview"></span>
+                        <span class="swatch-available">
+                          + 5 colours
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+
+              </div>
+
+              <div class="swiper-scrollbar"></div>
+            </div>
+            {% comment %}  
+              Loop through "sizes" variable
+            {% endcomment %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    $(document).on('click', '.js-filters-popup__open', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $('body').addClass('filters-popup--show');
+    });
+    
+    $(document).on('click', '.js-filters-popup__close', function(e) {
+      e.preventDefault();
+      $('body').removeClass('filters-popup--show');
+    });
+
+    $(document).on('click', function(e) {
+      $('body').removeClass('filters-popup--show');
+    });
+
+    $(document).on('click', '.filters-popup', function(e) {
+      e.stopPropagation();
+    });
+
+    const swiper = new Swiper(".shop-size .swiper", {
+      draggable: true,
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      grabCursor: false,
+      freeMode: true,
+      watchSlidesProgress: true,
+      mousewheel: {
+        forceToAxis: true
+      },
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        draggable: true,
+      },
+      on: {
+        progress: (swiper, progress) => {
+          $('.shop-size').toggleClass('show-fade', progress > 0.02);
+        }
+      }
+    });
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Filters",
+    "blocks": [
+      {
+        "name": "Filter: Size",
+        "type": "size",
+        "settings": [
+          {
+            "type": "text",
+            "id": "ref",
+            "label": "Reference"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Name"
+          },
+          
+          {
+            "type": "text",
+            "id": "desc",
+            "label": "Description"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

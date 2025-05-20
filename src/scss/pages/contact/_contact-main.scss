@@ -1,0 +1,17 @@
+
+// Section: Contact Main
+.contact-main {
+  &__title {}
+  &__title-right {}
+  &__image {}
+  &__location {}
+  &__open-times {}
+  &__contact-details {}
+
+  // Block: Tabs
+  .tabs {
+    &__tab-title {}
+    &__description {}
+    &__form-id {}
+  }
+}

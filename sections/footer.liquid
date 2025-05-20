@@ -1,0 +1,336 @@
+<style>
+  .footer {
+    background-color: {{ section.settings.background_color }};
+  }
+</style>
+<div class='footer'>
+  <div class='footer__container container'>
+    <div class='footer__grid'>
+      <div class='footer__left'>
+        <div class='footer__left--grid'>
+          <div class='footer__left__address'>
+            {{ section.settings.address }}
+            <div class='footer__left__contact'>
+              {{ section.settings.contact }}
+            </div>
+            <div class='footer__left__social__media'>
+              <ul class='footer__left__social__media__list'>
+                {%- if section.settings.social_facebook_link != blank -%}
+                  <li>
+                    <a
+                      class='social-icons__link'
+                      href='{{ section.settings.social_facebook_link | escape }}'
+                      aria-describedby='a11y-external-message'
+                    >
+                      {%- render 'social-media', icon: 'facebook' -%}
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if section.settings.social_instagram_link != blank -%}
+                  <li>
+                    <a
+                      class='social-icons__link'
+                      href='{{ section.settings.social_instagram_link | escape }}'
+                      aria-describedby='a11y-external-message'
+                    >
+                      {%- render 'social-media', icon: 'instagram' -%}
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if section.settings.social_twitter_link != blank -%}
+                  <li>
+                    <a
+                      class='social-icons__link'
+                      href='{{ section.settings.social_twitter_link | escape }}'
+                      aria-describedby='a11y-external-message'
+                    >
+                      {%- render 'social-media', icon: 'twitter' -%}
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if section.settings.social_pinterest_link != blank -%}
+                  <li>
+                    <a
+                      class='social-icons__link'
+                      href='{{ section.settings.social_pinterest_link | escape }}'
+                      aria-describedby='a11y-external-message'
+                    >
+                      {%- render 'social-media', icon: 'pinterest' -%}
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if section.settings.social_youtube_link != blank -%}
+                  <li>
+                    <a
+                      class='social-icons__link'
+                      href='{{ section.settings.social_youtube_link | escape }}'
+                      aria-describedby='a11y-external-message'
+                    >
+                      {%- render 'social-media', icon: 'youtube' -%}
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if section.settings.social_tiktok_link != blank -%}
+                  <li>
+                    <a
+                      class='social-icons__link'
+                      href='{{ section.settings.social_tiktok_link | escape }}'
+                      aria-describedby='a11y-external-message'
+                    >
+                      {%- render 'social-media', icon: 'tiktok' -%}
+                    </a>
+                  </li>
+                {%- endif -%}
+              </ul>
+            </div>
+          </div>
+          <div class='footer__left__timings'>
+            {{ section.settings.timings }}
+          </div>
+        </div>
+      </div>
+      <div class='footer__right'>
+        <form
+          id='klaviyo-newsletter-footer'
+          class='footer__newsletter newsletter-form newsletter-klaviyo-form'
+          action='//manage.kmail-lists.com/subscriptions/subscribe'
+          data-ajax-submit='//manage.kmail-lists.com/ajax/subscriptions/subscribe'
+          method='GET'
+          target='_blank'
+        >
+          {% capture list_id %}
+            {% render 'klaviyo-list-id' %}
+          {% endcapture %}
+          {% assign list_id = list_id | strip %}
+
+          <input type='hidden' name='g' value='{{ list_id }}'>
+          <input type='hidden' name='$fields' value='$consent, email'>
+          <input type='hidden' name='$list_fields' value='$consent'>
+          <input type='hidden' name='$consent' value='email'>
+
+          <div class='newsletter-form__field-wrapper'>
+            <p class='field__label'>
+              {{ section.settings.newsletter_heading }}
+            </p>
+            <div class='field'>
+              <input
+                class='field__input'
+                type='email'
+                name='email'
+                placeholder='Email Address*'
+                pattern='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+                required
+              >
+              <button
+                type='submit'
+                class='newsletter-form__button field__button'
+                aria-label='{{ 'newsletter.button_label' | t }}'
+              >
+                {% render 'icon-submit-arrow' %}
+              </button>
+            </div>
+
+            <small class='newsletter-form__message form__message' id='ContactFooter-error'>
+              <div class='klaviyo_messages'>
+                <div class='error_message' style='display:none;'></div>
+                <div class='success_message' style='display:none;'>
+                  {{ section.settings.newsletter_success_message }}
+                </div>
+              </div>
+            </small>
+          </div>
+
+          {%- if form.posted_successfully? -%}
+            <h3
+              class='newsletter-form__message newsletter-form__message--success form__message'
+              id='ContactFooter-success'
+              tabindex='-1'
+              autofocus
+            >
+              {% render 'icon-success' -%}
+              {% if section.settings.newsletter_success_message != blank %}
+                {{ section.settings.newsletter_success_message }}
+              {% else %}
+                {{- 'newsletter.success' | t }}
+              {% endif %}
+            </h3>
+          {%- endif -%}
+        </form>
+
+        <div class='footer__right--grid'>
+          {% assign groups = section.blocks | where: 'type', 'groups' %}
+
+          {% for group in groups %}
+            <div class='group-links'>
+              <h5>
+                {{ group.settings.title }}
+                <div class='show-sm'>
+                  {% render 'icon-plus' %}
+                  {% render 'icon-minus' %}
+                </div>
+              </h5>
+              <ul>
+                {% for link in group.settings.menu.links %}
+                  <li>
+                    <a href='{{ link.url }}'>{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% if section.settings.footer_logo %}
+      <div class='footer__logo'>
+        <img src='{{ section.settings.footer_logo | img_url: 'master' }}' alt='{{ shop.name }}'>
+      </div>
+    {% endif %}
+  </div>
+  <div class='footer__grid footer__grid--copyright'>
+    <div class='footer__left'>
+      <p>{{ section.settings.copy_right }}</p>
+    </div>
+    <div class='footer__right'>
+      <p class='text-right'><a href='https://almond.studio' target='_blank'>Site by S/A</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initFooterAccordion() {
+    $(document).on('click', '.footer__right--grid h5', function (e) {
+      e.preventDefault();
+      $(this).toggleClass('active');
+      $(this).next('ul').slideToggle();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    initFooterAccordion();
+  });
+</script>
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#B8DDE1"
+    },
+    {
+      "type": "header",
+      "content": "Footer Information"
+    },
+    {
+      "type": "richtext",
+      "id": "address",
+      "label": "Address",
+      "default": "<p></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "contact",
+      "label": "Contact",
+      "default": "<p></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "timings",
+      "label": "Timings",
+      "default": "<p></p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer logo"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "id": "newsletter_heading",
+      "type": "text",
+      "label": "Newsletter Heading",
+      "default": "Keep updated"
+    },
+    {
+      "id": "newsletter_success_message",
+      "type": "textarea",
+      "label": "Newsletter Success Message",
+      "default": "Thanks for subscribing"
+    },
+    {
+      "type": "header",
+      "content": "Copy Right"
+    },
+    {
+      "type": "text",
+      "id": "copy_right",
+      "label": "Copy right",
+      "default": "© 2024, Boh Runga.  All rights reserved."
+    },
+    {
+      "type": "header",
+      "content": "Social Media"
+    },
+    {
+      "type": "text",
+      "id": "social_facebook_link",
+      "label": "Facebook",
+      "info": "https:\/\/facebook.com\/shopify"
+    },
+    {
+      "type": "text",
+      "id": "social_instagram_link",
+      "label": "Instagram",
+      "info": "https:\/\/instagram.com\/shopify"
+    },
+    {
+      "type": "text",
+      "id": "social_twitter_link",
+      "label": "Twitter",
+      "info": "https:\/\/twitter.com\/shopify"
+    },
+    {
+      "type": "text",
+      "id": "social_pinterest_link",
+      "label": "Pinterest",
+      "info": "https:\/\/pinterest.com\/shopify"
+    },
+    {
+      "type": "text",
+      "id": "social_youtube_link",
+      "label": "Youtube",
+      "info": "https:\/\/youtube.com\/shopify"
+    },
+    {
+      "type": "text",
+      "id": "social_tiktok_link",
+      "label": "Tiktok",
+      "info": "https:\/\/tiktok.com\/shopify"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Link Group",
+      "type": "groups",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "menu",
+          "type": "link_list",
+          "label": "Navigation"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

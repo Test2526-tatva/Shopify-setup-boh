@@ -1,0 +1,174 @@
+@use './variables' as *;
+@use '../mixins/breakpoints' as *;
+@use '../mixins/typography';
+
+.pagination-wrapper {
+  margin-top: 40px;
+
+  @include media-breakpoint-down(lg) {
+    margin-top: 50px;
+  }
+  @include media-breakpoint-down(md) {
+    margin-top: 30px;
+  }
+}
+.pagination {
+
+  &__list {
+  margin: 0;
+  padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  
+
+
+    li {
+      //flex: 1 0 4.4rem;
+      //max-width: 4.4rem;
+      margin: 0 10px;
+      display: flex;
+      align-items: center;
+
+      ::marker,
+      &::marker {
+        content: none;
+        display: none;
+      }
+
+      &.pagination__item-arrow--prev,
+      &.pagination__item-arrow--next {
+        a {
+          position: absolute;
+          right:52px;
+          z-index: 9999;
+        }
+      }
+      &.pagination__item-arrow--prev
+      {
+        a {
+          right:42px;
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(md) {
+    padding-bottom: 65px;
+    &__list {
+        li {
+          margin: 0 4px;
+        }
+        .pagination__item
+        {
+          line-height: 20px;
+          padding: 16px 11px;
+      }
+      }
+
+      li {
+        &.pagination__item-arrow--prev,
+        &.pagination__item-arrow--next
+        {
+          a {
+            font-size: 16px;
+            right: 6px !important;
+          }
+        }
+      }
+    
+  }
+  @include media-breakpoint-down(lg) {
+    &__list {
+      padding: 0px;
+    }
+    li {
+      &.pagination__item-arrow--prev,
+      &.pagination__item-arrow--next
+      {
+        a {
+          right:15px;
+        }
+      }
+    }
+  }
+  &__item {
+
+    
+    @include typography.p-semibold;
+    transition: $transition;
+    font-weight: 300;
+    padding: 16px 8px;
+
+    &:hover {
+      color: $darkcharcoal;
+      text-decoration: none;
+
+      &::after {
+        height: 0.1rem;
+      }
+    }
+    &--current {
+      font-weight: 500;
+      border-bottom: 1px solid $BohBrown;
+
+      &::after {
+        height: 0.1rem;
+      }
+    }
+    &--next {
+      margin-right: 60px;
+      // transform: rotate(180deg);
+
+      &.inactive {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+    &--prev {
+      margin-left: 90px;
+
+      &.inactive {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    &__item {
+      font-size: 19px;
+      line-height: 25px;
+      &--prev {
+        margin-right: 0;
+
+        svg {
+          max-height: 20px;
+          display: block;
+        }
+      }
+      &--next {
+        margin-left: 0;
+
+        svg {
+          max-height: 20px;
+          display: block;
+        }
+      }
+    }
+    .icon {
+      height: 14px;
+    }
+    &__item-arrow {
+      &--prev {
+        // margin-right: auto !important;
+        // margin-left: 0px !important;
+      }
+      &--next {
+        // margin-left: auto !important;
+        // margin-right: 0px !important;
+      }
+    }
+  }
+}

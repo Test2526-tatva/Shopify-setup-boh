@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "heading": {
+      "type": "terms-heading",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "terms-main",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main"
+  ]
+}

@@ -1,0 +1,158 @@
+{% if cart.items.size > 0 %}
+  <div class="cart-drawer__recommend-wrapper">
+    {% for item in cart.items %}
+      {% assign recommended_products = item.product.metafields.cart.recommended_products.value %}
+      {% assign recommended_product_check = item.product.metafields.cart.recommended_products %}
+      {% assign card_image = item.product.metafields.card.images.value | first %}
+      {% assign clearcut_image = item.product.metafields.card.clearcut.value %}
+      {% assign product_vendor = item.vendor | default: 'Orion' %}
+      {% assign swatch_name = item.product.metafields.swatches.current | replace: '-', ' ' | downcase | strip %}
+       
+
+      {% comment %} {% assign recommended_product_title = recommended_products.title | downcase | replace: swatch_name, '' | capitalize %} 
+
+      {% capture recommended_product_title %}
+        {% render 'product-title', product: recommended_products %}
+      {% endcapture %}
+      {% assign recommended_product_title = recommended_product_title | strip %}
+
+      {% assign selected_size = item.variant.title | handle %}
+{% endcomment %}
+{% comment %}
+
+    {% for gid in recommended_products %}
+  {{recommended_product_check}}
+    {% assign variant_id = gid | split: '/' | last %}  <!-- Extract the variant ID -->
+    {% assign product = all_products['test-product-for-dev'] %}    <!-- Access product details -->
+
+    <!-- If product exists, display the details -->
+    {% if product %}
+      <div class="recommended-product">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.price | money }}</p>
+
+        <!-- Display variants -->
+        <select>
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+{% endcomment %}
+
+      {% if recommended_product_check %}
+
+        {% for recommended_product in recommended_products %}
+
+          <div class="cart-drawer__recommend">
+
+            <div class="cart__item">
+              <p class="cart__recommend-title md-show">Recommended for you</p>
+              <div class="cart__item-wrapper {% if card_image == blank and clearcut_image == blank %}image-empty{% endif %}">
+              
+                {% if clearcut_image %}
+                  <div class="cart__image clearcut-image">
+                    <img
+                      class="clearcut_image"
+                      src="{{ clearcut_image | image_url: width: 800 }}"
+                      alt="{{ recommended_product.title }}">
+                  </div>
+                {% elsif card_image != blank %}
+                  <div class="cart__image card-image">
+                    <img
+                      class="card_image"
+                      src="{{ card_image | image_url: width: 220 }}"
+                      alt="{{ recommended_product.title }}">
+                  </div>
+                {% endif %}
+                <div class="cart__image card-image">
+                        <img src="{{ 'Collections.png' | asset_img_url: 'master' }}" />
+
+                  </div>
+                <div class="cart__content">
+                  <div class="cart__content--grid">
+                    <div class="cart__content--left">
+                      {% comment %}<p class="cart__collection-name">{{ product_vendor }}</p>{% endcomment %}
+                    </div>
+                    <div class="cart__content--right">
+                      <p class="cart__recommend-title md-hide">Recommended for you</p>
+                    </div>
+                  </div>
+                  <div class="cart__content--grid__2">
+                    <div class="cart__content--left">
+                      <h3 class="cart__product-name">
+                        <a href="{{ recommended_product.url }}">
+                        {{ recommended_product.title }}
+                          {{ recommended_product_title | escape }}
+                          {{ recommended_product.product.title }}
+                        </a>
+                      </h3>
+
+                      <ul class="cart-recommend__options">
+                 {% assign variant_options = recommended_product.options %}
+
+                  {% if variant_options %}
+                    <ul>
+                      {% for option in variant_options %}
+                        <li>{{ option }}</li> 
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+
+                  {% comment %}
+                        <li>
+                          {{ recommended_product.metafields.swatches.current | replace: '-', ' ' | strip | capitalize }}
+                        </li>
+                        <li>
+                          <div class="cart-recommend__options--dropdown">
+                            <select name="id">
+                              {% for variant in recommended_product.variants %}
+                                {% assign title_handle = variant.title | handle %}
+
+                                <option value="{{ variant.id }}" {% if selected_size == title_handle %}selected{% endif %}>
+                                  {{ variant.title }}
+                                </option>
+                              {% endfor %}
+                            </select>
+                          </div>
+                        </li>
+                        {% endcomment %}
+                      </ul>
+
+                      <a class="cart__add-to-bag btn" href="#">
+                        Add to Cart
+                      </a>
+                    </div>
+                    <div class="cart__content--right">
+                      <div class="cart__price-box">
+                        <span class="cart__sale-tag md-show">
+                          &nbsp;
+                          {% comment %}                        
+                            {% if item.product.tags contains 'final sale' %}
+                            Final Sale
+                            {%  elsif item.product.tags contains 'SALE' %}
+                            SALE
+                            {% else %}
+                            &nbsp;
+                            {% endif %}
+                          {% endcomment %}
+                        </span>
+                        <span class="cart__price">
+                          {{ recommended_product.price | money_without_trailing_zeros }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    {% endfor %}
+  </div>
+{% endif %}

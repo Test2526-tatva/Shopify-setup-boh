@@ -1,0 +1,17 @@
+<div class="{% if is_default %}default{% endif %} {% if active_product.id == product.id %}active{% endif %}" data-product-show="{{ product.id }}">
+  <p class="p">
+    {% if product.metafields.description.left %}
+      {{ product.metafields.description.left }}
+    {% else %}  
+      {{ selected_size.pdp_description_left }}
+    {% endif %}
+  </p>
+
+  <div class="main-product__afterpay">
+    {% render 'sa-price', product: product %}
+    
+    <p>
+      4 payments of {{ product.price | divided_by: 4 | money_with_currency }} with Afterpay 
+    </p>
+  </div>
+</div>

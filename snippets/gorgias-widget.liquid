@@ -1,0 +1,47 @@
+{% assign show_gorgias = false %}
+
+<!-- set the urls that you want gorgias to appear on -->
+{% if 
+  request.path contains '/pages/faq'
+  or request.path contains '/pages/contact'
+
+  or request.path contains '/account/addresses'
+  or request.path == '/account'
+%}
+  {% assign show_gorgias = true %}
+{% endif %}
+
+
+{% if show_gorgias %}
+  <!--Gorgias Chat Widget Start-->
+  {% comment %} <script id="gorgias-chat-widget-install-v3" 
+  src="https://config.gorgias.chat/bundle-loader/{custom_id}">
+  </script> {% endcomment %}
+  <!--Gorgias Chat Widget End-->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      GorgiasChat.init().then(function() {
+        console.log('gorgias initialized');
+        GorgiasChat.hidePoweredBy(true);
+
+        $(document).on('click', '.js-gorgias-open', function(e) {
+          e.preventDefault();
+          GorgiasChat.open();
+
+          console.log('gorgias:link-clicked');
+        });
+
+        GorgiasChat.on('widget:opened', function(data) {
+          document.body.classList.add('gorgias-button-show');
+          console.log('gorgias:opened');
+        });
+
+        GorgiasChat.on('widget:closed', function(data) {
+          document.body.classList.remove('gorgias-button-show');
+          console.log('gorgias:closed');
+        });
+      })
+    });
+  </script>
+{% endif %}

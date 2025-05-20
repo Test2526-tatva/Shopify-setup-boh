@@ -1,0 +1,146 @@
+@use './mixins/breakpoints' as *;
+@use './modules/variables' as *;
+@use './mixins/typography';
+
+
+
+// Section: 404 Main
+.main-404 {
+  &__title {}
+  &__description {}
+  &__button-title {}
+  &__button-url {}
+
+  // Block: Cards
+  .cards {
+    &__title {}
+    &__button-title {}
+    &__button-url {}
+    &__image {}
+  }
+}
+
+.underline_link{
+  font-size: 16px;
+  transition: all .5s;
+  padding-bottom: 1px;
+  display: inline-block;
+  line-height: 1.3;
+  border-bottom: 1px solid $BohBrown;
+  margin-bottom: 13px;
+
+&:hover{
+    text-decoration: none;
+    transition: all .5s;
+    border-color: transparent;
+    
+  }
+}
+.main-404{
+  display: flex;
+  margin: 0 -15px;
+  flex-wrap: wrap;
+  padding-bottom: 40px  ;
+  h3{
+    @include media-breakpoint-down(xl){
+     font-size: 33px;
+      }
+      @include media-breakpoint-down(md){
+        font-size: 28px;
+         }
+  }
+  .left-content{
+    flex: 0 0 34%;
+    max-width: 34%;
+    padding: 0 15px;
+    @include media-breakpoint-down(xl){
+    flex: 0 0 40%;
+    max-width: 40%;
+    }
+    @include media-breakpoint-down(lg){
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 105px;
+      }
+    
+    .main__title-404{
+      margin-bottom: 15px;
+    }
+    .main__description-404{
+      max-width: 380px;
+      margin-bottom: 17px;
+    }
+  }
+  .right-content{
+    flex: 0 0 66%;
+    max-width: 66%;
+    padding: 0 15px;
+    padding-left: 9px;
+    @include media-breakpoint-down(xl){
+      flex: 0 0 60%;
+      max-width: 60%;
+      }
+      @include media-breakpoint-down(lg){
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 15px;
+        }
+    h5{
+      line-height: 0.7;
+      margin-bottom: 21px;
+    }
+    .cards__image{
+      img{
+        width: 100%;
+        @include media-breakpoint-down(md){
+          max-height: 390px;
+        }
+      }
+    }
+    .card-wrap{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -4px;
+      .cards{
+        position: relative;
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 4px;
+        position: relative;
+        @include media-breakpoint-down(md){
+          display: none;
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+        &:first-child{
+          @include media-breakpoint-down(md){
+            display: block;
+          }
+        }
+        .cards__content{
+          position: absolute;
+          top: 33px;
+          left: 20px;
+          color:$white;
+          @include media-breakpoint-down(md){
+            top: 20px;
+          }
+          .cards__title{
+            margin-bottom: 20px;
+          }
+          .underline_link{
+            border-color: $white;
+              
+          &:hover{
+            text-decoration: none;
+            transition: all .5s;
+            border-color: transparent;
+            
+          }
+          }
+        }
+      }
+    }
+  
+  }
+}

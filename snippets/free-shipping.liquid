@@ -1,0 +1,118 @@
+{%- comment -%}{% if settings.free_shipping_enable %}
+{%- endcomment -%}
+  {%-liquid
+    capture dont_use
+      form 'localization'
+        assign currency = form.current_currency.iso_code
+        assign currency_symbol = form.current_currency.symbol
+      endform
+    endcapture
+
+    assign price_limits = settings.price_limits | newline_to_br | split: '<br />'
+    
+    for _price_limit in price_limits
+      assign price_limit = _price_limit | strip
+      assign props = price_limit | split: ':'
+
+      assign limit_currency = props[0] | strip
+      assign limit_amount = props[1] | strip | times: 100
+      
+      if currency == limit_currency 
+        assign free_shipping = limit_amount
+        
+        break
+      endif
+
+    endfor
+  -%}
+
+  {%- comment -%} compute percentage {%- endcomment -%}
+  {%-liquid
+    assign total_value = free_shipping | money_without_currency
+    assign partial_value = cart.total_price | money_without_currency
+    assign percentage = 100 | times: partial_value
+    assign percentage = percentage | divided_by: total_value
+  -%}
+
+{%- comment -%}
+  {% if free_shipping %}    
+  {%- endcomment -%}
+  <div class="cart-drawer__shipping hide-cart-empty" data-amount="{{ percentage }}" data-currency="{{ currency }}" >
+  <h5>Shipping</h5>
+  <div class="shipping-detail">
+    <p>
+      {% assign X = free_shipping | minus: cart.total_price %}
+      {% assign Y = X | money_without_trailing_zeros %}
+      {% capture X %}
+        <span class="free-shipping__amount"></span>
+      {% endcapture %}
+
+      {% if cart.total_price >= free_shipping %}
+        {{ settings.free_shipping_unlock }}
+      {% else %}
+        {{ settings.free_shipping_before | replace: '$X', Y }}
+      {% endif %}
+    </p>
+
+    <div class="tooltip">
+      <div class="tooltip__icon">
+        <img src="{{ 'icon-info.svg' | asset_url }}" alt="">
+      </div>
+      
+      <div class="tooltip__popup">
+        <div class="tooltip__box">
+          {% capture list_id %}
+            {% render 'klaviyo-list-id' %}
+          {% endcapture %}
+          
+          {% if cart.total_price >= free_shipping %}
+            {% assign list_id = list_id | strip %}
+            {% if list_id == 'MDptBM' or list_id == 'RQJ93J' %}
+            <p>
+              {{ settings.info_nz_au }}
+              {% if settings.info_nz_au_link != blank %}
+                <a href="{{ settings.info_nz_au_link }}">
+                  Learn more
+                </a>
+              {% endif %}
+            </p>
+            {%  elsif list_id == 'R2j9aa' %}
+              <p>
+                {{ settings.info_uk }}
+                {% if settings.info_uk_link != blank %}
+                  <a href="{{ settings.info_uk_link }}">
+                    Learn more
+                  </a>
+                {% endif %}
+              </p>
+            {%  elsif list_id == 'Y4eEm4' %}
+              <p>
+                {{ settings.info_us }}
+                {% if settings.info_us_link != blank %}
+                  <a href="{{ settings.info_us_link }}">
+                    Learn more
+                  </a>
+                {% endif %}
+              </p>
+            {% else %}
+            {% endif %}
+          {% else %}
+          <p>{{settings.free_shipping_tooltip_text | replace: '$X', Y }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+    <style>
+      .cart-drawer__shipping::before {
+        width: {{ percentage }}% !important;
+      }
+
+      [data-amount="0.00"] .free-shipping__wrap::before {
+        width: 100% !important;
+      }
+    </style>
+    {%- comment -%}
+  {% endif %}
+{% endif %}{%- endcomment -%}

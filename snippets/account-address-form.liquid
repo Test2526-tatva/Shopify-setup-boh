@@ -1,0 +1,90 @@
+<div class="account-page__form accounts__form">
+  <div class="heading-wrap">
+  <h5>
+    {% if edit %}
+      Edit Address
+    {% else %}
+      Add New Address
+    {% endif %}
+  </h5>
+  <a href="/account/addresses" class="add-address">
+     Back to Addresses 
+  </a>
+  </div>
+  <fieldset class="input__grid"> 
+  <div>   
+    <label for="">First Name*</label>
+    <input placeholder="First Name*" class="input__field" type="text" name="address[first_name]" value="{{ address.first_name }}" required />
+  </div>
+  <div>
+    <label for="">Last Name*</label>
+    <input placeholder="Last Name*" class="input__field" type="text" name="address[last_name]" value="{{ address.last_name }}" required />
+   </div>  
+  </fieldset>
+  <fieldset>
+    <label for="">Company*</label>
+    <input placeholder="Company  (Optional)" class="input__field" type="text" name="address[company]" value="{{ address.company }}" />
+  </fieldset>
+
+  <fieldset>
+    <label for="">Street Address*</label>
+    <input placeholder="Street Address*" class="input__field" type="text" name="address[address1]" value="{{ address.address1 }}" required />
+  </fieldset>
+
+  <fieldset class="input__grid">
+    <div>
+    <label for="">City*</label>
+    <input placeholder="City" class="input__field" type="text" name="address[city]" value="{{ address.city }}" required />
+    </div>
+    <div>
+    <label for="">Postcode*</label>
+    <input placeholder="Postcode/Zip" class="input__field" type="text" name="address[zip]" value="{{ address.zip }}" required />
+    </div>
+  </fieldset>
+
+  <fieldset class="input__grid">  
+  <div class="d-none">
+    <label for="">Country*</label>
+      <select class="input__field custom-select" name="address[country]" autocomplete="country">
+        {% if edit %}
+          <option value="{{ address.country }}" selected>{{ address.country }}</option>
+        {% endif %}    
+        {{ all_country_option_tags }}
+      </select>
+    </div>
+    <div>
+      <label for="">Phone Number*</label>
+    <input placeholder="Phone Number" class="input__field" type="text" value="{{ address.phone }}" name="address[phone]"        />
+    </div>
+  </fieldset>
+  <fieldset class="input__checkbox">
+    <label class="input__checkbox--container">
+      <input type="checkbox" name="address[default]" value="1" />
+      <span class="checkmark"></span>
+      <span>Set as Deault</span>
+    </label>
+  </fieldset>
+
+  <fieldset class="button__grid">
+    <button type="submit" class="button primary-button--dark primary-button--dark--light-bg">
+    {% if edit %}
+      Edit Address
+    {% else %}
+      Add Address
+    {% endif %}
+    </button>
+    <a class="account-page__cancel underline-link" href="#">Cancel</a>
+    
+  </fieldset>     
+  {% comment %}
+  {% if edit %}
+    <div class="account-page__form-row account-page__form-row--centered">
+      <a class="account-page__cancel" href="#"> Cancel </a>
+    </div>
+  {% else %}  
+    <div class="account-page__form-row account-page__form-row--centered">
+      <a class="logout-link" href="#"> Log Out </a>
+    </div>
+  {% endif %}
+  {% endcomment %}
+</div>

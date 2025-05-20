@@ -1,0 +1,190 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Orion - SA",
+    "theme_version": "1.0.0",
+    "theme_author": "Studio Almond",
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "t:settings_schema.logo.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "t:settings_schema.logo.settings.favicon.label",
+        "info": "t:settings_schema.logo.settings.favicon.info"
+      }
+    ]
+  },
+  {
+    "name": "Store Country",
+    "settings": [
+      {
+        "id": "store_country",
+        "label": "Country",
+        "type": "select",
+        "default": "NZ",
+        "options": [
+          {
+            "value": "US",
+            "label": "US"
+          },
+          {
+            "value": "AU",
+            "label": "AU"
+          },
+          {
+            "value": "NZ",
+            "label": "NZ"
+          },
+          {
+            "value": "UK",
+            "label": "UK"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Default"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_delay",
+        "label": "Newsletter: Delay",
+        "default": "5",
+        "info": "Seconds before the newsletter appear"
+      },
+      {
+        "id": "newsletter_title",
+        "type": "text",
+        "label": "Newsletter Title",
+        "default": "Subscribe"
+      },
+      {
+        "id": "newsletter_desc",
+        "type": "textarea",
+        "label": "Newsletter Description",
+        "default": "Newsletter description. (Text is coming from schema)"
+      },
+      {
+        "id": "note",
+        "type": "text",
+        "label": "Note (text beside button)",
+        "default": "*Excludes Sale Item"
+      },
+      {
+        "type": "header",
+        "content": "Success"
+      },
+      {
+        "type": "text",
+        "id": "success_title",
+        "label": "Success Title",
+        "default": "Thanks for Subscribing"
+      },
+      {
+        "type": "richtext",
+        "id": "success_message",
+        "label": "Success Message",
+        "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+      },
+      {
+        "type": "header",
+        "content": "Cookie"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_dismissed",
+        "label": "Newsletter: Dismiss",
+        "default": "7",
+        "info": "Days to wait before showing the popup again, if it gets dismissed."
+      },
+      {
+        "type": "text",
+        "id": "newsletter_success",
+        "label": "Newsletter: Success",
+        "default": "365",
+        "info": "Days to wait before showing the popup again, if the form gets submitted."
+      }
+    ]
+  },
+  {
+    "name": "Shipping Data",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cart Panel"
+      },
+      {
+        "type": "checkbox",
+        "id": "free_shipping_enable",
+        "label": "Enable \/ Disable Free Shipping",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "free_shipping_before",
+        "label": "Before unlock Content",
+        "default": "$X till free shipping."
+      },
+      {
+        "type": "textarea",
+        "id": "price_limits",
+        "label": "Set Currencies and Amount",
+        "default": "NZD:75\nUSD:50",
+        "info": "Per line each currency format as USD:Price"
+      },
+      {
+        "type": "textarea",
+        "id": "free_shipping_unlock",
+        "label": "After unlock Content",
+        "default": "You qualify for free shipping"
+      }
+    ]
+  },
+  {
+    "name": "Free Shipping Info",
+    "settings": [
+      {
+        "id": "info_nz_au",
+        "type": "textarea",
+        "label": "Info for NZ and AU",
+        "default": "Free shipping on all orders over $129."
+      },
+      {
+        "id": "info_nz_au_link",
+        "type": "url",
+        "label": "Info Link for NZ and AU"
+      },
+      {
+        "id": "info_uk",
+        "type": "textarea",
+        "label": "Info for UK",
+        "default": "Free shipping on all orders over £70."
+      },
+      {
+        "id": "info_uk_link",
+        "type": "url",
+        "label": "Info Link for UK"
+      },
+      {
+        "id": "info_us",
+        "type": "textarea",
+        "label": "Info for US",
+        "default": "Free shipping on all orders over $89."
+      },
+      {
+        "id": "info_us_link",
+        "type": "url",
+        "label": "Info Link for US"
+      }
+    ]
+  }
+]

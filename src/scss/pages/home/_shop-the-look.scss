@@ -1,0 +1,241 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+.shop-the-look {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 30px;
+  max-width: 100%;
+  background-color: #FFFFFF;
+
+  &__image-container {
+    width: 50%;
+    padding-right: 15px;
+  }
+
+  &__main-image {
+    width: 100%;
+    height: 752px     ;
+    object-fit: cover;
+  }
+
+  &__content {
+    max-width: 557px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  &__title {
+    color: $BohBrown;
+    margin-bottom: 15px;
+  }
+
+  &__description {
+    font-family: $freightsans-pro;
+    font-size: 18px;
+    font-weight: 350;
+    line-height: 23px;
+    color: $BohBrown;
+    margin-bottom: 53px;
+
+  }
+
+  &__product-slider {
+    position: relative;
+  }
+
+  &__slider-arrows {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  &__arrow {
+    background: none;
+    border: none;
+    color: #6D4F39;
+    font-size: 24px;
+    cursor: pointer;
+
+    &--prev {
+      // Add any specific styles for previous arrow
+    }
+
+    &--next {
+      // Add any specific styles for next arrow
+    }
+  }
+
+  &__product-grid {
+    display: flex;
+    gap: 20px;
+    
+    .product-card {
+     min-width: auto;
+
+    }
+  }
+
+  &__product-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__product-image-container {
+    width: 100%;
+    background-color: #F5F5F5;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__metal-swatches {
+    display: flex;
+    gap: 6px;
+  }
+
+  &__metal-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #6D4F39;
+
+    &--gold {
+      background-color: #D3BE97;
+    }
+
+    &--silver {
+      background-color: #DBDBDB;
+    }
+
+    &--rose-gold {
+      background-color: #DEAF94;
+    }
+
+    &--yellow-gold {
+      background-color: #F6D39B;
+    }
+  }
+
+  &__product-title {
+    font-family: $freightsans-pro;
+    font-weight: 600;
+    color: #6D4F39;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  &__product-price {
+    font-family: $freightsans-pro;
+    font-weight: 400;
+    color: #6D4F39;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  @include media-breakpoint-down(xl) {
+    
+    &__content {
+      max-width: 360px;
+    }
+  }
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+    padding: 60px 15px;
+
+    &__image-container,
+    &__content {
+      width: 100%;
+      padding-right: 0;
+    }
+
+    &__main-image {
+      height: 402px;
+    }
+
+    &__title {
+      margin-top: 2px;
+    }
+
+    
+  &__description {
+    line-height: 21px;
+  }
+
+    &__content {
+      margin-top: 60px;
+      max-width: 100%;
+
+      .shop-the-look__slider-arrows
+      {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        width: 100%;
+        justify-content: space-between;
+        z-index: 99;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    
+  }
+}
+
+
+.page--about
+{
+  .shop-the-look 
+  {
+    padding: 60px 30px;
+    // gap: 29px;  
+    &__main-image {
+      height: 600px;
+    }
+
+    &__content {
+      max-width: 50%;
+      padding: 40px 30px;
+    }
+
+    &__title {
+      margin-bottom: 20px;
+    }
+
+    
+    @include media-breakpoint-down(md) {
+      padding: 30px 15px;
+      &__main-image {
+        height: 289px;
+      }
+      
+      &__content {
+        max-width: 150%;
+        padding: 40px 30px !important;
+        padding-bottom: 100px !important;
+      }
+
+      &__description {
+        margin-bottom: 26px;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<div class="blog-filters">
+  <div class="blog-filters__wrapper">
+    <ul class="blog-filters__list">
+      <li class="blog-filters__item">Filter By</li>
+      <li class="blog-filters__item">
+        <a href="/blogs/featured-projects"
+          class="blog-filters__category {% if current_tags == blank %}active{% endif %}">All</a>
+      </li>
+
+      {% for tag in blog.all_tags %}
+      {% unless tag contains "Filter:" %}
+      {% continue %}
+      {% endunless %}
+
+      {% assign tag_label = tag | replace: 'Filter:', '' | strip %}
+
+      <li class="blog-filters__item">
+        <a href="{{ blog.url }}/tagged/{{ tag | handleize }}"
+          class="blog-filters__category {% if current_tags contains tag %}active{% endif %}">
+          {{ tag_label }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

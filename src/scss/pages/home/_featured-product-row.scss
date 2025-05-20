@@ -1,0 +1,162 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+// Section: Featured Product Row
+.featured-product-row {
+
+  .product-row__container {
+    padding: 120px 30px;
+  }
+
+  .product-row__header {
+    align-items: start;
+    margin-bottom: 48px;
+    gap: 20px;
+    &--left {
+      h5 {
+
+        margin-bottom: 36px;
+        line-height: 16px;
+      }
+    }
+
+    &--right {
+      max-width: 555px;
+      position: relative;
+
+      p {
+        @include typography.p-medium;
+        color: $BohBrown;
+        margin-bottom: 32px;
+      }
+
+    }
+
+  }
+
+  .featured-product-row--prev,
+  .featured-product-row--next {
+    background: none;
+    position: absolute;
+    border: none;
+    color: #6d4f39;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 99;
+  }
+
+  .product-row__grid {
+    overflow: initial;
+  }
+
+  .featured-product-row-swiper-wrapper {
+    position: relative;
+
+    .featured-product-row--prev,
+    .featured-product-row--next {
+     
+      top: 36%;
+      transform: translateY(-50%);
+    }
+
+    .featured-product-row--next {
+      right: 0;
+    }
+  }
+
+  .arrow_position_top
+  {
+    .featured-product-row--prev,
+    .featured-product-row--next {
+      position: inherit;
+    }
+  }
+  
+  @include media-breakpoint-down(lg) {
+    .product-row__container {
+      padding: 60px 15px;
+    }
+
+    .product-row__header {
+      .product-row__title {
+        margin-bottom: 40px;
+      }
+
+      .button {
+        max-width: fit-content;
+      }
+    }
+
+    .product-row__grid
+    {
+      margin-bottom: 10px;
+    }
+
+  }
+  
+  @include media-breakpoint-down(md) {
+    .product-row__header {
+      margin-bottom: 39px;
+      &--left {
+        h5 {
+
+          margin-bottom: 42px;
+        }
+      }
+      
+      &--right {
+  
+        p {
+          margin-bottom: 39px;
+        }
+  
+      }
+    }
+
+    .product-row__grid
+    {
+      padding-bottom: 20px;
+    }
+
+  }
+
+}
+
+.page--about
+{
+  .featured-product-row {
+
+    .product-row__container {
+      padding: 60px 30px;
+
+      .product-row__grid
+      {
+        gap: 0;
+        margin: 0;
+      }
+
+      .product-row__header {
+        &--right {
+          p {
+            margin-bottom: 34px;
+          }
+        }
+    
+      }
+      @include media-breakpoint-down(md) {
+        padding: 60px 15px;
+
+        
+      .product-row__header {
+        &--right {
+          p {
+            margin-bottom: 38px;
+          }
+        }
+    
+      }
+      }
+    }
+  }
+}

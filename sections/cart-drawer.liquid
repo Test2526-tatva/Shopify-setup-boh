@@ -1,0 +1,222 @@
+<script>// document.body.classList.add('cart-drawer--show');
+</script><div class="cart-drawer">
+<div class="cart-drawer__container" data-ajax-cart-section>
+  <!-- <form action="{{ routes.cart_url }}" method="post" class="cart-drawer__form" > -->
+  <div class="cart-drawer__header cart-item__count--{{ cart.items.size }} " >
+    <h3>
+      Your Cart 
+
+      {% assign cart_count = 0 %}
+      {% for item in cart.items %}
+        {% assign cart_count = cart_count | plus: item.quantity %}
+      {% endfor %}
+
+      {% comment %}
+      {% if cart_count > 0 %}
+        <span class="separator"></span>       
+        <span class="cart-count">
+          {{ cart_count }} 
+          Item{% if cart_count > 1 %}s{% endif %}
+        </span>
+      {% endif %}
+      {% endcomment %}
+
+    </h3> 
+    <a href="{{ routes.cart_url }}" class="view-cart">
+        View Cart
+    </a>
+
+    <div class="cart-drawer__close" data-ajax-cart-static-element="app-1">
+      <a class="cart-drawer__close--desktop" href="javascript:void(0);">
+        {% render 'icon-close' %}
+      </a>
+    </div>
+  </div>
+  
+  {% render 'cart-shipping' %}
+
+  <div class="cart-drawer__main cart" data-ajax-cart-section-scroll>
+
+  <div class="cart-drawer__empty show-cart-empty">
+    <p>Your cart is empty</p>
+  </div>
+
+    <!-- cart-drawer-items -->
+    {% render 'cart-drawer-items' %}
+  </div>
+
+
+  <div class="cart-drawer__footer hide-cart-empty">
+    
+    {% comment %}
+    <div class="cart-drawer__note">
+      {% render 'cart-note' %}
+    </div>
+    {% endcomment %}
+
+            <div class='accordion'>
+              <div class='accordion-item'>
+                <div class='accordion-item__label'>
+                  <label>Let’s wrap it up for you</label>
+                  <div class='accordion-item__icon'>
+                    <div class='active'>
+                      {% render 'icon-arrow-up' %}
+                    </div>
+                    <div class='default'>
+                      {% render 'icon-arrow-down' %}
+                    </div>
+                  </div>
+                </div>
+                <div class='accordion-item__collapse'>
+                  <div class='accordion-item__content'>
+                    <p>Message goes here</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="cart-drawer__note">
+                  {% render 'cart-note' %}
+                </div>
+              </div>
+              <div class='accordion-item'>
+                <div class='accordion-item__label'>
+                  <label>Shipping and returns</label>
+                  <div class='accordion-item__icon'>
+                    <div class='active'>
+                      {% render 'icon-arrow-up' %}
+                    </div>
+                    <div class='default'>
+                      {% render 'icon-arrow-down' %}
+                    </div>
+                  </div>
+                </div>
+                <div class='accordion-item__collapse'>
+                  <div class='accordion-item__content'>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. 
+                      Condimentum aliquam orci id et quis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+    {% comment %}
+    <div class="cart-drawer__subtotal">
+      <div class="cart-drawer__subtotal--left">
+        <h6>Subtotal</h6>
+      </div>
+      <div class="cart-drawer__subtotal--right">
+        <h6>{{ cart.total_price | money_without_trailing_zeros }}</h6>
+        <div class="payment-options">
+          <img style="max-height: 14px; height: 14px;" src="{{ 'afterpay.svg' | asset_url }}" /> on 4x {{ cart.total_price | divided_by: 4 | money_with_currency }}
+        </div>        
+      </div>
+    </div>
+    {% endcomment %}    
+
+    <div class='shipping-terms'>
+      <p>Shipping & taxes calculated at checkout.</p>
+    </div>
+    <div class="cart-drawer__checkout-btn">
+      {% if cart.items.size > 0 %}
+        <a href="/checkout" class="button primary-button--dark primary-button--dark--light-bg">
+          Checkout
+        </a>
+      {% endif %}
+    </div>
+    <div class="cart-page__continue-btn ">
+      <a href="/collections/all" class="button  primary-button--dark primary-button--dark--light-bg">
+        Continue Shopping
+      </a>
+    </div>
+  </div>
+
+
+  <div class="cart-drawer__footer cart-drawer__footer--empty show-cart-empty">
+    <div class="cart-drawer__checkout-btn">
+      <a href="/collections/new-arrivals" class="link-btn">
+        explore new arrivals
+      </a>
+    </div>
+    <img src="{{ 'Collections.png' | asset_img_url: 'master' }}" />
+
+  </div>
+
+
+  <!-- </form> -->
+</div>
+
+<!-- cart loading overlay -->
+<div class="cart-drawer__loader cart-loader">
+  <div class="cart-loader__element"><!-- place any loading indicator inside text, image or anything else, will always be vertically and horizontally centered. -->
+    <!-- <h4>Loading...</h4> -->
+  </div>
+</div>
+</div>
+
+<div class="cart-drawer__overlay"></div>
+
+
+<script type="application/json" data-ajax-cart-initial-state>
+  {{ cart | json }}
+</script>
+<script type="application/json" data-ajax-cart-configuration>
+  {
+    "addToCartCssClass": "cart-drawer--show"
+  }
+</script>
+<script type="module">
+  import '{{ "liquid-ajax-cart-v1.10.1.js" | asset_url }}';
+  import { cartRequestUpdate } from '{{ "liquid-ajax-cart-v1.10.1.js" | asset_url }}'
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    $(document).on('click', '.cart-dropdown__swatch-list .cart-dropdown__option', function(e) {
+      e.preventDefault();
+
+      const oldItem = $(this).closest('.cart-dropdown').data('item-key');
+      const newItem = $(this).data('variant-id');
+
+      
+      let qty = +$(this).closest('.cart-dropdown').data('item-quantity');
+      document.querySelectorAll(`.cart-drawer [data-item-id='${ newItem }']`).forEach(el => {
+        qty += +el.getAttribute('data-item-quantity');
+      });
+      
+      const updates = {
+        [oldItem]: 0,
+        [newItem]: qty,
+      };
+  
+      cartRequestUpdate({
+        updates
+      });
+  
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement"
+    }, {
+      "type": "checkbox",
+      "id": "enable_announcement",
+      "label": "Enable",
+      "default": true
+    }, {
+      "type": "text",
+      "id": "announcement",
+      "label": "Text"
+    }
+
+  ]
+}
+{% endschema %}

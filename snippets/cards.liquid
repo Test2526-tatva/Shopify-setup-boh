@@ -1,0 +1,27 @@
+{%- comment -%}
+Available variables:
+- block
+  - id
+  - shopify_attributes
+  - type
+  - settings
+    - title (text)
+    - button_title (text)
+    - button_url (text)
+    - image (image_picker)
+{%- endcomment -%}
+
+<div class="cards" {{ block.shopify_attributes }}>
+  <div class="cards__content">
+    <h3 class="cards__title">{{ block.settings.title }}</h3>
+    <a href="{{ block.settings.button_url }}" class="cards__button-title underline_link">{{ block.settings.button_title }}</a>
+  </div>
+  <div class="cards__image">
+    <img
+        class="max-height-image"
+        src="{{ block.settings.image | image_url }}"
+        alt="{{ block.settings.title }}">
+  </div>
+</div>
+
+

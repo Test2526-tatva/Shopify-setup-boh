@@ -1,0 +1,140 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+.accounts {
+  &__navigation {    
+    margin-bottom: auto;
+    
+    &--menu {
+
+      &--active {
+        display: none;
+      }
+      ul {
+        margin: 0 0 20px;
+        padding: 0;
+        list-style: none;
+        
+        li {
+          margin-bottom: 3px;
+          
+          a {
+            display: inline-block;
+            color: $inactive;
+            transition: $transition;
+            text-decoration: none;
+            @include typography.p-large;
+
+            &.active,
+            &:hover {
+              color: $darkcharcoal;
+            }
+          }
+        }
+      }
+      &.active {
+        ul {
+          display: block;
+          border-radius: 0px 0px 8px 8px;
+        }        
+      }
+    }
+  }
+  &__sidebar {
+
+    .column-addresses {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      @include media-breakpoint-down(md) { 
+        grid-template-columns: 1fr;
+      }
+    }
+    &--block {
+      //margin-bottom: 28px;
+      margin-top: 50px;
+      
+      .action-list {
+        margin: 0;
+        padding: 18px 0 0;
+        list-style: none;
+
+        li {
+        }
+      }
+      &.back-order {
+        &__btn {
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(lg)  {
+    &__sidebar {
+      display: none;
+    }
+    &__navigation {
+      &--menu {
+        //top: calc(var(--nav-height) + 60px);
+        top: var(--nav-height);
+        min-height: auto;
+        height: fit-content;
+        position: sticky;
+
+        &--active {
+          padding: 10px 18px;
+          background: $bglightgrey;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          span {
+            @include typography.h6;
+            font-weight: 500;
+          }
+        }
+
+        ul {
+          display: none;
+          background: $bglightgrey;
+          padding: 10px 15px;
+          margin-bottom: 20px;
+
+          li {
+            margin-bottom: 10px;
+
+            a {
+              display: block;
+            }
+          }
+        }
+
+        &.active {
+          ul {
+            display: block;
+            border-radius: 0px 0px 8px 8px;
+
+            li {
+              a {
+                color: $inactive;
+
+                &:hover {
+                  color: $darkcharcoal;
+                }
+              }
+            }
+          }
+          .accounts__navigation--menu--active {
+            border-radius: 8px 8px 0px 0px;
+            
+            svg {
+              transform: rotate(-180deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}

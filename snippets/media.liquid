@@ -1,0 +1,20 @@
+{% case media.media_type %}
+  {% when 'image' %}
+    {{
+      media
+      | image_url: width: 3200
+      | image_tag: widths: '3200, 2600, 2200, 1800, 1400, 1000, 800', sizes: '(min-width: 768px) 75vw, 100vw'
+    }}
+  {% when 'external_video' %}
+    {% if media.host == 'youtube' %}
+      {{ media | external_video_url: color: 'white' | external_video_tag }}
+    {% elsif media.host == 'vimeo' %}
+      {{ media | external_video_url: loop: '1', muted: '1', autoplay: '0', quality: '4k' | external_video_tag }}
+    {% endif %}
+  {% when 'video' %}
+    {{ media | video_tag: autoplay: true, loop: true, muted: true }}
+  {% when 'model' %}
+    {{ media | model_viewer_tag }}
+  {% else %}
+    {{ media | media_tag }}
+{% endcase %}

@@ -1,0 +1,27 @@
+{%- liquid
+  comment
+  
+  assign country = '--'
+  assign host = request.host | replace: '.myshopify.com', '' | handle
+
+
+  case host
+    when 'example-usa' or 'example.com'
+      assign country = 'US'
+      
+    when 'example-au' or 'example.com.au'
+      assign country = 'AU'
+    
+    when 'example-nz' or 'example.co.nz'
+      assign country = 'NZ'
+      
+    when 'example-uk' or 'example.co.uk'
+      assign country = 'UK'  
+
+    else    
+  endcase
+
+  endcomment
+
+  echo settings.store_country
+-%}

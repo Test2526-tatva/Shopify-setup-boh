@@ -1,0 +1,326 @@
+@use "./variables" as *;
+@use "../mixins/breakpoints" as *;
+@use "../mixins/typography";
+
+.product-review {
+  padding: 93px 40px 85px;
+
+  .spr-pagination-next {
+    margin-left: 0;
+  }
+
+  &__image {
+    aspect-ratio: 1.60326086957;
+    max-width: 500px;
+    margin-left: auto;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: translate(60px, -14px);
+    }
+  }
+
+  @include media-breakpoint-down(xl) {
+    &__grid {
+      grid-template-columns: 1fr;
+      padding-right: 40px;
+
+      &--right {
+        display: none;
+      }
+    }
+
+    &__image {
+      margin-top: 20px;
+    }
+
+    padding-bottom: 80px;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 76px 16px;
+    position: relative;
+  }
+}
+
+#product-review {
+  & * {
+    font-family: "freight-sans-pro", monospace;
+  }
+  .spr-summary-actions-togglereviews {
+    @include typography.h6;
+  }
+  .spr-container {
+    background-color: $white;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 325px 1fr;
+    gap: 191px;
+    border: 0;
+    padding: 0;
+  }
+
+  .spr-content {
+    margin-top: -14px;
+  }
+
+  [class^="spr-icon-"]:before,
+  [class*=" spr-icon-"]:before {
+    content: url('data:image/svg+xml,<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.01804 0L7.36917 4.1459H11.7415L8.20422 6.7082L9.55535 10.8541L6.01804 8.2918L2.48072 10.8541L3.83186 6.7082L0.294544 4.1459H4.6669L6.01804 0Z" fill="%23414042"/></svg>');
+    font-size: 13px !important;
+  }
+  .spr-icon-star-empty:before {
+    content: url('data:image/svg+xml,<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.01804 0.968189L7.08393 4.23885L7.15141 4.4459H7.36917H10.816L8.02823 6.46525L7.85128 6.59342L7.91898 6.80116L8.98428 10.07L6.19402 8.04884L6.01804 7.92136L5.84205 8.04884L3.05179 10.07L4.11709 6.80116L4.18479 6.59342L4.00785 6.46525L1.2201 4.4459H4.6669H4.88466L4.95214 4.23885L6.01804 0.968189Z" stroke="%23414042" stroke-width="0.6"/></svg>');
+  }
+
+  .spr-header-title {
+    margin-top: -12px;
+    margin-left: -4px;
+    span {
+      @include typography.p2;
+      text-transform: none;
+      margin-top: 0px;
+      display: block;
+    }
+  }
+  .spr-summary .spr-starrating {
+    display: none;
+  }
+  .spr-summary .spr-summary-actions-newreview {
+    padding: 0;
+    margin-top: 54px;
+    border: 1px solid $BohBrown;
+
+    &:hover {
+      background-color: $BohBrown;
+      color: $white;
+    }
+  }
+
+  .spr-summary {
+    width: fit-content;
+    gap: 0;
+  }
+
+  .spr-header {
+    display: flex;
+    flex-direction: column;
+  }
+  .spr-header-title {
+    width: fit-content;
+    @include typography.h1;
+  }
+
+  .spr-review {
+    display: grid;
+    grid-template-columns: 269px 498px;
+    padding: 0px 0px 42px 0px;
+    border-top: 1px solid $lines;
+    justify-content: space-between;
+
+    &:first-child {
+      margin-top: 0;
+      padding-top: 43px;
+    }
+    &:not(:first-child) {
+      padding-top: 43px;
+    }
+
+    &:nth-last-child(2) {
+      border-bottom: 1px solid $lines;
+    }
+  }
+
+  .spr-review-content-body {
+    @include typography.p1;
+    margin-top: 10px;
+    &::after {
+      display: inline-block;
+      content: "”";
+    }
+
+    &::before {
+      display: inline-block;
+      content: "“";
+    }
+  }
+
+  [class^="spr-icon-"]:before,
+  [class*=" spr-icon-"]:before {
+    font-size: 12px;
+  }
+
+  .spr-review-header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spr-pagination {
+    border-top: 0;
+    padding: 26px 0 0;
+  }
+
+  .spr-review-header-title {
+    @include typography.h3;
+    margin-bottom: 3px;
+
+    &::after {
+      display: inline-block;
+      content: "”";
+    }
+
+    &::before {
+      display: inline-block;
+      content: "“";
+    }
+  }
+  .spr-review-header-byline {
+    @include typography.p1;
+    margin-top: 6px;
+    margin-bottom: 7px;
+  }
+  .spr-summary .spr-summary-actions-newreview {
+    padding: 12px 15px;
+    min-width: 325px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition;
+    margin-top: 40px;
+
+    &:hover {
+    }
+  }
+
+  .spr-form {
+    padding-top: 0;
+    border: none;
+  }
+
+  .spr-form-title {
+    margin-bottom: 30px;
+  }
+
+  .spr-form-input {
+    width: 100%;
+    padding: 8px 0px;
+    @include typography.caption;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid $BohBrown;
+    outline: none !important;
+
+    &::placeholder {
+      color: $BohBrown;
+    }
+  }
+
+  .spr-button-primary {
+    font-family: "Founders Grotesk Mono", monospace;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -0.24px;
+    text-transform: uppercase;
+    padding: 10.5px;
+    min-width: 170px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    background-color: $BohBrown;
+    color: $white;
+    &[type="submit"] {
+      margin-bottom: 58px;
+    }
+
+    &:hover {
+      background-color: $white;
+      color: $BohBrown;
+    }
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+  }
+
+  .spr-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .spr-pagination-next,
+  .spr-pagination-prev {
+    font-family: "futura-pt", monospace;
+    padding: 10.5px;
+    min-width: 170px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: 1px solid $lines;
+    color: $BohBrown;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $BohBrown;
+      color: $white;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .spr-container {
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
+
+    .spr-header {
+      padding-bottom: 57px;
+      margin-bottom: 18px;
+      margin-inline: -20px;
+      padding-inline: 20px;
+    }
+
+    .spr-reviews {
+    }
+
+    .spr-review {
+      grid-template-columns: 1fr;
+      padding: 0px 0px 38px 0px;
+      &:first-child {
+        padding-top: 32px;
+      }
+
+      &:not(:first-child) {
+        padding-top: 32px;
+      }
+    }
+
+    .spr-review-content-body {
+      margin-top: 4px;
+    }
+
+    .spr-header-title {
+    }
+
+    .spr-summary .spr-summary-actions-newreview,
+    .spr-summary-actions,
+    .spr-summary {
+      width: 100%;
+    }
+
+    .spr-summary .spr-summary-actions-newreview {
+      justify-content: flex-start;
+    }
+  }
+}

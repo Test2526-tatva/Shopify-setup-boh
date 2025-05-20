@@ -1,0 +1,44 @@
+@use "../../modules/variables" as *;
+@use "../../mixins/breakpoints" as *;
+@use "../../mixins/typography";
+
+.product-more {
+    padding: 120px 30px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 48px;
+    }
+
+    &__arrows {
+        display: flex;
+        gap: 24px;
+    }
+
+    @include media-breakpoint-down(md) {
+        padding: 60px 15px;
+
+        &__slider {
+            position: relative;
+        }
+
+        &__arrow {
+            z-index: 111;
+            &--prev {
+                position: absolute;
+                top: 31%;
+                transform: translateY(-50%);
+                left: 15px;
+            }
+
+            &--next {
+                position: absolute;
+                top: 31%;
+                right: 15px;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

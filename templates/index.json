@@ -1,0 +1,427 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "93370c08-4e9e-47ae-9dae-df7e302b6261": {
+      "type": "hero",
+      "blocks": {
+        "announcement_3aGnUc": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping on orders over $300",
+            "url": "",
+            "text_color": "#59341a",
+            "bg_color": "#b8dde1"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_3aGnUc"
+      ],
+      "settings": {
+        "enable_announcement": true,
+        "title": "Pounamu Toki",
+        "caption": "A different way to wear or share precious pounamu, our rare tāonga.",
+        "button_title": "Shop Collection",
+        "button_url": "shopify://collections/pounamu",
+        "button_style": "primary-button--outline-light",
+        "bg_image_desktop": "shopify://shop_images/Hero_Banner_Image.png",
+        "bg_image_devices": "shopify://shop_images/mobile.png",
+        "text_color": "light",
+        "title_position": "title-top",
+        "content_position": "content-bottom"
+      }
+    },
+    "0ae2e495-a2e2-4f7e-b58b-d9699995b712": {
+      "type": "product_row",
+      "blocks": {
+        "7c791a6d-9f70-4107-bdf5-ade46b98924c": {
+          "type": "products",
+          "settings": {
+            "tab_title": "RINGS",
+            "products": [
+              "solid-rose-gold-droplet-ring",
+              "feather-kisses-ring",
+              "lil-stacker-ring",
+              "lil-tiki-ring",
+              "lil-hug-and-kisses-ring",
+              "ring-sizer-placeholder",
+              "topaz-droplet-ring-sterling",
+              "miromiro-feather-ring"
+            ]
+          }
+        },
+        "5d39e6e6-3708-42e2-b073-08fe89c6cd20": {
+          "type": "products",
+          "settings": {
+            "tab_title": "Under $150",
+            "products": [
+              "youre-great-gift-card",
+              "petite-kiwi-pendant",
+              "a-drop-in-the-ocean-bracelet-pendant-gift-set",
+              "half-glaze-ceramic-mug",
+              "petite-tui-pendant",
+              "fantail-petite-pendant",
+              "bohse-1"
+            ]
+          }
+        },
+        "2eb800c8-01ca-4d54-bf3d-6a18459ea007": {
+          "type": "products",
+          "settings": {
+            "tab_title": "Necklaces",
+            "products": [
+              "fine-diamond-curb-chain",
+              "light-curb-chain",
+              "light-round-cable-chain",
+              "feather-kisses-beadiful-necklace",
+              "lil-hug-and-kisses-beadiful-necklace",
+              "lotus-beadiful-necklace",
+              "beaded-necklace",
+              "mid-curb-chain"
+            ]
+          }
+        },
+        "7181ceec-c6fe-4dd8-a15f-2b4d76ed8f65": {
+          "type": "products",
+          "settings": {
+            "tab_title": "Bracelets",
+            "products": [
+              "drop-in-the-ocean-bracelet",
+              "charm-bracelet",
+              "diamond-bezel-set-necklace-med-diamond",
+              "feather-kisses-beadiful-bracelet",
+              "feather-kisses-bacelet",
+              "karearea-wing-bracelet"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "7c791a6d-9f70-4107-bdf5-ade46b98924c",
+        "5d39e6e6-3708-42e2-b073-08fe89c6cd20",
+        "2eb800c8-01ca-4d54-bf3d-6a18459ea007",
+        "7181ceec-c6fe-4dd8-a15f-2b4d76ed8f65"
+      ],
+      "settings": {
+        "title": "Bestsellers",
+        "pt": -1,
+        "pb": -1,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    },
+    "be1f4800-a1a2-480c-9a1a-ea2797086acb": {
+      "type": "half_half_section",
+      "settings": {
+        "title_small": "ABOUT US",
+        "description": "Boh Runga Jewellery is made to be gifted.Since the launch of our first collection, Birdland in 2007, Boh Runga has become a go-to for meaningful gifts, bought by women as a treat for themselves, for their mothers or daughters, friends and partners; and by men as something special for their loved ones.",
+        "mobile_description": "",
+        "button_title": "Learn more",
+        "button_url": "shopify://pages/bohspoke",
+        "image": "shopify://shop_images/image-44.png",
+        "image_position": "left",
+        "pt": -1,
+        "pb": -1,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    },
+    "d60422e2-eacd-4ae3-8ff1-d040b0064944": {
+      "type": "our_collections",
+      "blocks": {
+        "8333a08c-6acc-4685-a2b9-7ce44de4f2e0": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Graduation Gifts",
+            "bg_image": "shopify://shop_images/mobile.png",
+            "bg_video": "shopify://files/videos/video.mov",
+            "button_title": "Discover",
+            "card_url": "shopify://collections/all-jewellery"
+          }
+        },
+        "dac5e2a7-beb1-48f4-a91a-cd71e29cf933": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Bracelets",
+            "bg_image": "shopify://shop_images/Screenshot_2024-06-22_at_10.44.46_AM.png",
+            "button_title": "Discover",
+            "card_url": "shopify://collections"
+          }
+        },
+        "061e049d-d56f-4615-8c56-4596c64696f1": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Earrings",
+            "bg_image": "shopify://shop_images/Model_shots-132.jpg",
+            "button_title": "Discover",
+            "card_url": "shopify://collections"
+          }
+        }
+      },
+      "block_order": [
+        "8333a08c-6acc-4685-a2b9-7ce44de4f2e0",
+        "dac5e2a7-beb1-48f4-a91a-cd71e29cf933",
+        "061e049d-d56f-4615-8c56-4596c64696f1"
+      ],
+      "settings": {
+        "title": "SHOP OUR COLLECTIONS",
+        "pt": -1,
+        "pb": -1,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    },
+    "hero_Df9Q7n": {
+      "type": "hero",
+      "settings": {
+        "enable_announcement": true,
+        "title": "Bohspoke",
+        "caption": "Make it your own or add a personal touch for a loved one by changing the metal or stone, adjusting chain lengths and ring sizes or engraving a special message or date.",
+        "button_title": "Learn more",
+        "button_url": "shopify://collections",
+        "button_style": "primary-button--light",
+        "bg_image_desktop": "shopify://shop_images/f17b419df15e819a0b85fe0333aa942d_4a26c156-9aeb-48fd-b42e-b755231c5605.png",
+        "text_color": "light",
+        "title_position": "title-top",
+        "content_position": "content-bottom"
+      }
+    },
+    "d26e2811-4b40-4b26-883a-a7b417a52261": {
+      "type": "highlight_banner",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "caption": "",
+        "button_title": "",
+        "button_url": "",
+        "text_color": "light",
+        "text_position": "left",
+        "pt": -1,
+        "pb": -1,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    },
+    "2b4d6329-da04-4922-b1c2-1dfb0ac1be91": {
+      "type": "shop_the_look",
+      "settings": {
+        "title": "Shop the look",
+        "caption": "Lorem ipsum dolor sit amet consectetur. Urna lectus maecenas pretium cursus sed commodo. Lorem ipsum dolor sit amet consectetur. Urna lectus maecenas pretium cursus sed commodo.",
+        "bg_image": "shopify://shop_images/mobile.png",
+        "bg_video": "",
+        "products": [
+          "lil-southern-cross-ring",
+          "lil-tiki-ring",
+          "lotus-ring",
+          "arrow-ring-silver",
+          "solid-rose-gold-droplet-ring"
+        ],
+        "pt": -1,
+        "pb": -1,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    },
+    "9c9226a1-180f-439c-947a-c51404c2576d": {
+      "type": "image_accordions",
+      "blocks": {
+        "b46c28d2-c284-4ec1-91fe-0dd25ce8cf11": {
+          "type": "accordion",
+          "settings": {
+            "title": "Our process",
+            "caption": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+            "button_title": "Learn more",
+            "button_url": "shopify://pages/product-care"
+          }
+        },
+        "39d25c21-558c-4b1a-8a8a-a82a6863b678": {
+          "type": "accordion",
+          "settings": {
+            "title": "Our materials",
+            "caption": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+            "button_title": "Learn more",
+            "button_url": "shopify://pages/bohlabs"
+          }
+        },
+        "15899ea4-db86-4527-a658-398764f5ef03": {
+          "type": "accordion",
+          "settings": {
+            "title": "Our inspiration",
+            "caption": "Boh Runga Jewellery is made to be gifted. Since the launch of our first collection, Birdland in 2007, Boh Runga has become a go-to for meaningful gifts, bought by women as a treat for themselves, for their mothers or daughters, friends and partners; and by men as something special for their loved ones.",
+            "button_title": "Learn more",
+            "button_url": "shopify://pages/bridal-wedding"
+          }
+        }
+      },
+      "block_order": [
+        "b46c28d2-c284-4ec1-91fe-0dd25ce8cf11",
+        "39d25c21-558c-4b1a-8a8a-a82a6863b678",
+        "15899ea4-db86-4527-a658-398764f5ef03"
+      ],
+      "settings": {
+        "background_color": "#b8dde1",
+        "image": "shopify://shop_images/0d1c9c715214949297f57f321d09734f.jpg",
+        "image_position": "left",
+        "pt": 40,
+        "pb": 40,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    },
+    "c5059512-e396-434d-a814-fb256ccb43be": {
+      "type": "featured_product_row",
+      "settings": {
+        "title_small": "featured collection",
+        "large_title": "A Drop in the Ocean",
+        "caption": "Our Drop in the Ocean collection makes the perfect gift for a graduation or someone who plays a significant role in your life and/or the lives of many others. A symbol of achievement and support to carry on with one's journey.",
+        "button_title": "Shop collection",
+        "button_url": "shopify://collections/70-off",
+        "button_style": "primary-button--outline-dark",
+        "products": [
+          "arrow-ring-silver",
+          "a-drop-in-the-ocean-bracelet-pendant-gift-set",
+          "a-drop-in-the-ocean-gift-set-1",
+          "bohse-1",
+          "half-glaze-ceramic-mug"
+        ],
+        "arrow_position_top": false,
+        "pt": -1,
+        "pb": -1,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    },
+    "96d29fd7-3d0e-467c-a0d9-5a10974a001c": {
+      "type": "two_cards",
+      "blocks": {
+        "4c4511a0-67b1-47ac-a3e0-de0a3bbb5b4c": {
+          "type": "slide_card",
+          "settings": {
+            "image": "shopify://shop_images/ea1875197a898dc9d154955badae8c3f_44d843b3-f8e2-459b-9fc9-a556e7860a83.png",
+            "title": "Your stories",
+            "description": "<p>“I purchased my Marigold Locket to celebrate surviving open heart surgery. I had a triple bypass and had the date of the surgery engraved on the back”</p>",
+            "name": "Leanne",
+            "link": "shopify://products/a-drop-in-the-ocean-gift-set-1"
+          }
+        },
+        "slide_card_WfaCRp": {
+          "type": "slide_card",
+          "settings": {
+            "image": "shopify://shop_images/image-44_14e9514e-270b-456d-996d-2b1efd467924.png",
+            "title": "Your stories",
+            "description": "<p>empathize with the buyer Acknowledge the buyer's concerns and provide factual information to address them</p>",
+            "name": "Rita",
+            "link": "shopify://pages/bohlabs"
+          }
+        }
+      },
+      "block_order": [
+        "4c4511a0-67b1-47ac-a3e0-de0a3bbb5b4c",
+        "slide_card_WfaCRp"
+      ],
+      "settings": {
+        "title": "Visit our Store",
+        "image": "shopify://shop_images/afac72995c7463c12f9d6cf74bb4a5b6.jpg",
+        "content": "<p>287 Ponsonby Road<br/>Auckland, New Zealand</p><p>Mon - Fri: 10am - 5:30pm<br/>Sat: 10am - 5pm<br/>Sun: 10am - 5pm</p><p><a href=\"tel:0272553293\" title=\"tel:0272553293\">0272553293</a><br/><a href=\"mailto:hello@bohrunga.com\">hello@bohrunga.com</a></p>",
+        "bg_color": "#59341a",
+        "store_bg_color": "#b8dde1",
+        "pt": -1,
+        "pb": -1,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    },
+    "9c46ff95-7e10-49ec-a4cb-c3717144971f": {
+      "type": "instagram",
+      "blocks": {
+        "images_j4Ad7B": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/3--2-of-2-_2x_f68d3f4f-d6c3-443d-b6f8-632e57884dd8.png",
+            "url": ""
+          }
+        },
+        "images_WdFVkb": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/boh-runga-drop--2--145-of-187-_2x_e9ba045f-ef7b-4ef7-a6de-aab2d36c71a9.png",
+            "url": ""
+          }
+        },
+        "images_B9i4qT": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/img-2208_2x_4237d0fb-9520-4aa0-9b6f-ae93fbfd1c0b.png",
+            "url": ""
+          }
+        },
+        "images_qVyaMV": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/img-1946_2x_336fc189-54da-4713-90a8-536616abdf3d.png",
+            "url": ""
+          }
+        },
+        "images_gekG6L": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/boh-runga-drop--2--171-of-187-_2x_f8c14c38-106c-499e-85f4-0e4524a2a541.png",
+            "url": ""
+          }
+        },
+        "images_G99Pmc": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/boh-runga-oct-shoot--142-of-296-_2x_3d68a869-53ef-44d9-b808-967b4ebc446e.png",
+            "url": ""
+          }
+        },
+        "images_XLqXw7": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/img-0185-2_2x_7a2da20f-bef6-453e-aaed-daea31560c08.png",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "images_j4Ad7B",
+        "images_WdFVkb",
+        "images_B9i4qT",
+        "images_qVyaMV",
+        "images_gekG6L",
+        "images_G99Pmc",
+        "images_XLqXw7"
+      ],
+      "settings": {
+        "title": "@bohrunga",
+        "title_url": "https://www.instagram.com/shopbohrunga/",
+        "pt": -1,
+        "pb": -1,
+        "pt_m": -1,
+        "pb_m": -1
+      }
+    }
+  },
+  "order": [
+    "93370c08-4e9e-47ae-9dae-df7e302b6261",
+    "0ae2e495-a2e2-4f7e-b58b-d9699995b712",
+    "be1f4800-a1a2-480c-9a1a-ea2797086acb",
+    "d60422e2-eacd-4ae3-8ff1-d040b0064944",
+    "hero_Df9Q7n",
+    "d26e2811-4b40-4b26-883a-a7b417a52261",
+    "2b4d6329-da04-4922-b1c2-1dfb0ac1be91",
+    "9c9226a1-180f-439c-947a-c51404c2576d",
+    "c5059512-e396-434d-a814-fb256ccb43be",
+    "96d29fd7-3d0e-467c-a0d9-5a10974a001c",
+    "9c46ff95-7e10-49ec-a4cb-c3717144971f"
+  ]
+}

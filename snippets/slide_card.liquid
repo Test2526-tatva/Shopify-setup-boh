@@ -1,0 +1,40 @@
+{%- comment -%}
+  Available variables:
+  - block
+    - id
+    - shopify_attributes
+    - type
+    - settings
+      - image (image_picker)
+      - title (text)
+      - description (text)
+      - name (text)
+      - link (url)
+      - bg_color (color_background)
+{%- endcomment -%}
+
+<div class='two-cards__card--story'>
+  {% if block.settings.image %}
+    <img
+      class='two-cards__card-image'
+      src='{{ block.settings.image | image_url: width:800 }}'
+      alt='{{ block.settings.title }}'
+    >
+  {% endif %}
+
+  <div class='two-cards__card-content'>
+    <div class='two-cards__card-text'>
+      <h3 class='two-cards__card-title'>
+        {{ block.settings.title }}
+      </h3>
+      <div class='two-cards__card-quote'>
+        <div class='two-cards__card-quote-text'>
+          {{ block.settings.description }}
+        </div>
+        <p class='two-cards__card-name'>
+          <a href='{{ block.settings.link }}' class='two-cards__card-link'>{{ block.settings.name }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

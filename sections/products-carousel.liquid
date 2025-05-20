@@ -1,0 +1,115 @@
+<div class="about-products">
+  <div class="about-products__container">
+    <div class="about-products__heading">
+      <h4>
+        {{ section.settings.title }}
+      </h4>
+      <div class="about-products__heading--actions">
+        {% render 'carousel-arrows' %}
+          {% if section.settings.collection != blank %}
+          {% assign product_collection = section.settings.collection %}
+            <div class="md-hide">
+              <a class="button secondary-button--outline-dark" href="{{ product_collection.url }}">
+                {{ section.settings.button_text }}
+              </a>
+            </div>
+          {% elsif section.settings.button_link != blank %}
+            <div class="md-hide">
+              <a class="button secondary-button--outline-dark" href="{{ section.settings.button_link }}">
+                {{ section.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
+      </div>
+    </div>
+    <div class="about-products__content">      
+      <div class="about-products__carousel">
+
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {% assign product_collection = section.settings.collection %}
+            
+            {% for product in product_collection.products limit: 7 %}
+              <div class="swiper-slide">
+                {% render 'product-card', product: product %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="about-products__button md-show">
+      {% if section.settings.collection != blank %}
+      {% assign product_collection = section.settings.collection %}
+      
+        <a class="button secondary-button--outline-dark" href="{{ product_collection.url }}">
+          {{ section.settings.button_text }}
+        </a>
+      {% else %}
+        <a class="button secondary-button--outline-dark" href="{{ section.settings.button_link }}">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    const swiper = new Swiper(".about-products .swiper", {
+      draggable: true,
+      slidesPerView: 1.2,
+      spaceBetween: 20,
+      grabCursor: true,
+      freeMode: false,
+      navigation: {
+        nextEl: '.about-products .arrow--next',
+        prevEl: '.about-products .arrow--prev'
+      },
+      mousewheel: {
+        forceToAxis: true
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          freeMode: true,
+        }
+      }
+    });
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Products",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title",
+        "default": "Our Products"
+      },
+      {
+        "id": "button_text",
+        "type": "text",
+        "label": "Button Text",
+        "default": "Shop Collection"
+      },
+      {
+        "id": "button_link",
+        "type": "url",
+        "label": "Button Link"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }
+    ]
+  }
+{% endschema %}

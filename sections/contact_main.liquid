@@ -1,0 +1,135 @@
+{%- comment -%}
+Available variables:
+- section
+  - id
+  - blocks
+  - settings
+    - title (text)
+    - title_right (text)
+    - image (image_picker)
+    - location (richtext)
+    - open_times (richtext)
+    - contact_details (richtext)
+{%- endcomment -%}
+<div class="contact-main">
+
+    <div class="outer-wrap">
+      <div class="contact-main__left">
+        <h3 class="contact-main__title">{{ section.settings.title }}</h3>
+        
+        
+
+       <div class="tabs " {{ block.shopify_attributes }}>
+        <!-- Tabs Navigation -->
+        <div class="contact-section">
+          <div class="tab-nav contact-nav">
+            <ul class="nav-list">
+              {% for block in section.blocks %}
+                <li class="nav-link" data-product-id="{{block.settings.form_id}}"> 
+                  <a href="#{{block.settings.form_id}}">{{ block.settings.tab_title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+            <button class="nav-btn prev-btn">
+                  {% render 'nav-next-arrow' %}
+                </button>
+                <button class="nav-btn next-btn">
+                    {% render 'nav-next-arrow' %}
+            </button>
+          </div>
+        </div>
+        
+        {% render 'tabs' %}
+        
+      </div>
+      </div>
+
+      <div class="contact-main__right">
+          <div class="top-content">
+              <h3 class="contact-main__title-right mobile-hide">{{ section.settings.title_right }}</h3>
+              <div class="contact-main__image">
+              <img
+                    class=" max-height-image"
+                    src="{{ section.settings.image | image_url }}"
+                    alt="{{ section.settings.title }}">
+              </div>
+          </div>
+           <h3 class="contact-main__title-right mobile-show">{{ section.settings.title_right }}</h3>
+        <div class="contact-main__location custom-col">{{ section.settings.location }}</div>
+        <div class="contact-main__open-times custom-col">{{ section.settings.open_times }}</div>
+        <div class="contact-main__contact-details custom-col">{{ section.settings.contact_details }}</div>
+    </div>
+</div>
+  
+{% comment %}
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'tabs' %}
+      {% render 'tabs', block: block %}
+  {% endcase %}
+{% endfor %}
+{% endcomment %}
+
+</div>
+
+
+{% schema %}
+{
+  "name": "Contact Main",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "title_right",
+      "type": "text",
+      "label": "Title (Right)"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "location",
+      "type": "richtext",
+      "label": "Location"
+    },
+    {
+      "id": "open_times",
+      "type": "richtext",
+      "label": "Open Times"
+    },
+    {
+      "id": "contact_details",
+      "type": "richtext",
+      "label": "Contact Details"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Tabs",
+      "type": "tabs",
+      "settings": [
+        {
+          "id": "tab_title",
+          "type": "text",
+          "label": "Tab Title"
+        },
+        {
+          "id": "description",
+          "type": "richtext",
+          "label": "Description"
+        },
+        {
+          "id": "form_id",
+          "type": "text",
+          "label": "Form ID"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

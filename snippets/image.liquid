@@ -1,0 +1,56 @@
+{% comment %}
+  Required:
+  - image
+  - width
+  - sizes
+
+  Optional:
+  - mobile_image
+
+{% endcomment %}
+
+{% assign breakpoints = '352, 832, 1200, 1920, 2400, 2800, 3200, 3600' | split: ',' %}
+
+{% if mobile_image %}
+  {% assign srcset = '' %}
+
+  {% for _breakpoint in breakpoints %}
+    {% assign breakpoint = _breakpoint | plus: 0 %}
+    {% if breakpoint > width %}
+      {% break %}
+    {% endif %}
+
+    {% if breakpoint < 900 %}
+      {% assign _image = mobile_image %}
+    {% else %}
+      {% assign _image = image %}
+    {% endif %}
+
+    {% capture srcset %}
+      {{ srcset }}
+      {{ _image | image_url: width: breakpoint }} {{ breakpoint }}w {% unless forloop.last %},{% endunless %}
+    {% endcapture %}
+
+  {% endfor %}
+{% endif %} 
+
+
+{% if mobile_image %}
+  {{
+    image
+    | image_url: width: width
+    | image_tag:
+      sizes: sizes,
+      height: nil,
+
+      srcset: srcset
+  }}
+{% else %}
+  {{
+    image
+    | image_url: width: width
+    | image_tag:
+      sizes: sizes,
+      height: nil
+  }}
+{% endif %}

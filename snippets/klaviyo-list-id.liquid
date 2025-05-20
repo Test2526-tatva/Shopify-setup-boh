@@ -1,0 +1,24 @@
+{%- liquid
+  capture current_store
+    render 'current-store' 
+  endcapture
+  assign current_store = current_store | strip
+
+  case current_store
+    when 'NZ'
+      assign list_id = 'MDptBM'
+    
+    when 'AU'
+      assign list_id = 'RQJ93J'
+    
+    when 'UK'
+      assign list_id = 'R2j9aa'
+    
+    when 'US'
+      assign list_id = 'Y4eEm4'
+
+    else
+  endcase
+
+  echo list_id
+-%}

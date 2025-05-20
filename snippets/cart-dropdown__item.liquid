@@ -1,0 +1,23 @@
+{% unless variant.available %}
+  {% continue %}
+{% endunless %}
+
+{% if current_id == variant.id %}
+  {% continue %}
+{% endif %}
+
+{% assign swatch_name = variant.metafields.swatch.name %}
+<li>
+  <a 
+    href="#" 
+    class="cart-dropdown__option"
+
+    data-variant-id="{{ variant.id }}"
+  >
+    {% render 'swatch-preview', variant: variant %}
+
+    <span class="cart-dropdown__label">
+      {{ swatch_name }}
+    </span>
+  </a>
+</li>

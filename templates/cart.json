@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "cart-main",
+      "settings": {
+        "announcement": "",
+        "enable_announcement": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

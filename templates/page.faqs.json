@@ -1,0 +1,382 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "sections": {
+    "intro": {
+      "type": "faq-intro",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "faq-main-page",
+      "blocks": {
+        "question_8kG8aW": {
+          "type": "question",
+          "settings": {
+            "title": "Id volutpat urna pellentesque",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_C9JM4q": {
+          "type": "question",
+          "settings": {
+            "title": "Viverra scelerisque sed at arcu aenean?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_7VJfYx": {
+          "type": "question",
+          "settings": {
+            "title": "Nunc eget pharetra risus id?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_txQbUy": {
+          "type": "question",
+          "settings": {
+            "title": "Lacinia vel augue dui magna?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_NTW7Dy": {
+          "type": "question",
+          "settings": {
+            "title": "Luctus pharetra sit risus placerat elit gravida non vulputate?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_K8tQhj": {
+          "type": "question",
+          "settings": {
+            "title": "Et amet non quam duis?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        }
+      },
+      "block_order": [
+        "question_8kG8aW",
+        "question_C9JM4q",
+        "question_7VJfYx",
+        "question_txQbUy",
+        "question_NTW7Dy",
+        "question_K8tQhj"
+      ],
+      "settings": {
+        "title": "FAQs",
+        "sidebar_link": ""
+      }
+    },
+    "faq_main_page_mNqAEE": {
+      "type": "faq-main-page",
+      "blocks": {
+        "question_yJgtJa": {
+          "type": "question",
+          "settings": {
+            "title": "Id volutpat urna pellentesque",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_zyRWaX": {
+          "type": "question",
+          "settings": {
+            "title": "Viverra scelerisque sed at arcu aenean?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_U8HAYj": {
+          "type": "question",
+          "settings": {
+            "title": "Nunc eget pharetra risus id?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_ePgmY8": {
+          "type": "question",
+          "settings": {
+            "title": "Lacinia vel augue dui magna?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_yDUXmq": {
+          "type": "question",
+          "settings": {
+            "title": "Luctus pharetra sit risus placerat elit gravida non vulputate?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_U7W7qD": {
+          "type": "question",
+          "settings": {
+            "title": "Et amet non quam duis?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        }
+      },
+      "block_order": [
+        "question_yJgtJa",
+        "question_zyRWaX",
+        "question_U8HAYj",
+        "question_ePgmY8",
+        "question_yDUXmq",
+        "question_U7W7qD"
+      ],
+      "settings": {
+        "title": "support",
+        "sidebar_link": ""
+      }
+    },
+    "faq_main_page_zY7nqW": {
+      "type": "faq-main-page",
+      "blocks": {
+        "question_zByrtA": {
+          "type": "question",
+          "settings": {
+            "title": "Id volutpat urna pellentesque",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_VC6jnd": {
+          "type": "question",
+          "settings": {
+            "title": "Viverra scelerisque sed at arcu aenean?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_aHH734": {
+          "type": "question",
+          "settings": {
+            "title": "Nunc eget pharetra risus id?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_E4zpiN": {
+          "type": "question",
+          "settings": {
+            "title": "Lacinia vel augue dui magna?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_HHtrfV": {
+          "type": "question",
+          "settings": {
+            "title": "Luctus pharetra sit risus placerat elit gravida non vulputate?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_8L4pfV": {
+          "type": "question",
+          "settings": {
+            "title": "Et amet non quam duis?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        }
+      },
+      "block_order": [
+        "question_zByrtA",
+        "question_VC6jnd",
+        "question_aHH734",
+        "question_E4zpiN",
+        "question_HHtrfV",
+        "question_8L4pfV"
+      ],
+      "settings": {
+        "title": "refunds",
+        "sidebar_link": ""
+      }
+    },
+    "faq_main_page_FwyzG8": {
+      "type": "faq-main-page",
+      "blocks": {
+        "question_kwGtkJ": {
+          "type": "question",
+          "settings": {
+            "title": "Id volutpat urna pellentesque",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_UTUtc8": {
+          "type": "question",
+          "settings": {
+            "title": "Viverra scelerisque sed at arcu aenean?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_MeYzDh": {
+          "type": "question",
+          "settings": {
+            "title": "Nunc eget pharetra risus id?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_jY6Q4k": {
+          "type": "question",
+          "settings": {
+            "title": "Lacinia vel augue dui magna?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_adKyRA": {
+          "type": "question",
+          "settings": {
+            "title": "Luctus pharetra sit risus placerat elit gravida non vulputate?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_rixMij": {
+          "type": "question",
+          "settings": {
+            "title": "Et amet non quam duis?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        }
+      },
+      "block_order": [
+        "question_kwGtkJ",
+        "question_UTUtc8",
+        "question_MeYzDh",
+        "question_jY6Q4k",
+        "question_adKyRA",
+        "question_rixMij"
+      ],
+      "settings": {
+        "title": "shipping & returns",
+        "sidebar_link": ""
+      }
+    },
+    "faq_main_page_BwpgAK": {
+      "type": "faq-main-page",
+      "blocks": {
+        "question_JNbyr4": {
+          "type": "question",
+          "settings": {
+            "title": "Id volutpat urna pellentesque",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_zyrAh3": {
+          "type": "question",
+          "settings": {
+            "title": "Viverra scelerisque sed at arcu aenean?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_DPUPmJ": {
+          "type": "question",
+          "settings": {
+            "title": "Nunc eget pharetra risus id?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_mFnaiB": {
+          "type": "question",
+          "settings": {
+            "title": "Lacinia vel augue dui magna?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_ymaTb4": {
+          "type": "question",
+          "settings": {
+            "title": "Luctus pharetra sit risus placerat elit gravida non vulputate?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_aByE98": {
+          "type": "question",
+          "settings": {
+            "title": "Et amet non quam duis?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        }
+      },
+      "block_order": [
+        "question_JNbyr4",
+        "question_zyrAh3",
+        "question_DPUPmJ",
+        "question_mFnaiB",
+        "question_ymaTb4",
+        "question_aByE98"
+      ],
+      "settings": {
+        "title": "terms & conditions",
+        "sidebar_link": ""
+      }
+    },
+    "faq_main_page_YFML6g": {
+      "type": "faq-main-page",
+      "blocks": {
+        "question_PKHFrx": {
+          "type": "question",
+          "settings": {
+            "title": "Id volutpat urna pellentesque",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_EKKGX7": {
+          "type": "question",
+          "settings": {
+            "title": "Viverra scelerisque sed at arcu aenean?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_yqEHKx": {
+          "type": "question",
+          "settings": {
+            "title": "Nunc eget pharetra risus id?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_BpAhjd": {
+          "type": "question",
+          "settings": {
+            "title": "Lacinia vel augue dui magna?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_VHUDKL": {
+          "type": "question",
+          "settings": {
+            "title": "Luctus pharetra sit risus placerat elit gravida non vulputate?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        },
+        "question_XeMqBL": {
+          "type": "question",
+          "settings": {
+            "title": "Et amet non quam duis?",
+            "content": "Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis."
+          }
+        }
+      },
+      "block_order": [
+        "question_PKHFrx",
+        "question_EKKGX7",
+        "question_yqEHKx",
+        "question_BpAhjd",
+        "question_VHUDKL",
+        "question_XeMqBL"
+      ],
+      "settings": {
+        "title": "privacy policy",
+        "sidebar_link": ""
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "main",
+    "faq_main_page_mNqAEE",
+    "faq_main_page_zY7nqW",
+    "faq_main_page_FwyzG8",
+    "faq_main_page_BwpgAK",
+    "faq_main_page_YFML6g"
+  ]
+}
+

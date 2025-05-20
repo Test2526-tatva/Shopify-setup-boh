@@ -1,0 +1,143 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+.accordions {
+  
+  padding: 0 30px;
+
+  &__container {
+    display:flex;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 620px;
+    max-width: 557px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    max-width: 555px;
+    width: 100%;
+  }
+
+  &__item {
+    padding-top: 23px;
+
+    &:first-child .accordions__item-content{
+      display: block;
+    }
+
+  }
+
+  &__item-title {
+    border-bottom: 1px solid $BohBrown;
+    padding-bottom: 16px;
+    color: $BohBrown;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 21px;
+    height: 21px;
+    text-decoration: none;
+  }
+
+  &__toggle-icon {
+    position: relative;
+    width: 21px;
+    height: 28px;
+
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: #4A4A4A;
+    }
+
+    &::before {
+      width: 1px;
+      height: 21px;
+      left: 10px;
+      top: 0;
+    }
+
+    &::after {
+      width: 21px;
+      height: 1px;
+      left: 0;
+      top: 10px;
+    }
+
+    &--minus {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &__item-content {
+    display: none;
+    margin-top: 24px;
+  }
+
+  &__item-text {
+    @include typography.p-medium;
+    color: $BohBrown;
+    margin-bottom: 30px;
+  }
+
+  &__learn-more {
+    @include typography.button-text;
+    color: $BohBrown;
+    border-bottom: 1px solid $BohBrown;
+    padding-bottom: 6px;
+    font-weight: 300;
+  }
+
+  @include media-breakpoint-down(lg) {
+    padding: 40px 20px;
+
+    &__container {
+      display: block;
+
+    }
+    &__image
+    {
+      margin-bottom: 60px;
+    }
+
+    &__image,
+    &__content
+    {
+      max-width: 100%;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 30px 15px;
+    &__image
+    {
+      max-height: 400px;
+      margin-bottom: 39px;
+    }
+
+    &__item {
+      padding-top: 21px;
+    }
+  }
+}

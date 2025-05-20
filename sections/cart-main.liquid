@@ -1,0 +1,276 @@
+{% render 'navbar--solid' %}
+
+<section class='cart-page {% if cart.items.size == 0 %}empty-cart{% endif %}'>
+  <div class='cart-page__container' data-ajax-cart-section>
+    <div class='cart-page__header'>
+      <h6>
+        Your Cart
+
+        {% assign cart_count = 0 %}
+        {% for item in cart.items %}
+          {% assign cart_count = cart_count | plus: item.quantity %}
+        {% endfor %}
+
+        {% if cart_count > 0 %}
+          <span class='separator'></span>
+          <span class='cart-count'>
+            {{ cart_count }}
+          </span>
+        {% endif %}
+      </h6>
+    </div>
+    {% if cart.items.size > 0 %}
+      <div class='md-show'>
+        {% render 'cart-shipping' %}
+      </div>
+    {% endif %}
+    <div class='cart-page__grid'>
+      <div class='cart-page__left cart-page__column'>
+        <div class='cart-page__main cart' data-ajax-cart-section-scroll='main'>
+          {% if cart.items.size > 0 %}
+            <div class='cart-page__item-list'>
+              {% render 'cart-items' %}
+            </div>
+          {% else %}
+            <div class='cart-drawer__message'>Your cart is empty.</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class='cart-page__right cart-page__column'>
+        <div class='hide-cart-empty'>
+          <div class='md-show'>
+            <div class='cart-columns'>
+              <div class='cart-columns__grid'>
+                {% for block in section.blocks %}
+                  <div class='cart-columns__item'>
+                    <div class='cart-columns__content'>
+                      <div class='cart-columns__icon'>
+                        <img src='{{ block.settings.image | image_url }}' alt=''>
+                      </div>
+                      <p class='cart-columns__heading'>
+                        {{ block.settings.title }}
+                      </p>
+                      <div class='cart-columns__desc'>
+                        {{ block.settings.desc }}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <div class='md-hide'>
+            {% render 'cart-shipping' %}
+          </div>
+
+
+          <div class='cart-page__accordion'>
+            <div class='accordion'>
+              <div class='accordion-item'>
+                <div class='accordion-item__label'>
+                  <label>Let’s wrap it up for you</label>
+                  <div class='accordion-item__icon'>
+                    <div class='active'>
+                      {% render 'icon-arrow-up' %}
+                    </div>
+                    <div class='default'>
+                      {% render 'icon-arrow-down' %}
+                    </div>
+                  </div>
+                </div>
+                <div class='accordion-item__collapse'>
+                  <div class='accordion-item__content'>
+                    <p>Message goes here</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                {% comment%}
+
+                <div class='accordion-item__label'>
+                  <label for="cart-note__toggle">Order Notes</label>
+                  <div class='accordion-item__icon'>
+                      <div class='active'>
+                        {% render 'icon-arrow-up' %}
+                      </div>
+                      <div class='default'>
+                        {% render 'icon-arrow-down' %}
+                      </div>
+                  </div>
+                </div>
+
+                <div class='accordion-item__collapse'>
+                  <div class='accordion-item__content'>
+                    <div class="cart-note">
+                      <input type="checkbox" class="cart-note__toggle" id="cart-note__toggle" data-ajax-cart-static-element="cart-note__toggle">
+
+                      <div class="cart-note__form">
+                        <textarea 
+                          data-ajax-cart-property-input 
+                          name="note"
+                          class="cart-note__note"
+                          rows="2"
+                          placeholder="Type special instructions for delivery here. Max 120 characters."
+                          maxlength="120"
+                          id="cartNote">
+                            {{ cart.note }}
+                        </textarea>
+
+                        <div class="cart-note__loading">
+                          <p class="p-small">Saving...</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endcomment%}
+
+                {% render 'cart-note', cart_page: true %}
+              </div>
+
+              <div class='accordion-item'>
+                <div class='accordion-item__label'>
+                  <label>Shipping and returns</label>
+                  <div class='accordion-item__icon'>
+                    <div class='active'>
+                      {% render 'icon-arrow-up' %}
+                    </div>
+                    <div class='default'>
+                      {% render 'icon-arrow-down' %}
+                    </div>
+                  </div>
+                </div>
+                <div class='accordion-item__collapse'>
+                  <div class='accordion-item__content'>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. 
+                      Condimentum aliquam orci id et quis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          {% comment %}  {% render 'cart-note', cart_page: true %} {% endcomment %}
+          </div>
+
+          <div class='cart-page__subtotal'>
+            <div class='cart-page__subtotal--left'>
+              <h6>Subtotal</h6>
+            </div>
+
+            <div class='cart-page__subtotal--right'>
+              <h6>{{ cart.total_price | money_without_trailing_zeros }}</h6>
+              {% comment %}
+              <div class='payment-options'>
+                <img style='max-height: 14px; height: 14px;' src='{{ 'afterpay.svg' | asset_url }}'> on 4x
+                {{ cart.total_price | divided_by: 4 | money_with_currency }}
+              </div>
+              {% endcomment %}
+            </div>
+          </div>
+
+          <div class='cart-page__summary'>
+            <div class='cart-page__checkout-btn'>
+              <a href='/checkout' class='button primary-button--dark primary-button--dark--light-bg'> Checkout </a>
+            </div>
+            {% comment %}
+              <div class="cart-page__continue-btn md-show">
+                <a href="/collections/all" class="button  primary-button--dark primary-button--dark--light-bg">
+                  Continue Shopping
+                </a>
+              </div>
+            {% endcomment %}
+            <div class='shipping-terms'>
+              <p>Shipping & taxes calculated at checkout.</p>
+            </div>
+          </div>
+        </div>
+        <div class='show-cart-empty'>
+          <div class='cart-drawer__checkout-btn'>
+            <a href='/collections/all' class='button primary-button--dark primary-button--dark--light-bg'>
+              Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommended Products -->
+    {% render 'cart-drawer-recommend' %}
+
+  </div>
+
+  <!-- cart loading overlay -->
+  <div class='cart-drawer__loader cart-loader'>
+    <div class='cart-loader__element'></div>
+  </div>
+</section>
+<div class='md-hide'>
+  <div class='cart-columns'>
+    <div class='cart-columns__container'>
+      <div class='cart-columns__grid'>
+        {% for block in section.blocks %}
+          <div class='cart-columns__item'>
+            <div class='cart-columns__content'>
+              <div class='cart-columns__icon'>
+                <img src='{{ block.settings.image | image_url }}' alt=''>
+              </div>
+              <p class='cart-columns__heading'>
+                {{ block.settings.title }}
+              </p>
+              <div class='cart-columns__desc'>
+                {{ block.settings.desc }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement",
+      "label": "Cart Announcement"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_announcement",
+      "label": "Enable announcement?",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Column Icons",
+      "type": "column_icon",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "desc",
+          "type": "richtext",
+          "label": "Description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

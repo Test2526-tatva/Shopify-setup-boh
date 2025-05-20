@@ -1,0 +1,40 @@
+{%- comment -%}
+  Available variables:
+  - block
+    - id
+    - shopify_attributes
+    - type
+    - settings
+      - title (text)
+      - bg_image (image_picker)
+      - bg_video (video)
+      - button_title (text)
+      - card_url (url)
+{%- endcomment -%}
+<div class='featured-collection__item'>
+  {% if block.settings.bg_image and block.settings.bg_video == blank %}
+    <img
+      class='featured-collection__image'
+      src='{{ block.settings.bg_image | image_url: width: 1200 }}'
+      alt='Graduation Gifts'
+    >
+  {% endif %}
+  {% if block.settings.bg_video %}
+    <video
+      class='featured-collection__video'
+      autoplay
+      loop
+      muted
+      playsinline
+      src='{{ block.settings.bg_video.sources[1].url }}'
+    ></video>
+  {% endif %}
+  <div class='featured-collection__content'>
+    <h2 class='featured-collection__item-title'>
+      {{ block.settings.title }}
+    </h2>
+    <a href='{{ block.settings.card_url }}' class='featured-collection__cta button-text'>
+      {{ block.settings.button_title }}
+    </a>
+  </div>
+</div>

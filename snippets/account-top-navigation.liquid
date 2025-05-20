@@ -1,0 +1,24 @@
+<section class="nav-section">
+    <div class="account-nav">
+        <ul class="nav-list">
+            <li class="nav-link" data-product-id="dashboard">
+                <a href="/account" class=" active" title="Dashboard">DASHBOARD</a>
+            </li>
+            <li class="nav-link" data-product-id="orders">
+                <a href="/" title="Orders">ORDERS</a>
+            </li>
+            <li class="nav-link" data-product-id="addresses">
+                <a href="/account/addresses" title="Addresses">ADDRESSES</a>
+            </li>
+            <li class="nav-link" data-product-id="logout">
+                <a href="/account/logout" title="Logout">LOGOUT</a>
+            </li>
+        </ul>
+         <button class="nav-btn prev-btn">
+                {% render 'nav-next-arrow' %}
+            </button>
+            <button class="nav-btn next-btn">
+                 {% render 'nav-next-arrow' %}
+        </button>
+    </div>
+</section>

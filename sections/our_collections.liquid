@@ -1,0 +1,137 @@
+<section class='featured-collection'>
+  <h5 class='featured-collection__title'>
+    {{ section.settings.title }}
+  </h5>
+  <div class='featured-collection__grid'>
+    {% for block in section.blocks limit: 1 %}
+      <div class='featured-collection__item featured-collection__item--large'>
+        {% if block.settings.bg_image and block.settings.bg_video == blank %}
+          <img
+            class='featured-collection__image'
+            src='{{ block.settings.bg_image | image_url: width: 1200 }}'
+            alt='Graduation Gifts'
+          >
+        {% endif %}
+        {% if block.settings.bg_video %}
+          <video
+            class='featured-collection__video'
+            autoplay
+            loop
+            muted
+            playsinline
+            src='{{ block.settings.bg_video.sources[1].url }}'
+          ></video>
+        {% endif %}
+
+        <div class='featured-collection__content'>
+          <h2 class='featured-collection__item-title'>
+            {{ block.settings.title }}
+          </h2>
+          <a href='{{ block.settings.card_url }}' class='featured-collection__cta button-text'>
+            {{ block.settings.button_title }}
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+    <div class='featured-collection__column'>
+      {% for block in section.blocks offset: 1 %}
+        {% render 'collection_card', block: block, forloop: forloop %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% render 'block-padding', block: section %}
+
+{% schema %}
+{
+  "name": "Our Collections",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Padding",
+      "info": "Use the fields below to change the top and bottom spacing of the blocks on desktop and mobile."
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "number",
+      "label": "Padding Top",
+      "id": "pt",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom",
+      "id": "pb",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "number",
+      "label": "Padding Top",
+      "id": "pt_m",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom",
+      "id": "pb_m",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Collection Card",
+      "type": "collection_card",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "bg_image",
+          "type": "image_picker",
+          "label": "BG Image"
+        },
+        {
+          "id": "bg_video",
+          "type": "video",
+          "label": "BG Video"
+        },
+        {
+          "id": "button_title",
+          "type": "text",
+          "label": "Button Title"
+        },
+        {
+          "id": "card_url",
+          "type": "url",
+          "label": "Card URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Collections",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

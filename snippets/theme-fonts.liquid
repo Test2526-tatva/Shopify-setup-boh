@@ -1,0 +1,60 @@
+<link rel='stylesheet' href='https://use.typekit.net/ysa6dgb.css'>
+{% capture preload_fonts %}
+  | untitled-medium.woff2 
+  | untitled-semibold.woff2
+{% endcapture %}
+{% assign preload_fonts = preload_fonts | split: '|' %}
+
+{% for _filename in preload_fonts offset: 1 %}
+  {%- assign filename = _filename | strip -%}
+  <link rel='preload' as='font' href='{{ filename | asset_url }}' type='font/woff2' crossorigin>
+{% endfor %}
+
+<style>
+  @font-face {
+    font-family: 'Untitled';
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src:
+      url("{{ 'Untitled-medium.woff2' | asset_url }}") format("woff2"),
+      url("{{ 'Untitled-medium.woff' | asset_url }}") format("woff");
+  }
+
+  @font-face {
+    font-family: 'Untitled';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src:
+      url("{{ 'Untitled-semibold.woff2' | asset_url }}") format("woff2"),
+      url("{{ 'Untitled-semibold.woff' | asset_url }}") format("woff");
+  }
+
+  @font-face {
+    font-family: 'GT Super Ds';
+    src: url("{{'GTSuperDisplay-Light.woff2'  | asset_url }}") format('woff2'),
+      url("{{'GTSuperDisplay-Light.woff'  | asset_url }}") format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'GT Super Txt';
+    src: url("{{'GTSuperText-Regular.woff2'  | asset_url }}") format('woff2'),
+      url("{{'GTSuperText-Regular.woff'  | asset_url }}") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'GT Super Ds Light';
+    src: url("{{'GTSuperDisplay-Light.woff2'  | asset_url }}") format('woff2'),
+      url("{{'GTSuperDisplay-Light.woff'  | asset_url }}") format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>

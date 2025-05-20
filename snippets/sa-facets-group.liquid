@@ -1,0 +1,186 @@
+{% assign perfect_for = section.blocks | where: 'type', 'perfect-for' %}
+{% assign colour = section.blocks | where: 'type', 'color' %}
+{% assign size = section.blocks | where: 'type', 'size' %}
+{% assign limited_edition = section.blocks | where: 'type', 'limited-edition' %}
+
+
+{% assign filter_handle = filter.label | split: 'Filter:' | last | strip | handle %}
+{% assign filter_name = filter.param_name %}
+{% assign active_values = filter.active_values | map: 'value' %}
+
+
+{% if filter_handle == 'perfect-for' %}
+  <div class="filter-group filter-group--perfect-for js-filter" data-index="1">
+    <div class="filter-group__heading">
+      <h4 class="p">
+        Perfect for 
+      </h4>
+
+      <div class="filter-group__arrow">
+        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5.29289 5.29289C5.68342 5.68342 6.31658 5.68342 6.70711 5.29289L11 1" stroke="#262525" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="filter-group__items">
+      <div class="filter-items">
+        {% for item in perfect_for %}
+          {% assign filter_value = item.settings.ref %}
+          
+          <label class="filter-item" for="Filter-{{ filter_name }}-{{ forloop.index }}">
+            <input 
+              type="checkbox" 
+              id="Filter-{{ filter_name }}-{{ forloop.index }}"
+              name="{{ filter_name }}" 
+              value="{{ filter_value }}" 
+
+              {% if active_values contains filter_value %}
+                checked
+              {% endif %}
+              />
+
+            <div class="filter-item__inner">
+              <img src="{{ item.settings.image | image_url }}" alt="">
+              
+              <p class="p-small">
+                {{ item.settings.title }}
+              </p>
+            </div>
+          </label>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+{% elsif filter_handle == 'colour-limited-edition' %}
+  <div class="filter-group filter-group--colour js-filter" data-index="2">
+    <div class="filter-group__heading">
+      <h4 class="p">
+        Colour
+      </h4>
+
+      <div class="filter-group__arrow">
+        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5.29289 5.29289C5.68342 5.68342 6.31658 5.68342 6.70711 5.29289L11 1" stroke="#262525" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="filter-group__items">
+      <div class="filter-items">
+        {% for item in colour %}
+          {% assign filter_value = item.settings.ref %}
+          
+          <label class="filter-item" title="{{ item.settings.title }}">
+            <input 
+              type="checkbox" 
+              id="Filter-{{ filter_name }}-{{ forloop.index }}"
+              name="{{ filter_name }}" 
+              value="{{ filter_value }}" 
+
+              {% if active_values contains filter_value %}
+                checked
+              {% endif %}
+              />
+            
+            <div class="filter-item__inner">
+              <div class="filter-item__colour" style="background: {{ item.settings.color }};" ></div>
+            </div>
+          </label>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-group filter-group--limited-edition js-filter" data-index="3">
+    <div class="filter-group__heading">
+      <h4 class="p">
+        Limited Edition
+      </h4>
+
+      <div class="filter-group__arrow">
+        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5.29289 5.29289C5.68342 5.68342 6.31658 5.68342 6.70711 5.29289L11 1" stroke="#262525" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="filter-group__items swiper">
+      <div class="filter-items swiper-wrapper">
+        {% for item in limited_edition %}
+          {% assign filter_value = item.settings.ref %}
+
+          <label class="filter-item swiper-slide">  
+            <input 
+              type="checkbox" 
+              id="Filter-{{ filter_name }}-{{ forloop.index }}"
+              name="{{ filter_name }}" 
+              value="{{ filter_value }}" 
+
+              {% if active_values contains filter_value %}
+                checked
+              {% endif %}
+              />
+            
+            <div class="filter-item__inner">
+              <img src="{{ item.settings.image | image_url }}" alt="">
+              
+              <p class="p-small">
+                {{ item.settings.title }}
+              </p>
+            </div>
+          </label>
+        {% endfor %}
+      </div>
+
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+
+{% elsif filter_handle == 'size' %}
+  <div class="filter-group filter-group--size js-filter" data-index="4">
+    <div class="filter-group__heading">
+      <h4 class="p">
+        Size
+      </h4>
+  
+      <div class="filter-group__arrow">
+        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5.29289 5.29289C5.68342 5.68342 6.31658 5.68342 6.70711 5.29289L11 1" stroke="#262525" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="filter-group__items">
+      <div class="filter-items">
+        {% for item in size %}
+          {% assign filter_value = item.settings.ref %}
+
+          <label class="filter-item">
+            <input 
+              type="checkbox" 
+              id="Filter-{{ filter_name }}-{{ forloop.index }}"
+              name="{{ filter_name }}" 
+              value="{{ filter_value }}" 
+
+              {% if active_values contains filter_value %}
+                checked
+              {% endif %}
+              />
+
+            <div class="filter-item__inner">
+              <img src="{{ item.settings.image | image_url: width: 130 }}" alt="">
+              <p class="p-small">
+                {{ item.settings.title }}
+              </p>
+            </div>
+          </label>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+
+
+
+

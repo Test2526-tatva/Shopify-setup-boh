@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "favicon": "",
+    "newsletter_delay": "13",
+    "newsletter_title": "Stay connected",
+    "newsletter_desc": "Sign up to hear about new products",
+    "note": "*Excludes Sale Items",
+    "success_title": "Welcome...",
+    "success_message": "<p>You're in! Check your inbox for your discount code.</p>",
+    "free_shipping_enable": false,
+    "free_shipping_before": "$X away from free shipping",
+    "price_limits": "NZD:129\nAUD:129\nUSD:89\nGBP:70",
+    "free_shipping_unlock": "You qualify for free shipping.",
+    "info_nz_au": "Free shipping on all orders.",
+    "info_nz_au_link": "shopify://pages/shipping-and-returns",
+    "info_uk": "Free shipping on all orders.",
+    "info_uk_link": "shopify://pages/shipping-and-returns",
+    "info_us": "Free shipping on all orders.",
+    "info_us_link": "shopify://pages/shipping-and-returns",
+    "free_shipping_tooltip_text": "You're just $X away from qualifying for free shipping! Add more items to your cart to enjoy this offer",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "eb1467bb-fdc1-4682-ba32-9b8dda15d92b": {
+            "type": "announcement",
+            "settings": {
+              "text": "Notification message goes here & has a character limit",
+              "url": "",
+              "text_color": "#ffffff",
+              "bg_color": "#b8dde1"
+            }
+          },
+          "announcement_wVmadc": {
+            "type": "announcement",
+            "settings": {
+              "text": "test 2",
+              "url": "",
+              "text_color": "#ffffff",
+              "bg_color": "#b8dde1"
+            }
+          },
+          "megamenu_img_block_MDCNqr": {
+            "type": "megamenu_img_block",
+            "settings": {
+              "image": "shopify://shop_images/Model_shots-129.jpg",
+              "title": "Most Loved",
+              "link": "shopify://collections/all-jewellery"
+            }
+          },
+          "megamenu_img_block_eXncY8": {
+            "type": "megamenu_img_block",
+            "settings": {
+              "image": "shopify://shop_images/Model_shots-146.jpg",
+              "title": "Pounamu Collection",
+              "link": "shopify://collections/pounamu"
+            }
+          },
+          "search_recommendations_KFtihF": {
+            "type": "search_recommendations",
+            "settings": {
+              "image": "shopify://shop_images/Boh_Essentials-48.jpg",
+              "title": "Bohtique Exclusives",
+              "url": "shopify://collections/beadiful"
+            }
+          },
+          "search_recommendations_XgMjzh": {
+            "type": "search_recommendations",
+            "settings": {
+              "image": "shopify://shop_images/01f8b7496b961f0fae32dc2abc29c380.jpg",
+              "title": "Gift Vouchers",
+              "url": "shopify://collections/gift-card"
+            }
+          },
+          "search_recommendations_mjMHh3": {
+            "type": "search_recommendations",
+            "settings": {
+              "image": "shopify://shop_images/df079e82e3e0ad4864a068dfe1fa495a.png",
+              "title": "Back in Stock",
+              "url": "shopify://collections/shapes"
+            }
+          }
+        },
+        "block_order": [
+          "eb1467bb-fdc1-4682-ba32-9b8dda15d92b",
+          "announcement_wVmadc",
+          "megamenu_img_block_MDCNqr",
+          "megamenu_img_block_eXncY8",
+          "search_recommendations_KFtihF",
+          "search_recommendations_XgMjzh",
+          "search_recommendations_mjMHh3"
+        ],
+        "settings": {
+          "enable_announcement": true,
+          "logo_image": "shopify://shop_images/secondary.png",
+          "dark_logo_image": "shopify://shop_images/secondary_1da70b44-064c-4f99-8b8e-588bc8689acf.png",
+          "logo_text": "Logo",
+          "top-menu": "dev-menu",
+          "megamenu": "mega-menu",
+          "highlight_menu": "Rings, Categories, Material, Gifts For Him, Gifts for Her",
+          "search_recommendation_text": "Feather, Pounamu, Rings, Graduation"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "e50961e3-4ef7-4cfd-9740-a23c72b514b2": {
+            "type": "groups",
+            "settings": {
+              "title": "Shop",
+              "menu": "new-navigation"
+            }
+          },
+          "13fbc01a-aa96-4239-a4ab-40437a1a1dc3": {
+            "type": "groups",
+            "settings": {
+              "title": "About",
+              "menu": "shop-metals"
+            }
+          },
+          "36c5c34d-695e-487b-ba4a-68b76d7339b9": {
+            "type": "groups",
+            "settings": {
+              "title": "Assistance",
+              "menu": "shop-products"
+            }
+          }
+        },
+        "block_order": [
+          "e50961e3-4ef7-4cfd-9740-a23c72b514b2",
+          "13fbc01a-aa96-4239-a4ab-40437a1a1dc3",
+          "36c5c34d-695e-487b-ba4a-68b76d7339b9"
+        ],
+        "settings": {
+          "background_color": "#B8DDE1",
+          "address": "<p>287 Ponsonby Road<br/>Auckland, New Zealand</p><p><a href=\"tel:0272553293\" title=\"tel:0272553293\">0272553293</a><br/><a href=\"mailto:hello@bohrunga.com\" title=\"mailto:hello@bohrunga.com\">hello@bohrunga.com</a></p>",
+          "timings": "<p>Mon - Fri: 10am - 5:30pm<br/>Sat: 10am - 5pm<br/>Sun: 10am - 5pm</p>",
+          "footer_logo": "shopify://shop_images/logo.png",
+          "newsletter_heading": "Sign up to get 10% off your first order!",
+          "newsletter_success_message": "Thanks for subscribing",
+          "copy_right": "© 2024, Boh Runga.  All rights reserved.",
+          "social_facebook_link": "#",
+          "social_instagram_link": "#",
+          "social_twitter_link": "",
+          "social_pinterest_link": "",
+          "social_youtube_link": "",
+          "social_tiktok_link": ""
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {
+          "enable_announcement": true,
+          "announcement": ""
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+<section class='social-reel block-padding--{{ section.id }}'>
+  <div class='social-reel__container'>
+    <h3 class='social-reel__title'>
+      <a href='{{ section.settings.title_url }}' class='social-reel__title-link'>{{ section.settings.title }}</a>
+    </h3>
+    <div class='social-reel__grid'>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'images' %}
+            {% render 'images', block: block %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% render 'block-padding', block: section %}
+
+{% schema %}
+{
+  "name": "Instagram",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title",
+      "default": "shopbohrunga"
+    },
+    {
+      "id": "title_url",
+      "type": "url",
+      "label": "Title URL"
+    },
+    {
+      "type": "header",
+      "content": "Padding",
+      "info": "Use the fields below to change the top and bottom spacing of the blocks on desktop and mobile."
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "number",
+      "label": "Padding Top",
+      "id": "pt",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom",
+      "id": "pb",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "number",
+      "label": "Padding Top",
+      "id": "pt_m",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom",
+      "id": "pb_m",
+      "default": -1,
+      "info": "Set to -1 for default padding."
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Images",
+      "type": "images",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

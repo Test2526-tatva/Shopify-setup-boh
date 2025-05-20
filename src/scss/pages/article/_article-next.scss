@@ -1,0 +1,80 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+.article-next {
+  --hover-color: #2F5F4B;
+  
+  padding-top: 83px;
+  padding-bottom: 150px;
+  position: relative;
+  z-index: 5;
+
+  &__hover {
+    position: absolute;
+    inset: 0;
+    background-color: var(--hover-color);
+    z-index: -1;
+    transition: all .5s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  a:hover ~ &__hover {
+    opacity: 1;
+    visibility: inherit;
+  }
+
+  &--light {
+    a {
+      transition: all .5s ease;
+      
+      &:hover {
+        color: #FFF;
+      }
+    }
+  }
+
+  &__container {
+    margin: 0 43px;
+  }
+  &__content {
+
+    h5 {
+      margin-bottom: 61px;
+    }
+    h2 {
+      @include typography.h1;
+      max-width: 1250px;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  @include media-breakpoint-down(md) {
+    padding: 70px 0px 120px;
+
+    &__container {
+      margin: 0 20px;
+    }
+    &__content {
+      h5 {
+        @include typography.h6;
+        margin-bottom: 15px;
+      }
+      h2 {
+        @include typography.h4;
+      }
+    }
+  }
+  @include media-breakpoint-between(md, lg) {
+    padding-top: 70px;
+    padding-bottom: 100px;
+    
+    &__content {
+      h2 {
+        @include typography.h3;
+      }
+    }
+  }
+}

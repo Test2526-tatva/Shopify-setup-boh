@@ -1,0 +1,131 @@
+@use '../../modules/variables' as *;
+@use '../../mixins/breakpoints' as *;
+@use '../../mixins/typography';
+
+.blog-intro {
+  padding: 0px;
+  gap: 0;
+
+  .shop-the-look__content {
+    gap: 82px;
+    max-width: 100%;
+  }
+
+  &__container {
+    margin: 0 30px;
+  }
+
+  &__heading {
+
+    font-family: $freightsans-pro;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 40px;
+    margin: 12px 0px;
+    letter-spacing: -0.4px;
+
+  }
+
+  .shop-the-look__main-image {
+    min-height: 727px;
+  }
+
+  &__article_content {
+    max-width: 320px;
+    width: 100%;
+
+    .secondary-button {
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 3px;
+      padding-bottom: 2px;
+    }
+
+    .shop-the-look__description {
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    align-items: center;
+    margin-bottom: 120px;
+    justify-content: space-between;
+  }
+
+  &__desc {
+    max-width: 325px;
+    margin-right: 123px;
+    @include typography.p-strong;
+
+
+    p {
+      @include typography.p-strong;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+
+    // padding-top: 50px;
+    .shop-the-look__main-image
+    {
+      min-height: 393px;
+      height: auto;
+    }
+    .shop-the-look__content {
+      margin-top: 0;
+      gap: 38px;
+      padding: 40px 15px;
+    }
+    .blog-intro__article_content
+    {
+      max-width: 100%;
+      .secondary-button
+      {
+        padding-bottom: 5px;
+      }
+    }
+    
+
+    &__container {
+      margin: 0 20px;
+    }
+
+    &__grid {
+      align-items: normal;
+      flex-direction: column;
+      margin-bottom: 50px;
+    }
+
+    &__heading {
+      text-align: left;
+      margin-bottom: 20px;
+      @include typography.p-large;
+      margin-bottom: 13px;
+    }
+
+    &__desc {
+      max-width: none;
+      margin-right: 0px;
+    }
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    &__heading {
+      @include typography.h3;
+    }
+
+    &__grid {
+      column-gap: 50px;
+      margin-bottom: 70px;
+    }
+
+    &__desc {
+      margin-left: auto;
+      margin-right: 0px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<section>
+  <div class="container">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.excerpt }}</p>
+    <p>{{ article.published_at | date: "%b %d, %Y" }}</p>
+    <p>{{ article.handle | split: '/' | first | camelcase }}</p>
+    <img src="{{ article.image | image_url }}" alt loading="lazy" width="" height="" >
+  </div>
+</section>
+
+
+

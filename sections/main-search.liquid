@@ -1,0 +1,143 @@
+{% render 'navbar--solid' %}
+
+{% assign search_type = search.types | last %}
+{% if search.types contains 'product' %}
+  {% assign search_type = 'product' %}
+{% else %}
+  {% assign search_type = 'article' %}
+{% endif %}
+
+{% assign paginate_by = 12 %}
+
+{% if search_type == 'article' %}
+  {% assign paginate_by = 10 %}
+{% endif %}
+
+<div class='search-results-page search-results-page__section page-search page-search--{{ search_type }}'>
+  <div class='search-results-page__container'>
+    {% if search.results.size > 0 %}
+      <div class='search-results-page__heading'>
+        <p class='title'>
+          {% if search_type == 'article' %}
+            Article
+          {% else %}
+            Product
+          {% endif %}
+          results
+        </p>
+        <p class='search-results-page-counter'>
+          {{ search.results_count }}
+          {% if search_type == 'article' %}
+            result{% if search.results.size >= 2 %}s{% endif %}
+            for
+          {% else %}
+            result{% if search.results.size >= 2 %}s{% endif %}
+            for
+          {% endif %}
+          "{{ search.terms | capitalize }}"
+        </p>
+      </div>
+
+      {% paginate search.results by paginate_by %}
+        <div class='ajaxinate__container'>
+          <div class='search-results-page__grid search-results-page__grid--{{ search_type }}'>
+            {% if search_type == 'product' %}
+              {% assign search_results = search.results | where: 'object_type', 'product' %}
+              {% for item in search_results %}
+                {% assign hide_product = false %}
+                {% capture hide_product %}
+                  {% render 'hide-product', product: item %}
+                {% endcapture %}
+                {% assign hide_product = hide_product | strip %}
+
+                {% if hide_product == 'hide' %}
+                  {% continue %}
+                {% endif %}
+
+                <div class='item'>
+                  {% render 'product-card', product: item %}
+                </div>
+              {% endfor %}
+
+            {% elsif search_type == 'article' %}
+              {% assign search_results = search.results | where: 'object_type', 'article' %}
+              {% for item in search_results %}
+                <div class='item'>
+                  {% render 'article-card--search-result', article: item %}
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+
+        {% if paginate.next %}
+          <div class='page-search__load-more ajaxinate__pagination'>
+            <a class='btn' href='{{ paginate.next.url }}'>
+              <span class='btn__text-left'> Load More </span>
+
+              <span class='btn__text-right'>
+                {{ paginate.page_size | times: paginate.current_page | at_most: search.results_count }} of
+                {{ search.results_count }}
+                {{ search_type }}s
+              </span>
+            </a>
+          </div>
+        {% endif %}
+      {% endpaginate %}
+
+      <script src='{{ 'ajaxinate.min.js' | asset_url }}' defer></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const endlessScroll = new Ajaxinate({
+            container: '.ajaxinate__container',
+            pagination: '.ajaxinate__pagination',
+            loadingText: 'Loading...',
+            method: 'click',
+            callback: function () {
+              document.querySelectorAll('.article-card__grid').forEach((el, index) => {
+                $('.article-card__tag', el).text(index + 1);
+              });
+            },
+          });
+        });
+      </script>
+
+    {% else %}
+      <div class='search-results-page__header search-results-page__header--no-results'>
+        <h5>
+          {{ section.settings.noresults_title }}
+        </h5>
+        <p>
+          {{ section.settings.noresults_message }}
+        </p>
+
+        <div class='d-none d-lg-block'>
+          <a href='/' class='btn'> Go back to homepage </a>
+        </div>
+
+        <div class='d-block d-lg-none'>
+          <a href='/' class='btn'> Go back </a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": [
+    {
+      "type": "text",
+      "id": "noresults_title",
+      "label": "No Results: Title",
+      "default": "No Results"
+    },
+    {
+      "type": "textarea",
+      "id": "noresults_message",
+      "label": "No Results: Message"
+    }
+  ]
+}
+{% endschema %}

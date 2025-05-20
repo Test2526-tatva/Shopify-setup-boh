@@ -1,0 +1,90 @@
+{{ 'page-404.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+Available variables:
+- section
+  - id
+  - blocks
+  - settings
+    - title (text)
+    - description (text)
+    - button_title (text)
+    - button_url (url)
+{%- endcomment -%}
+
+<div class="container">
+<div class="main-404">
+  <div class="left-content">
+    <h3 class="main__title-404">{{ section.settings.title }}</h3>
+    <p class="main__description-404">{{ section.settings.description }}</p>
+    <a href="{{ section.settings.button_url }}" class="main__button-title-404 underline_link">{{ section.settings.button_title }}</a>
+  </div>
+
+  <div class="right-content">
+  <h5>explore our range</h5>
+  <div class="card-wrap">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'cards' %}
+            {% render 'cards', block: block %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "404 Main",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "description",
+      "type": "text",
+      "label": "Description"
+    },
+    {
+      "id": "button_title",
+      "type": "text",
+      "label": "Button Title"
+    },
+    {
+      "id": "button_url",
+      "type": "url",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Cards",
+      "type": "cards",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "button_title",
+          "type": "text",
+          "label": "Button Title"
+        },
+        {
+          "id": "button_url",
+          "type": "url",
+          "label": "Button URL"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

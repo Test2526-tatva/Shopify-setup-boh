@@ -1,0 +1,35 @@
+<h1>
+  {{ section.settings.title }}
+</h1>
+
+<div class="collections-list">
+  {%- paginate collections by 28 -%}    
+    <div class="collections-list__grid">
+      {%- for collection in collections -%}
+        <div class="collection-card">
+          <a href="{{ collection.url }}">
+            {{ collection.title }}
+          </a>
+        </div>
+      
+      {%- endfor -%}
+    </div>
+
+    {% render 'pagination', paginate: paginate %}
+  {%- endpaginate -%}
+</div>
+
+
+{% schema %}
+{
+  "name": "Collections List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "All Collections"
+    }
+  ]
+}
+{% endschema %}

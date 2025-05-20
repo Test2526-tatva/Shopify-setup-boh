@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "hero": {
+      "type": "article-hero",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "article-main",
+      "settings": {
+      }
+    },
+    "featured": {
+      "type": "article-featured",
+      "settings": {
+      }
+    },
+    "next": {
+      "type": "article-next",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main",
+    "featured",
+    "next"
+  ]
+}

@@ -1,0 +1,42 @@
+@use './variables' as *;
+@use '../mixins/breakpoints' as *;
+@use '../mixins/typography';
+
+.input {
+  &__field {
+    width: 100%;
+    padding: 10px 0px;
+    @include typography.p;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid $lines3;
+
+    &::placeholder {
+      color: $darkcharcoal;
+    }
+    &--dropdown {
+      margin-top: 10px;
+    }
+  }
+  &__grid {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: none;
+  }
+  &__textarea,
+  &__file-upload {
+    padding-top: 10px;
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+  &__button {
+    padding-top: 40px;
+    
+    .button {
+      width: 100%;
+    }
+  }
+}
