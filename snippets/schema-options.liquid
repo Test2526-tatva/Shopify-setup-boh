@@ -1,5 +1,0 @@
-{% assign options = options | strip | newline_to_br | split: '<br />' %}
-{% for _option in options %}
-  {% assign option = _option | strip %}
-  <option value="{{ option }}">{{ option }}</option>
-{% endfor %}

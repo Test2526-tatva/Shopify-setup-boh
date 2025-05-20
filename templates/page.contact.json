@@ -1,127 +1,25 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "contact-intro": {
-      "type": "contact-intro",
-      "disabled": true,
+    "main": {
+      "type": "main-page",
       "settings": {
-        "title": ""
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "da397394-b430-4536-9c9e-b6707d8e0e67": {
-      "type": "contact_main",
-      "blocks": {
-        "e9cec9ad-0b77-4283-8fa9-1b1a3c216ff7": {
-          "type": "tabs",
-          "settings": {
-            "tab_title": "General Enquires",
-            "description": "<p>Get in touch using the form below, call us on 0272553293 or email us at <a href=\"mailto:hello@bohrunga.com\" title=\"mailto:hello@bohrunga.com\">hello@bohrunga.com</a></p>",
-            "form_id": "contact_form_1"
-          }
-        },
-        "0e9d1982-722f-4a6b-9c73-4a5985783ebe": {
-          "type": "tabs",
-          "settings": {
-            "tab_title": "Media Enquiries",
-            "description": "<p>Get in touch using the form below, call us on 0272553293 or email us at <a href=\"mailto:hello@bohrunga.com\" title=\"mailto:hello@bohrunga.com\">hello@bohrunga.com</a></p>",
-            "form_id": "contact_form_2"
-          }
-        },
-        "6d37ea09-d3dc-49f6-b1c7-52e8793a1f4d": {
-          "type": "tabs",
-          "settings": {
-            "tab_title": "Press Enquires",
-            "description": "<p>Get in touch using the form below, call us on 0272553293 or email us at <a href=\"mailto:hello@bohrunga.com\" title=\"mailto:hello@bohrunga.com\">hello@bohrunga.com</a></p>",
-            "form_id": "contact_form_3"
-          }
-        }
-      },
-      "block_order": [
-        "e9cec9ad-0b77-4283-8fa9-1b1a3c216ff7",
-        "0e9d1982-722f-4a6b-9c73-4a5985783ebe",
-        "6d37ea09-d3dc-49f6-b1c7-52e8793a1f4d"
-      ],
+    "form": {
+      "type": "contact-form",
       "settings": {
-        "title": "Contact Us",
-        "title_right": "Visit our Store",
-        "image": "shopify://shop_images/BOH_RUNGA-83.png",
-        "location": "<p>287 Ponsonby Road <br/>Auckland, New Zealand</p>",
-        "open_times": "<p>Mon - Fri: 10am - 5:30pm<br/>Sat: 10am - 5pm<br/>Sun: 10am - 5pm</p>",
-        "contact_details": "<p><a href=\"tel:0272553293\" title=\"tel:0272553293\">0272553293</a><br/><a href=\"mailto:hello@bohrunga.com\" title=\"mailto:hello@bohrunga.com\">hello@bohrunga.com</a></p>"
-      }
-    },
-    "796c4583-29ac-44a1-b19c-8586e3134d12": {
-      "type": "contact_fa_qs",
-      "blocks": {
-        "e48866b2-76c1-49ef-8d6a-9b63903de574": {
-          "type": "fa_qs",
-          "settings": {
-            "question": "Id volutpat urna pellentesque",
-            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis.</p>"
-          }
-        },
-        "bedb8880-4bc2-41a6-a644-edcb9522244e": {
-          "type": "fa_qs",
-          "settings": {
-            "question": "Viverra scelerisque sed at arcu aenean?",
-            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis.</p>"
-          }
-        },
-        "61e44301-edc8-4399-b3df-be0f9d803764": {
-          "type": "fa_qs",
-          "settings": {
-            "question": "Nunc eget pharetra risus id?",
-            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis.</p>"
-          }
-        },
-        "fa_qs_hi4XjE": {
-          "type": "fa_qs",
-          "settings": {
-            "question": "Lacinia vel augue dui magna?",
-            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis.</p>"
-          }
-        },
-        "fa_qs_wdF9F8": {
-          "type": "fa_qs",
-          "settings": {
-            "question": "Luctus pharetra sit risus placerat elit gravida non vulputate?",
-            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis.</p>"
-          }
-        },
-        "fa_qs_dHDHfB": {
-          "type": "fa_qs",
-          "settings": {
-            "question": "Et amet non quam duis?",
-            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Sit egestas cras fames habitant urna massa congue enim. Tempus faucibus augue bibendum rhoncus quam morbi ridiculus. Condimentum aliquam orci id et quis.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "e48866b2-76c1-49ef-8d6a-9b63903de574",
-        "bedb8880-4bc2-41a6-a644-edcb9522244e",
-        "61e44301-edc8-4399-b3df-be0f9d803764",
-        "fa_qs_hi4XjE",
-        "fa_qs_wdF9F8",
-        "fa_qs_dHDHfB"
-      ],
-      "settings": {
-        "title": "Popular FAQs",
-        "description": "Morbi in pharetra praesent pharetra integer condimentum. At sed quisque ullamcorper eget ac. Arcu posuere suspendisse quis sit.",
-        "image": "shopify://shop_images/popular-faqs.png"
+        "heading": "",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "contact-intro",
-    "da397394-b430-4536-9c9e-b6707d8e0e67",
-    "796c4583-29ac-44a1-b19c-8586e3134d12"
+    "main",
+    "form"
   ]
 }

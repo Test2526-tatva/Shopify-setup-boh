@@ -1,61 +1,19 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "intro": {
-      "type": "blog-intro",
-      "settings": {
-        "featured_article": "news/holiday-sessions-with-the-boh-runga-team",
-        "title": "Featured Article",
-        "bg_color": "#b8dde1",
-        "bg_image": "shopify://shop_images/6eafece9174499f303e4484430d7e69b.png",
-        "image_position": "row",
-        "pt": -1,
-        "pb": -1,
-        "pt_m": -1,
-        "pb_m": -1
-      }
-    },
     "main": {
       "type": "main-blog",
-      "blocks": {
-        "blog_em3UXG": {
-          "type": "blog",
-          "settings": {
-            "blog": "news"
-          }
-        },
-        "blog_UwR8d4": {
-          "type": "blog",
-          "settings": {
-            "blog": "gifting-stories"
-          }
-        },
-        "blog_e3L9Bw": {
-          "type": "blog",
-          "settings": {
-            "blog": "lifeinlockdown"
-          }
-        }
-      },
-      "block_order": [
-        "blog_em3UXG",
-        "blog_UwR8d4",
-        "blog_e3L9Bw"
-      ],
       "settings": {
+        "layout": "collage",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "intro",
     "main"
   ]
 }
