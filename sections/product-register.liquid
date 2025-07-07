@@ -1,6 +1,43 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Section name",
+  "settings": []
+}
 {% endschema %}
+
+<form id="warranty-form">
+  <!-- Section 1: Customer Info -->
+  <div>
+    <label>
+      Name:
+      <input
+        type="text"
+        name="customerName"
+        id="customerName"
+        value="{{ customer.first_name }} {{ customer.last_name }}"
+        required
+      >
+    </label>
+  </div>
+  <div>
+    <label>
+      Email:
+      <input
+        type="email"
+        name="customerEmail"
+        id="customerEmail"
+        value="{{ customer.email }}"
+        required
+      >
+    </label>
+  </div>
+
+  <!-- Section 2: Scenario Selection + Containers -->
+  <div id="initial-question"></div>
+  <div id="scenario-a" style="display:none;"></div>
+  <div id="scenario-b" style="display:none;"></div>
+
+  <button type="submit" id="submit-btn" disabled>Register Products</button>
+</form>
+
+<script src="{{ 'warranty-form.js' | asset_url }}"></script>
